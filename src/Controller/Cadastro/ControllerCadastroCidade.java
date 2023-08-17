@@ -6,7 +6,7 @@
 package Controller.Cadastro;
 
 import Controller.Busca.ControllerBuscaCidade;
-import static DAO.Persiste.cidadeList;
+import static Model.DAO.Persiste.cidadeList;
 import Model.Cidade;
 import View.Busca.BuscaCidade;
 import View.Cadastro.*;
@@ -61,7 +61,7 @@ public class ControllerCadastroCidade implements ActionListener {
             
             
              if(this.cadastroCidade.getIdTF().getText().equalsIgnoreCase("")){
-                    DAO.Persiste.cidadeList.add(cidade);
+                    Model.DAO.Persiste.cidadeList.add(cidade);
                     }else if (cidadeList.size() > 0) {
                         
                 if (!cidadeList.get(Integer.parseInt(id) - 1).getDescricao().equals(this.cadastroCidade.getDescricaoTF())) {
@@ -85,7 +85,7 @@ public class ControllerCadastroCidade implements ActionListener {
             
             if (codigo != 0){
                Cidade cidade = new Cidade();
-               cidade = DAO.Persiste.cidadeList.get(codigo -1);
+               cidade = Model.DAO.Persiste.cidadeList.get(codigo -1);
                Utilities.Utilities.ativa(false, this.cadastroCidade.getPanelBottom());
                Utilities.Utilities.limpaComponentes(true, this.cadastroCidade.getPanelMid());
                this.cadastroCidade.getIdTF().setText(cidade.getId() +"");

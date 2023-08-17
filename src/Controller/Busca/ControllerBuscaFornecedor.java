@@ -7,7 +7,7 @@ package Controller.Busca;
 
 
 import Controller.Cadastro.ControllerCadastroFornecedor;
-import static DAO.Persiste.fornecedorList;
+import static Model.DAO.Persiste.fornecedorList;
 import Model.Fornecedor;
 import View.Busca.BuscaFornecedor;
 import View.Cadastro.CadastroFornecedor;
@@ -43,7 +43,7 @@ public class ControllerBuscaFornecedor implements ActionListener {
         }
         if (e.getSource() == this.buscaFornecedor.getButtonFilter()) {
             //Criando/Carregando uma instância da classe "singleton" de dados.
-            DAO.Persiste.getInstance();
+            Model.DAO.Persiste.getInstance();
             contador++;
             if(contador == 1){
             //Criando uma objeto do tipo TableModel

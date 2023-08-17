@@ -7,7 +7,7 @@ package Controller.Cadastro;
 
 import Controller.Busca.ControllerBuscaEndereco;
 import Controller.Busca.ControllerBuscaFuncionario;
-import static DAO.Persiste.funcionarioList;
+import static Model.DAO.Persiste.funcionarioList;
 import Model.Funcionario;
 import View.Busca.BuscaEndereco;
 import View.Busca.BuscaFuncionario;
@@ -78,7 +78,7 @@ public class ControllerCadastroFuncionario implements ActionListener {
             funcionario.getEndereco().setCep(this.cadastroFuncionario.getCepTF().getText());
             
             if(this.cadastroFuncionario.getIdTF().getText().equalsIgnoreCase("")){
-                      DAO.Persiste.funcionarioList.add(funcionario);
+                      Model.DAO.Persiste.funcionarioList.add(funcionario);
                     }else if (funcionarioList.size() > 0) {
                         
                 if (!funcionarioList.get(Integer.parseInt(id) - 1).getNome().equals(this.cadastroFuncionario.getNomeTF())) {
@@ -118,7 +118,7 @@ public class ControllerCadastroFuncionario implements ActionListener {
             
              if (codigo != 0){
                Funcionario funcionario = new Funcionario();
-               funcionario = DAO.Persiste.funcionarioList.get(codigo -1);
+               funcionario = Model.DAO.Persiste.funcionarioList.get(codigo -1);
                Utilities.Utilities.ativa(false, this.cadastroFuncionario.getPanelBottom());
                Utilities.Utilities.limpaComponentes(true, this.cadastroFuncionario.getPanelMid());
                this.cadastroFuncionario.getIdTF().setText(funcionario.getId() +"");

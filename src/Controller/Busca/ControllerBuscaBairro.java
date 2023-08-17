@@ -6,7 +6,7 @@
 package Controller.Busca;
 
 import Controller.Cadastro.ControllerCadastroBairro;
-import static DAO.Persiste.bairroList;
+import static Model.DAO.Persiste.bairroList;
 import Model.Bairro;
 import View.Busca.BuscaBairro;
 import java.awt.event.ActionEvent;
@@ -61,7 +61,7 @@ public class ControllerBuscaBairro implements ActionListener{
         }
         if (e.getSource() == this.buscaBairro.getButtonFilter()) {
             //Criando/Carregando uma instância da classe "singleton" de dados.
-            DAO.Persiste.getInstance();
+            Model.DAO.Persiste.getInstance();
             contador++;
             if(contador == 1){
             //Criando uma objeto do tipo TableModel

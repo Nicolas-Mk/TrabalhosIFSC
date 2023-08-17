@@ -7,7 +7,7 @@ package Controller.Busca;
 
 
 import Controller.Cadastro.ControllerCadastroFuncionario;
-import static DAO.Persiste.funcionarioList;
+import static Model.DAO.Persiste.funcionarioList;
 import Model.Funcionario;
 import View.Busca.BuscaFuncionario;
 import View.Cadastro.CadastroFuncionario;
@@ -44,7 +44,7 @@ public class ControllerBuscaFuncionario implements ActionListener {
         
         if (e.getSource() == this.buscaFuncionario.getButtonFilter()) {
             //Criando/Carregando uma instância da classe "singleton" de dados.
-            DAO.Persiste.getInstance();
+            Model.DAO.Persiste.getInstance();
             contador++;
             if(contador == 1){
             //Criando uma objeto do tipo TableModel

@@ -6,7 +6,7 @@
 package Controller.Cadastro;
 
 import Controller.Busca.ControllerBuscaBairro;
-import static DAO.Persiste.bairroList;
+import static Model.DAO.Persiste.bairroList;
 import Model.Bairro;
 import View.Busca.BuscaBairro;
 import View.Cadastro.CadastroBairro;
@@ -59,7 +59,7 @@ public class ControllerCadastroBairro implements ActionListener {
             bairro.setDescricao(this.cadastroBairro.getDescricaoTF().getText());
             
                     if(this.cadastroBairro.getIdTF().getText().equalsIgnoreCase("")){
-                    DAO.Persiste.bairroList.add(bairro);
+                    Model.DAO.Persiste.bairroList.add(bairro);
                     }else if (bairroList.size() > 0) {
                         
                 if (!bairroList.get(Integer.parseInt(id) - 1).getDescricao().equals(this.cadastroBairro.getDescricaoTF())) {
@@ -83,7 +83,7 @@ public class ControllerCadastroBairro implements ActionListener {
             
              if (codigo != 0){
                Bairro bairro = new Bairro();
-               bairro = DAO.Persiste.bairroList.get(codigo -1);
+               bairro = Model.DAO.Persiste.bairroList.get(codigo -1);
                Utilities.Utilities.ativa(false, this.cadastroBairro.getPanelBottom());
                Utilities.Utilities.limpaComponentes(true, this.cadastroBairro.getPanelMid());
                this.cadastroBairro.getIdTF().setText(bairro.getId() +"");

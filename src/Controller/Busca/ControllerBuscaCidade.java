@@ -6,7 +6,7 @@
 package Controller.Busca;
 
 
-import static DAO.Persiste.cidadeList;
+import static Model.DAO.Persiste.cidadeList;
 import Model.Cidade;
 import View.Busca.BuscaCidade;
 import View.Cadastro.CadastroCidade;
@@ -42,7 +42,7 @@ public class ControllerBuscaCidade implements ActionListener {
         }
         if (e.getSource() == this.buscaCidade.getButtonFilter()) {
             //Criando/Carregando uma instância da classe "singleton" de dados.
-            DAO.Persiste.getInstance();
+            Model.DAO.Persiste.getInstance();
             contador++;
             if(contador == 1){
             //Criando uma objeto do tipo TableModel

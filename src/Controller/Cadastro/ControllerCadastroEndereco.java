@@ -6,7 +6,7 @@
 package Controller.Cadastro;
 
 import Controller.Busca.ControllerBuscaEndereco;
-import static DAO.Persiste.enderecoList;
+import static Model.DAO.Persiste.enderecoList;
 import Model.Bairro;
 import Model.Cidade;
 import Model.Endereco;
@@ -71,7 +71,7 @@ public class ControllerCadastroEndereco implements ActionListener {
             endereco.setStatus(this.cadastroEndereco.getStatusCB().getSelectedItem().toString());
              
             if(this.cadastroEndereco.getIdTF().getText().equalsIgnoreCase("")){
-                      DAO.Persiste.enderecoList.add(endereco);
+                      Model.DAO.Persiste.enderecoList.add(endereco);
                     }else if (enderecoList.size() > 0) {
                         
                 if (!enderecoList.get(Integer.parseInt(id) - 1).getCep().equals(this.cadastroEndereco.getCepTF())) {
@@ -105,7 +105,7 @@ public class ControllerCadastroEndereco implements ActionListener {
             
              if (codigo != 0){
                Endereco endereco = new Endereco();
-               endereco = DAO.Persiste.enderecoList.get(codigo -1);
+               endereco = Model.DAO.Persiste.enderecoList.get(codigo -1);
                Utilities.Utilities.ativa(false, this.cadastroEndereco.getPanelBottom());
                Utilities.Utilities.limpaComponentes(true, this.cadastroEndereco.getPanelMid());
                this.cadastroEndereco.getIdTF().setText(endereco.getId() +"");

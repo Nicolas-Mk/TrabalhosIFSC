@@ -6,7 +6,7 @@
 package Controller.Cadastro;
 
 import Controller.Busca.ControllerBuscaProduto;
-import static DAO.Persiste.produtoList;
+import static Model.DAO.Persiste.produtoList;
 import Model.Produto;
 import View.Busca.BuscaProduto;
 import View.Cadastro.*;
@@ -63,7 +63,7 @@ public class ControllerCadastroProduto implements ActionListener {
             produto.setDescricao(this.cadastroProduto.getDescricaoTF().getText());
             
             if(this.cadastroProduto.getIdTF().getText().equalsIgnoreCase("")){
-                      DAO.Persiste.produtoList.add(produto);
+                      Model.DAO.Persiste.produtoList.add(produto);
                     }else if (produtoList.size() > 0) {
                         
                 if (!produtoList.get(Integer.parseInt(id) - 1).getDescricao().equals(this.cadastroProduto.getDescricaoTF())) {
@@ -90,7 +90,7 @@ public class ControllerCadastroProduto implements ActionListener {
             
              if (codigo != 0){
                Produto produto = new Produto();
-               produto = DAO.Persiste.produtoList.get(codigo -1);
+               produto = Model.DAO.Persiste.produtoList.get(codigo -1);
                Utilities.Utilities.ativa(false, this.cadastroProduto.getPanelBottom());
                Utilities.Utilities.limpaComponentes(true, this.cadastroProduto.getPanelMid());
                this.cadastroProduto.getIdTF().setText(produto.getId() +"");

@@ -6,7 +6,7 @@
 package Controller.Busca;
 
 
-import static DAO.Persiste.produtoList;
+import static Model.DAO.Persiste.produtoList;
 import Model.Produto;
 import View.Busca.BuscaProduto;
 import View.Cadastro.CadastroProduto;
@@ -43,7 +43,7 @@ public class ControllerBuscaProduto implements ActionListener {
         
         if (e.getSource() == this.buscaProduto.getButtonFilter()) {
             //Criando/Carregando uma instância da classe "singleton" de dados.
-            DAO.Persiste.getInstance();
+            Model.DAO.Persiste.getInstance();
             contador++;
             if(contador == 1){
             //Criando uma objeto do tipo TableModel

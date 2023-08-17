@@ -8,7 +8,7 @@ package Controller.Cadastro;
 import Controller.Busca.ControllerBuscaCarteirinha;
 import Controller.Busca.ControllerBuscaCliente;
 import static Controller.Cadastro.ControllerCadastroCarteirinha.codigo;
-import static DAO.Persiste.carteirinhaList;
+import static Model.DAO.Persiste.carteirinhaList;
 import Model.Carteirinha;
 import Model.Cliente;
 import View.Cadastro.CadastroCarteirinha;
@@ -80,7 +80,7 @@ public class ControllerCadastroCarteirinha implements ActionListener {
             
             
              if(this.cadastroCarteirinha.getIdTF().getText().equalsIgnoreCase("")){
-                    DAO.Persiste.carteirinhaList.add(carteirinha);
+                    Model.DAO.Persiste.carteirinhaList.add(carteirinha);
                     }else if (carteirinhaList.size() > 0) {
                         
                 if (!carteirinhaList.get(Integer.parseInt(id) - 1).getCliente().getNome().equals(this.cadastroCarteirinha.getNomeTF())) {
@@ -122,7 +122,7 @@ public class ControllerCadastroCarteirinha implements ActionListener {
             
              if (codigo != 0){
                Carteirinha carteirinha = new Carteirinha();
-               carteirinha = DAO.Persiste.carteirinhaList.get(codigo -1);
+               carteirinha = Model.DAO.Persiste.carteirinhaList.get(codigo -1);
                Utilities.Utilities.ativa(false, this.cadastroCarteirinha.getPanelBottom());
                Utilities.Utilities.limpaComponentes(true, this.cadastroCarteirinha.getPanelMid());
                this.cadastroCarteirinha.getIdTF().setText(carteirinha.getId() +"");

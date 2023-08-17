@@ -22,7 +22,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
      */
     public MenuPrincipal() {
         initComponents();
-        DAO.Persiste.getInstance();
+        Model.DAO.Persiste.getInstance();
         
         setExtendedState(MAXIMIZED_BOTH);
     }

@@ -7,7 +7,7 @@ package Controller.Busca;
 
 
 import Controller.Cadastro.ControllerCadastroCarteirinha;
-import static DAO.Persiste.carteirinhaList;
+import static Model.DAO.Persiste.carteirinhaList;
 import Model.Carteirinha;
 import View.Busca.BuscaCarteirinha;
 import View.Cadastro.CadastroCarteirinha;
@@ -43,7 +43,7 @@ public class ControllerBuscaCarteirinha implements ActionListener {
         }
          if (e.getSource() == this.buscaCarteirinha.getButtonFilter()) {
             //Criando/Carregando uma instância da classe "singleton" de dados.
-            DAO.Persiste.getInstance();
+            Model.DAO.Persiste.getInstance();
             contador++;
             if(contador == 1){
             //Criando uma objeto do tipo TableModel

@@ -8,7 +8,7 @@ package Controller.Cadastro;
 
 import Controller.Busca.ControllerBuscaCliente;
 import Controller.Busca.ControllerBuscaEndereco;
-import static DAO.Persiste.clienteList;
+import static Model.DAO.Persiste.clienteList;
 import Model.Cliente;
 import Model.Endereco;
 import View.Busca.BuscaCliente;
@@ -82,7 +82,7 @@ public class ControllerCadastroCliente implements ActionListener {
             cliente.getEndereco().setCep(this.cadastroCliente.getCepTF().getText());
             
              if(this.cadastroCliente.getIdTF().getText().equalsIgnoreCase("")){
-                      DAO.Persiste.clienteList.add(cliente);
+                      Model.DAO.Persiste.clienteList.add(cliente);
                     }else if (clienteList.size() > 0) {
                         
                 if (!clienteList.get(Integer.parseInt(id) - 1).getNome().equals(this.cadastroCliente.getNomeTF())) {
@@ -126,7 +126,7 @@ public class ControllerCadastroCliente implements ActionListener {
             
              if (codigo != 0){
                Cliente Cliente = new Cliente();
-               Cliente = DAO.Persiste.clienteList.get(codigo -1);
+               Cliente = Model.DAO.Persiste.clienteList.get(codigo -1);
                Utilities.Utilities.ativa(false, this.cadastroCliente.getPanelBottom());
                Utilities.Utilities.limpaComponentes(true, this.cadastroCliente.getPanelMid());
                this.cadastroCliente.getIdTF().setText(Cliente.getId() +"");

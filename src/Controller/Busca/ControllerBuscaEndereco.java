@@ -12,7 +12,7 @@ import static Controller.Cadastro.ControllerCadastroFuncionario.puxaEnderecoFunc
 import static Controller.Cadastro.ControllerCadastroFornecedor.puxaEndecoFornecedor;
 import Controller.Cadastro.ControllerCadastroFuncionario;
 import Controller.Cadastro.ControllerCadastroFornecedor;
-import static DAO.Persiste.enderecoList;
+import static Model.DAO.Persiste.enderecoList;
 import Model.Endereco;
 import View.Busca.BuscaEndereco;
 import View.Cadastro.CadastroCliente;
@@ -51,7 +51,7 @@ public class ControllerBuscaEndereco implements ActionListener {
         }
         if (e.getSource() == this.buscaEndereco.getButtonFilter()) {
             //Criando/Carregando uma instância da classe "singleton" de dados.
-            DAO.Persiste.getInstance();
+            Model.DAO.Persiste.getInstance();
             contador++;
             if(contador == 1){
             //Criando uma objeto do tipo TableModel

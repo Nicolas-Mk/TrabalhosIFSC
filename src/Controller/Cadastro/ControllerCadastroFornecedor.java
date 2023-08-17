@@ -7,7 +7,7 @@ package Controller.Cadastro;
 
 import Controller.Busca.ControllerBuscaEndereco;
 import Controller.Busca.ControllerBuscaFornecedor;
-import static DAO.Persiste.fornecedorList;
+import static Model.DAO.Persiste.fornecedorList;
 import Model.Endereco;
 import Model.Fornecedor;
 import View.Busca.BuscaEndereco;
@@ -81,7 +81,7 @@ public class ControllerCadastroFornecedor implements ActionListener {
             fornecedor.getEndereco().setCep(this.cadastroFornecedor.getCepTF().getText());
             
             if(this.cadastroFornecedor.getIdTF().getText().equalsIgnoreCase("")){
-                      DAO.Persiste.fornecedorList.add(fornecedor);
+                      Model.DAO.Persiste.fornecedorList.add(fornecedor);
                     }else if (fornecedorList.size() > 0) {
                         
                 if (!fornecedorList.get(Integer.parseInt(id) - 1).getNome().equals(this.cadastroFornecedor.getNomeTF())) {
@@ -125,7 +125,7 @@ public class ControllerCadastroFornecedor implements ActionListener {
             
              if (codigo != 0){
                Fornecedor fornecedor = new Fornecedor();
-               fornecedor = DAO.Persiste.fornecedorList.get(codigo -1);
+               fornecedor = Model.DAO.Persiste.fornecedorList.get(codigo -1);
                Utilities.Utilities.ativa(false, this.cadastroFornecedor.getPanelBottom());
                Utilities.Utilities.limpaComponentes(true, this.cadastroFornecedor.getPanelMid());
                this.cadastroFornecedor.getIdTF().setText(fornecedor.getId() +"");
