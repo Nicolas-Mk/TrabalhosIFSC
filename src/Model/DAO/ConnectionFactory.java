@@ -10,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class ConnetionFactory {
+public class ConnectionFactory {
    
     private static final String driver = "com.mysql.jdbc.Driver";
     private static final String banco = "jdbc:mysql://localhost:3306/projetoCantinaBD";

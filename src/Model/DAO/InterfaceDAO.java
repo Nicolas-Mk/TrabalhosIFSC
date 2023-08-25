@@ -1,14 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Model.DAO;
 
-/**
- *
- * @author aluno
- */
-public interface InterfaceDAO {
+import java.util.List;
+
+public interface InterfaceDAO<T> {
     
+    public abstract void Create(T objeto);
+    
+    public abstract List<T> Retrieve();
+    public abstract T Retrieve (int parPK);
+    public abstract T Retrieve(String parString);
+    
+    public abstract void Update(T objeto);
+    
+    public abstract void Delete(T objeto);
 }
