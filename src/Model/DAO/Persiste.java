@@ -3,10 +3,6 @@ package Model.DAO;
 import Model.*;
 import java.util.ArrayList;
 
-/**
- *
- * @author aluno
- */
 public class Persiste {
   
             private static Persiste instance;

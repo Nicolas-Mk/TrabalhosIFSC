@@ -6,8 +6,9 @@
 package Controller.Busca;
 
 import Controller.Cadastro.ControllerCadastroBairro;
-import static Model.DAO.Persiste.bairroList;
+import Service.BairroService;
 import Model.Bairro;
+import static Model.DAO.Persiste.bairroList;
 import View.Busca.BuscaBairro;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,13 +16,15 @@ import javax.swing.table.DefaultTableModel;
 import View.Cadastro.CadastroBairro;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseAdapter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JTable;
 
 /**
  *
  * @author aluno
  */
-public class ControllerBuscaBairro implements ActionListener{
+public class ControllerBuscaBairro implements ActionListener {
 
     // Criando um objeto global do tipo da tela que iremos controlar.
     BuscaBairro buscaBairro;
@@ -37,21 +40,6 @@ public class ControllerBuscaBairro implements ActionListener{
         this.buscaBairro.getButtonLoad().addActionListener(this);
         this.buscaBairro.getButtonFilter().addActionListener(this);
     }
-    
-    public void MouseClicked(MouseEvent event){
-    
-        if (event.getSource() == this.buscaBairro.getTable() && event.getClickCount() == 1) {
-            
-            
-        }
-        
-    }
-    
-    public void TabelaMouseListener(JTable tabela){
-    
-        this.tabela = tabela;
-    }
-   
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -60,41 +48,34 @@ public class ControllerBuscaBairro implements ActionListener{
             buscaBairro.dispose();
         }
         if (e.getSource() == this.buscaBairro.getButtonFilter()) {
-            //Criando/Carregando uma instância da classe "singleton" de dados.
-            Model.DAO.Persiste.getInstance();
             contador++;
-            if(contador == 1){
-            //Criando uma objeto do tipo TableModel
-            DefaultTableModel tabela = (DefaultTableModel) this.buscaBairro.getTable().getModel();
-            for (Bairro bairroAtual : bairroList) {
-                tabela.addRow(new Object[]{bairroAtual.getId(), bairroAtual.getDescricao()});
-               }
+            if (contador == 1) {
+                List<Bairro> bairroList = new ArrayList<Bairro>();
+                bairroList = BairroService.retrive();
+
+                DefaultTableModel tabelaDados = (DefaultTableModel) buscaBairro.getTable().getModel();
+                for (Bairro bairroAtual : bairroList) {
+                    tabelaDados.addRow(new Object[]{bairroAtual.getId(), bairroAtual.getDescricao()});
+                }
             }
+
         }
         if (e.getSource() == this.buscaBairro.getButtonLoad()) {
 
-            
             CadastroBairro cadastroBairro = new CadastroBairro();
             ControllerCadastroBairro controllerCadastroBairro = new ControllerCadastroBairro(cadastroBairro);
-            
+
             Utilities.Utilities.ativa(false, cadastroBairro.getPanelBottom());
             Utilities.Utilities.limpaComponentes(true, cadastroBairro.getPanelMid());
             cadastroBairro.getIdTF().setEnabled(false);
-            
+
             cadastroBairro.setVisible(true);
-            Controller.Cadastro.ControllerCadastroBairro.codigo = (int) this.buscaBairro.getTable().getValueAt
-            (this.buscaBairro.getTable().getSelectedRow(), 0);
-           
-            
+            Controller.Cadastro.ControllerCadastroBairro.codigo = (int) this.buscaBairro.getTable().getValueAt(this.buscaBairro.getTable().getSelectedRow(), 0);
+
             cadastroBairro.getIdTF().setText(this.buscaBairro.getTable().getValueAt(this.buscaBairro.getTable().getSelectedRow(), 0).toString());
             cadastroBairro.getDescricaoTF().setText(this.buscaBairro.getTable().getValueAt(this.buscaBairro.getTable().getSelectedRow(), 1).toString());
             this.buscaBairro.dispose();
-            }
-            
-            
-            
-            
+        }
+
     }
 }
-
-

@@ -10,7 +10,9 @@ import Model.DAO.ConnectionFactory;
 import Model.DAO.InterfaceDAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,7 +24,7 @@ import java.util.logging.Logger;
 public class BairroDAO implements InterfaceDAO<Bairro> {
 
     @Override
-    public void Create(Bairro objeto) {
+    public void create(Bairro objeto) {
         
         Connection conexao = ConnectionFactory.getConnection();
         String sqlExecutar = "INSERT INTO bairro (descricao) VALUES(?)";
@@ -40,27 +42,71 @@ public class BairroDAO implements InterfaceDAO<Bairro> {
     }
 
     @Override
-    public List<Bairro> Retrieve() {
-        return null;
+    public List<Bairro> retrieve() {
+        
+        Connection conexao = ConnectionFactory.getConnection();
+        String sqlExecutar = "SELECT bairro.id, bairro.descricao FROM BAIRRO";
+        PreparedStatement pstm = null;
+        ResultSet rst = null;
+        List<Bairro> bairroList  = new ArrayList<>();
+        
+        try {
+            pstm = conexao.prepareStatement(sqlExecutar);
+            rst = pstm.executeQuery();
+            
+            
+            while(rst.next()){
+                Bairro bairro = new Bairro();
+                bairro.setId(rst.getInt("id"));
+                bairro.setDescricao(rst.getString("descricao"));
+                
+                bairroList.add(bairro);
+        }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }finally{
+            
+            ConnectionFactory.closeConnection(conexao, pstm, rst);
+            return bairroList;
+        }
         
     }
 
     @Override
-    public Bairro Retrieve(int parPK) {
+    public Bairro retrieve(int parPK) {
+        Connection conexao = ConnectionFactory.getConnection();
+        String sqlExecutar = "SELECT bairro.id, bairro.descricao FROM BAIRRO where id = x";
+        PreparedStatement pstm = null;
+        ResultSet rst = null;
+        Bairro bairro = new Bairro();
+        
+        try {
+            pstm = conexao.prepareStatement(sqlExecutar);
+            rst = pstm.executeQuery();
+            
+            bairro.setId(rst.getInt("id"));
+            bairro.setDescricao(rst.getString("descricao"));
+        
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }finally{
+            
+            ConnectionFactory.closeConnection(conexao, pstm, rst);
+            return bairro;
+        }
+    }
+
+    @Override
+    public Bairro retrieve(String parString) {
         return null;
     }
 
     @Override
-    public Bairro Retrieve(String parString) {
-        return null;
+    public void update(Bairro objeto) {
     }
 
     @Override
-    public void Update(Bairro objeto) {
-    }
-
-    @Override
-    public void Delete(Bairro objeto) {
+    public void delete(Bairro objeto) {
     }
     
 }
