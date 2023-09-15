@@ -25,12 +25,12 @@ import javax.swing.JOptionPane;
  */
 public class ControllerCadastroCliente implements ActionListener {
 
-    // Criando um objeto global do tipo da tela que iremos controlar.
+    // Criando um objeto global do tipo da tela que será controlada.
     CadastroCliente cadastroCliente;
     public static int codigo;
     public static boolean puxaEnderecoCliente = false;
 
-    //Passando a tela que iremos controlar como parametro de invocação.
+    //Passando a tela que será controlada como parametro de invocação.
     public ControllerCadastroCliente(CadastroCliente cadastroCliente) {
         //Repassando o valor(tela) do parâmtro para o objeto global.
         this.cadastroCliente = cadastroCliente;

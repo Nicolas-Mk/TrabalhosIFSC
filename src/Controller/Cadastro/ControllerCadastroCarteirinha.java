@@ -23,12 +23,12 @@ import java.awt.event.ActionListener;
  */
 public class ControllerCadastroCarteirinha implements ActionListener {
 
-    // Criando um objeto global do tipo da tela que iremos controlar.
+    // Criando um objeto global do tipo da tela que será controlada.
     CadastroCarteirinha cadastroCarteirinha;
         public static int codigo;
         public static boolean telaResultado = false;
 
-    //Passando a tela que iremos controlar como parametro de invocação.
+    //Passando a tela que será controlada como parametro de invocação.
     public ControllerCadastroCarteirinha(CadastroCarteirinha cadastroCarteirinha) {
         //Repassando o valor(tela) do parâmtro para o objeto global.
         this.cadastroCarteirinha = cadastroCarteirinha;

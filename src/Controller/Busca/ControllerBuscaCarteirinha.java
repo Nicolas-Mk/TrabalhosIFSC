@@ -1,31 +1,29 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controller.Busca;
 
 
 import Controller.Cadastro.ControllerCadastroCarteirinha;
 import static Model.DAO.Persiste.carteirinhaList;
 import Model.Carteirinha;
+import Service.CarteirinhaService;
 import View.Busca.BuscaCarteirinha;
 import View.Cadastro.CadastroCarteirinha;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author aluno
+ * @author Nicolas Kuffner
  */
 public class ControllerBuscaCarteirinha implements ActionListener {
 
-    // Criando um objeto global do tipo da tela que iremos controlar.
+    // Criando um objeto global do tipo da tela que será controlada. 
     BuscaCarteirinha buscaCarteirinha;
     int contador;
 
-    //Passando a tela que iremos controlar como parametro de invocação.
+    //Passando a tela que será controlada como parametro de invocação.
     public ControllerBuscaCarteirinha(BuscaCarteirinha buscaCarteirinha) {
         //Repassando o valor(tela) do parâmtro para o objeto global.
         this.buscaCarteirinha = buscaCarteirinha;
@@ -42,18 +40,16 @@ public class ControllerBuscaCarteirinha implements ActionListener {
             buscaCarteirinha.dispose();
         }
          if (e.getSource() == this.buscaCarteirinha.getButtonFilter()) {
-            //Criando/Carregando uma instância da classe "singleton" de dados.
-            Model.DAO.Persiste.getInstance();
-            contador++;
-            if(contador == 1){
-            //Criando uma objeto do tipo TableModel
-            DefaultTableModel tabela = (DefaultTableModel) this.buscaCarteirinha.getTable().getModel();
-            for (Carteirinha carteirinhaAtual : carteirinhaList) {
-                tabela.addRow(new Object[]{carteirinhaAtual.getId(), carteirinhaAtual.getCliente().getNome(), carteirinhaAtual.getCliente().getMatricula(),
-                    carteirinhaAtual.getCliente().getCpf(), carteirinhaAtual.getCliente().getDataNascimento(), carteirinhaAtual.getDataGeracao(), carteirinhaAtual.getDataCancelamento(), carteirinhaAtual.getCodigoBarra(),
-                    });
-                }
-            }
+            if (contador == 1) {
+                List<Carteirinha> carteirinhaList = new ArrayList<Carteirinha>();
+                carteirinhaList = CarteirinhaService.retrive();
+
+                DefaultTableModel tabelaDados = (DefaultTableModel) buscaCarteirinha.getTable().getModel();
+                for (Carteirinha carteirinhaAtual : carteirinhaList) {
+                    tabelaDados.addRow(new Object[]{carteirinhaAtual.getId(), carteirinhaAtual.getCliente().getNome(),
+                        carteirinhaAtual.getCliente().getCpf(), carteirinhaAtual.getCliente().getDataNascimento(), carteirinhaAtual.getDataGeracao(),
+                        carteirinhaAtual.getDataCancelamento(), carteirinhaAtual.getCodigoBarra()
+                            });
         }
          if (e.getSource() == this.buscaCarteirinha.getButtonLoad()) {
             
@@ -83,3 +79,8 @@ public class ControllerBuscaCarteirinha implements ActionListener {
     }
 
 }
+    }
+    
+}
+    
+

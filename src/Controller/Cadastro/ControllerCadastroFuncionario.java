@@ -22,12 +22,12 @@ import Model.Endereco;
  */
 public class ControllerCadastroFuncionario implements ActionListener {
 
-    // Criando um objeto global do tipo da tela que iremos controlar.
+    // Criando um objeto global do tipo da tela que será controlada.
     CadastroFuncionario cadastroFuncionario;
     public static int codigo;
     public static boolean puxaEnderecoFuncionario = false;
 
-    //Passando a tela que iremos controlar como parametro de invocação.
+    //Passando a tela que será controlada como parametro de invocação.
     public ControllerCadastroFuncionario(CadastroFuncionario cadastroFuncionario) {
         //Repassando o valor(tela) do parâmtro para o objeto global.
         this.cadastroFuncionario = cadastroFuncionario;

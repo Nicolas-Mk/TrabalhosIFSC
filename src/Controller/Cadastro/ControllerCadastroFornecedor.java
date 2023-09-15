@@ -25,12 +25,12 @@ public class ControllerCadastroFornecedor implements ActionListener {
 
     public static boolean puxaEndecoFornecedor = false;
 
-    // Criando um objeto global do tipo da tela que iremos controlar.
+    // Criando um objeto global do tipo da tela que será controlada.
     CadastroFornecedor cadastroFornecedor;
     public static int codigo;
 
 
-    //Passando a tela que iremos controlar como parametro de invocação.
+    //Passando a tela que será controlada como parametro de invocação.
     public ControllerCadastroFornecedor(CadastroFornecedor cadastroFornecedor) {
         //Repassando o valor(tela) do parâmtro para o objeto global.
         this.cadastroFornecedor = cadastroFornecedor;

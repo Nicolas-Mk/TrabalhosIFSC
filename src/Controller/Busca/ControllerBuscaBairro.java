@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controller.Busca;
 
 import Controller.Cadastro.ControllerCadastroBairro;
@@ -22,16 +17,15 @@ import javax.swing.JTable;
 
 /**
  *
- * @author aluno
+ * @author Nicolas Kuffner
  */
 public class ControllerBuscaBairro implements ActionListener {
 
-    // Criando um objeto global do tipo da tela que iremos controlar.
+    // Criando um objeto global do tipo da tela que será controlada. 
     BuscaBairro buscaBairro;
     int contador;
-    private JTable tabela;
 
-    //Passando a tela que iremos controlar como parametro de invocação.
+    //Passando a tela que será controlada como parametro de invocação.
     public ControllerBuscaBairro(BuscaBairro buscaBairro) {
         //Repassando o valor(tela) do parâmtro para o objeto global.
         this.buscaBairro = buscaBairro;

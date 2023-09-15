@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controller.Busca;
 
 
@@ -16,15 +11,15 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author aluno
+ * @author Nicolas Kuffner
  */
 public class ControllerBuscaProduto implements ActionListener {
 
-    // Criando um objeto global do tipo da tela que iremos controlar.
+    // Criando um objeto global do tipo da tela que será controlada. 
     BuscaProduto buscaProduto;
     int contador;
 
-    //Passando a tela que iremos controlar como parametro de invocação.
+    //Passando a tela que será controlada como parametro de invocação.
     public ControllerBuscaProduto(BuscaProduto buscaProduto) {
         //Repassando o valor(tela) do parâmtro para o objeto global.
         this.buscaProduto = buscaProduto;

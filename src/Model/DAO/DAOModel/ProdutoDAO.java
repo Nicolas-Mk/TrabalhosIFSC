@@ -5,7 +5,7 @@
  */
 package Model.DAO.DAOModel;
 
-import Model.Bairro;
+import Model.Produto;
 import Model.DAO.ConnectionFactory;
 import Model.DAO.InterfaceDAO;
 import java.sql.Connection;
@@ -21,13 +21,14 @@ import java.util.logging.Logger;
  *
  * @author aluno
  */
-public class BairroDAO implements InterfaceDAO<Bairro> {
+public class ProdutoDAO implements InterfaceDAO<Produto> {
 
     @Override
-    public void create(Bairro objeto) {
+    public void create(Produto objeto) {
         
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "INSERT INTO bairro (descricao) VALUES(?)";
+        String sqlExecutar = "INSERT INTO Produto (descricao) VALUES(?)";
+        
         PreparedStatement pstm = null;
         try {
             pstm = conexao.prepareStatement(sqlExecutar);
@@ -41,13 +42,13 @@ public class BairroDAO implements InterfaceDAO<Bairro> {
     }
 
     @Override
-    public List<Bairro> retrieve() {
+    public List<Produto> retrieve() {
         
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "SELECT bairro.id, bairro.descricao FROM BAIRRO";
+        String sqlExecutar = "SELECT Produto.id, Produto.descricao FROM Produto";
         PreparedStatement pstm = null;
         ResultSet rst = null;
-        List<Bairro> bairroList  = new ArrayList<>();
+        List<Produto> ProdutoList  = new ArrayList<>();
         
         try {
             pstm = conexao.prepareStatement(sqlExecutar);
@@ -55,74 +56,57 @@ public class BairroDAO implements InterfaceDAO<Bairro> {
             
             
             while(rst.next()){
-                Bairro bairro = new Bairro();
-                bairro.setId(rst.getInt("id"));
-                bairro.setDescricao(rst.getString("descricao"));
+                Produto Produto = new Produto();
+                Produto.setId(rst.getInt("id"));
+                Produto.setDescricao(rst.getString("descricao"));
                 
-                bairroList.add(bairro);
+                ProdutoList.add(Produto);
         }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }finally{
             
             ConnectionFactory.closeConnection(conexao, pstm, rst);
-            return bairroList;
+            return ProdutoList;
         }
         
     }
 
     @Override
-    public Bairro retrieve(int parPK) {
+    public Produto retrieve(int parPK) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "SELECT bairro.id, bairro.descricao FROM BAIRRO where bairro.id = ?";
+        String sqlExecutar = "SELECT Produto.id, Produto.descricao FROM Produto where id = x";
         PreparedStatement pstm = null;
         ResultSet rst = null;
-        Bairro bairro = new Bairro();
+        Produto Produto = new Produto();
         
         try {
             pstm = conexao.prepareStatement(sqlExecutar);
             rst = pstm.executeQuery();
             
-            bairro.setId(rst.getInt("id"));
-            bairro.setDescricao(rst.getString("descricao"));
+            Produto.setId(rst.getInt("id"));
+            Produto.setDescricao(rst.getString("descricao"));
         
         } catch (SQLException ex) {
             ex.printStackTrace();
         }finally{
             
             ConnectionFactory.closeConnection(conexao, pstm, rst);
-            return bairro;
+            return Produto;
         }
     }
 
     @Override
-    public Bairro retrieve(String parString) {
+    public Produto retrieve(String parString) {
         return null;
     }
 
     @Override
-    public void update(Bairro objeto) {
-        Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "UPDATE bairro set bairro.descricao = ? where bairro.id = ?";
-        PreparedStatement pstm = null;
-        Bairro bairro = new Bairro();
-        
-        try {
-            pstm = conexao.prepareStatement(sqlExecutar);
-            pstm.setString(1, objeto.getDescricao());
-            pstm.setInt(2, objeto.getId());
-            pstm.execute();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } finally {
-            ConnectionFactory.closeConnection(conexao, pstm);
-        }
- 
-        
+    public void update(Produto objeto) {
     }
 
     @Override
-    public void delete(Bairro objeto) {
+    public void delete(Produto objeto) {
     }
     
 }

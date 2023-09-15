@@ -8,6 +8,7 @@ package Controller.Cadastro;
 import Controller.Busca.ControllerBuscaBairro;
 import static Model.DAO.Persiste.bairroList;
 import Model.Bairro;
+import Service.BairroService;
 import View.Busca.BuscaBairro;
 import View.Cadastro.CadastroBairro;
 import java.awt.event.ActionEvent;
@@ -18,11 +19,11 @@ import java.awt.event.ActionListener;
  */
 public class ControllerCadastroBairro implements ActionListener {
 
-    // Criando um objeto global do tipo da tela que iremos controlar.
+    // Criando um objeto global do tipo da tela que será controlada.
     CadastroBairro cadastroBairro;
     public static int codigo;
 
-    //Passando a tela que iremos controlar como parametro de invocação.
+    //Passando a tela que será controlada como parametro de invocação.
     public ControllerCadastroBairro(CadastroBairro cadastroBairro) {
         //Repassando o valor(tela) do parâmtro para o objeto global.
         this.cadastroBairro = cadastroBairro;
@@ -51,22 +52,20 @@ public class ControllerCadastroBairro implements ActionListener {
         } else if (e.getSource() == this.cadastroBairro.getButtonCancel()) {
             Utilities.Utilities.ativa(true, this.cadastroBairro.getPanelBottom());
             Utilities.Utilities.limpaComponentes(false, this.cadastroBairro.getPanelMid());
-        } else if (e.getSource() == this.cadastroBairro.getButtonGravar()) {
+        } else if (e.getSource() == this.cadastroBairro.getButtonGravar()) { //BD IMPLEMENTADO
             
-            String id = this.cadastroBairro.getIdTF().getText();
             Bairro bairro = new Bairro();
-            bairro.setId((bairroList.size()+1));
             bairro.setDescricao(this.cadastroBairro.getDescricaoTF().getText());
             
                     if(this.cadastroBairro.getIdTF().getText().equalsIgnoreCase("")){
-                    Model.DAO.Persiste.bairroList.add(bairro);
-                    }else if (bairroList.size() > 0) {
+                    BairroService.create(bairro);
+                    }else{
+                    bairro.setId(Integer.parseInt(this.cadastroBairro.getIdTF().getText()));
+                    BairroService.update(bairro);
+                        }
                         
-                if (!bairroList.get(Integer.parseInt(id) - 1).getDescricao().equals(this.cadastroBairro.getDescricaoTF())) {
-                    bairroList.get(Integer.parseInt(id) - 1).setDescricao(this.cadastroBairro.getDescricaoTF().getText());
-                }
                         
-                    }
+                    
 
             Utilities.Utilities.ativa(true, this.cadastroBairro.getPanelBottom());
             Utilities.Utilities.limpaComponentes(false, this.cadastroBairro.getPanelMid());
@@ -83,7 +82,7 @@ public class ControllerCadastroBairro implements ActionListener {
             
              if (codigo != 0){
                Bairro bairro = new Bairro();
-               bairro = Model.DAO.Persiste.bairroList.get(codigo -1);
+               bairro = BairroService.retrieve(codigo);
                Utilities.Utilities.ativa(false, this.cadastroBairro.getPanelBottom());
                Utilities.Utilities.limpaComponentes(true, this.cadastroBairro.getPanelMid());
                this.cadastroBairro.getIdTF().setText(bairro.getId() +"");
