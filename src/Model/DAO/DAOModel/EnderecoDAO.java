@@ -27,7 +27,7 @@ public class EnderecoDAO implements InterfaceDAO<Endereco> {
     public void create(Endereco objeto) {
         
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "INSERT INTO Endereco (cep) VALUES(?)";
+        String sqlExecutar = "INSERT INTO endereco (cep) VALUES(?)";
         
         PreparedStatement pstm = null;
         try {

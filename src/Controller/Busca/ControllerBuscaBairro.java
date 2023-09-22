@@ -3,17 +3,13 @@ package Controller.Busca;
 import Controller.Cadastro.ControllerCadastroBairro;
 import Service.BairroService;
 import Model.Bairro;
-import static Model.DAO.Persiste.bairroList;
 import View.Busca.BuscaBairro;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.table.DefaultTableModel;
 import View.Cadastro.CadastroBairro;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseAdapter;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JTable;
 
 /**
  *

@@ -62,10 +62,7 @@ public class ControllerCadastroBairro implements ActionListener {
                     }else{
                     bairro.setId(Integer.parseInt(this.cadastroBairro.getIdTF().getText()));
                     BairroService.update(bairro);
-                        }
-                        
-                        
-                    
+                    }
 
             Utilities.Utilities.ativa(true, this.cadastroBairro.getPanelBottom());
             Utilities.Utilities.limpaComponentes(false, this.cadastroBairro.getPanelMid());

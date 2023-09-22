@@ -8,6 +8,7 @@ package Controller.Cadastro;
 import Controller.Busca.ControllerBuscaProduto;
 import static Model.DAO.Persiste.produtoList;
 import Model.Produto;
+import Service.ProdutoService;
 import View.Busca.BuscaProduto;
 import View.Cadastro.*;
 import java.awt.event.ActionEvent;
@@ -55,29 +56,17 @@ public class ControllerCadastroProduto implements ActionListener {
         } else if (e.getSource() == this.cadastroProduto.getButtonGravar()) {
             Utilities.Utilities.ativa(true, this.cadastroProduto.getPanelBottom());
             
-            String id = this.cadastroProduto.getIdTF().getText();
-            Produto produto = new Produto();
-            produto.setId((produtoList.size()+1));
-            produto.setCodigoBarra(this.cadastroProduto.getCodigodeBarrasTF().getText());
-            produto.setStatus(this.cadastroProduto.getStatusCB().getSelectedItem().toString());
-            produto.setDescricao(this.cadastroProduto.getDescricaoTF().getText());
-            
-            if(this.cadastroProduto.getIdTF().getText().equalsIgnoreCase("")){
-                      Model.DAO.Persiste.produtoList.add(produto);
-                    }else if (produtoList.size() > 0) {
-                        
-                if (!produtoList.get(Integer.parseInt(id) - 1).getDescricao().equals(this.cadastroProduto.getDescricaoTF())) {
-                produtoList.get(Integer.parseInt(id) - 1).setDescricao(this.cadastroProduto.getDescricaoTF().getText());
-                }   
-                if (!produtoList.get(Integer.parseInt(id) - 1).getCodigoBarra().equals(this.cadastroProduto.getCodigodeBarrasTF())) {
-                    produtoList.get(Integer.parseInt(id) - 1).setCodigoBarra(this.cadastroProduto.getCodigodeBarrasTF().getText());
-                }        
-                if (!produtoList.get(Integer.parseInt(id) - 1).getStatus().equals(this.cadastroProduto.getStatusCB().getSelectedItem().toString())) {
-                    produtoList.get(Integer.parseInt(id) - 1).setStatus(this.cadastroProduto.getStatusCB().getSelectedItem().toString());
-                }
-                
-                        
-                    }
+             Produto produto = new Produto();
+             produto.setDescricao(this.cadastroProduto.getDescricaoTF().getText());
+             produto.setCodigoBarra(this.cadastroProduto.getCodigodeBarrasTF().getText());
+             produto.setStatus(this.cadastroProduto.getStatusCB().getSelectedItem().toString());
+             
+                    if(this.cadastroProduto.getIdTF().getText().equalsIgnoreCase("")){
+                    ProdutoService.create(produto);
+                    }else{
+                    produto.setId(Integer.parseInt(this.cadastroProduto.getIdTF().getText()));
+                    ProdutoService.update(produto);
+                        }
             
             Utilities.Utilities.limpaComponentes(false, this.cadastroProduto.getPanelMid());
         } else if (e.getSource() == this.cadastroProduto.getButtonSearch()) {

@@ -176,7 +176,7 @@ public class CadastroBairro extends javax.swing.JFrame {
 
         descricao.setText("Descrição");
 
-        idTF.setActionCommand("2");
+        idTF.setActionCommand("0");
         idTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 idTFActionPerformed(evt);
@@ -194,13 +194,13 @@ public class CadastroBairro extends javax.swing.JFrame {
         panelMidLayout.setHorizontalGroup(
             panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMidLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(85, 85, 85)
                 .addGroup(panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(id)
+                    .addComponent(descricao)
                     .addComponent(idTF, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(descricaoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(descricao))
-                .addContainerGap(325, Short.MAX_VALUE))
+                    .addComponent(id))
+                .addContainerGap(269, Short.MAX_VALUE))
         );
         panelMidLayout.setVerticalGroup(
             panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,9 +209,9 @@ public class CadastroBairro extends javax.swing.JFrame {
                 .addComponent(id)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(idTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(13, 13, 13)
                 .addComponent(descricao)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(descricaoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(46, Short.MAX_VALUE))
         );
@@ -280,7 +280,7 @@ public class CadastroBairro extends javax.swing.JFrame {
         });
         panelBottom.add(buttonExit);
 
-        getContentPane().add(panelBottom, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 800, -1));
+        getContentPane().add(panelBottom, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 800, -1));
 
         pack();
         setLocationRelativeTo(null);

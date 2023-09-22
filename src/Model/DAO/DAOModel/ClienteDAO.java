@@ -27,7 +27,7 @@ public class ClienteDAO implements InterfaceDAO<Cliente> {
     public void create(Cliente objeto) {
         
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "INSERT INTO Cliente (nome) VALUES(?)";
+        String sqlExecutar = "INSERT INTO cliente (nome) VALUES(?)";
         
         PreparedStatement pstm = null;
         try {

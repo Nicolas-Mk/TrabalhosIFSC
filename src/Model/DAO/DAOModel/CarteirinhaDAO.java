@@ -27,7 +27,7 @@ public class CarteirinhaDAO implements InterfaceDAO<Carteirinha> {
     public void create(Carteirinha objeto) {
         
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "INSERT INTO Carteirinha (descricao) VALUES(?)";
+        String sqlExecutar = "INSERT INTO carteirinha (descricao) VALUES(?)";
         
         PreparedStatement pstm = null;
         try {

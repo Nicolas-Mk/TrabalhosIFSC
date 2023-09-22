@@ -5,7 +5,6 @@
  */
 package View.Cadastro;
 
-import View.Template.TemplateCadastro;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -22,78 +21,8 @@ public class CadastroCidade extends javax.swing.JFrame {
      */
     public CadastroCidade() {
         initComponents();
-    }
-
-    public JLabel getUF() {
-        return UF;
-    }
-
-    public JButton getButtonCancel() {
-        return buttonCancel;
-    }
-
-    public JButton getButtonExit() {
-        return buttonExit;
-    }
-
-    public JButton getButtonGravar() {
-        return buttonGravar;
-    }
-
-    public JButton getButtonNew() {
-        return buttonNew;
-    }
-
-    public JButton getButtonSearch() {
-        return buttonSearch;
-    }
-
-    public JLabel getDescricao() {
-        return descricao;
-    }
-
-    public JTextField getDescricaoTF() {
-        return descricaoTF;
-    }
-
-    public JLabel getId() {
-        return id;
-    }
-
-    public JTextField getIdTF() {
-        return idTF;
-    }
-
-    public JLabel getjLabel1() {
-        return jLabel1;
-    }
-
-    public JLabel getjLabel4() {
-        return jLabel4;
-    }
-
-    public JTextField getjTextField3() {
-        return jTextField3;
-    }
-
-    public JPanel getPanelBottom() {
-        return panelBottom;
-    }
-
-    public JPanel getPanelMid() {
-        return panelMid;
-    }
-
-    public JPanel getPanelTop() {
-        return panelTop;
-    }
-
-    public JTextField getUfTF() {
-        return ufTF;
-    }
-
-    public void setUF(JLabel UF) {
-        this.UF = UF;
+ 
+        
     }
 
     public void setButtonCancel(JButton buttonCancel) {
@@ -136,14 +65,6 @@ public class CadastroCidade extends javax.swing.JFrame {
         this.jLabel1 = jLabel1;
     }
 
-    public void setjLabel4(JLabel jLabel4) {
-        this.jLabel4 = jLabel4;
-    }
-
-    public void setjTextField3(JTextField jTextField3) {
-        this.jTextField3 = jTextField3;
-    }
-
     public void setPanelBottom(JPanel panelBottom) {
         this.panelBottom = panelBottom;
     }
@@ -156,17 +77,74 @@ public class CadastroCidade extends javax.swing.JFrame {
         this.panelTop = panelTop;
     }
 
+    public void setUf(JLabel uf) {
+        this.uf = uf;
+    }
+
     public void setUfTF(JTextField ufTF) {
         this.ufTF = ufTF;
     }
 
-  
+    public JButton getButtonCancel() {
+        return buttonCancel;
+    }
 
-    
+    public JButton getButtonExit() {
+        return buttonExit;
+    }
 
-   
+    public JButton getButtonGravar() {
+        return buttonGravar;
+    }
+
+    public JButton getButtonNew() {
+        return buttonNew;
+    }
+
+    public JButton getButtonSearch() {
+        return buttonSearch;
+    }
+
+    public JLabel getDescricao() {
+        return descricao;
+    }
+
+    public JTextField getDescricaoTF() {
+        return descricaoTF;
+    }
+
+    public JLabel getId() {
+        return id;
+    }
+
+    public JTextField getIdTF() {
+        return idTF;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public JPanel getPanelBottom() {
+        return panelBottom;
+    }
+
+    public JPanel getPanelMid() {
+        return panelMid;
+    }
+
+    public JPanel getPanelTop() {
+        return panelTop;
+    }
+
+    public JLabel getUf() {
+        return uf;
+    }
+
+    public JTextField getUfTF() {
+        return ufTF;
+    }
     
-  
     
 
     /**
@@ -178,109 +156,33 @@ public class CadastroCidade extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
         panelTop = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        panelMid = new javax.swing.JPanel();
-        idTF = new javax.swing.JTextField();
-        ufTF = new javax.swing.JTextField();
-        descricaoTF = new javax.swing.JTextField();
-        id = new javax.swing.JLabel();
-        UF = new javax.swing.JLabel();
-        descricao = new javax.swing.JLabel();
         panelBottom = new javax.swing.JPanel();
         buttonNew = new javax.swing.JButton();
         buttonCancel = new javax.swing.JButton();
         buttonGravar = new javax.swing.JButton();
         buttonSearch = new javax.swing.JButton();
         buttonExit = new javax.swing.JButton();
+        panelMid = new javax.swing.JPanel();
+        id = new javax.swing.JLabel();
+        ufTF = new javax.swing.JTextField();
+        idTF = new javax.swing.JTextField();
+        uf = new javax.swing.JLabel();
+        descricao = new javax.swing.JLabel();
+        descricaoTF = new javax.swing.JTextField();
 
-        jLabel4.setText("Descrição");
-
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(800, 300));
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelTop.setBackground(new java.awt.Color(221, 221, 221));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel1.setText("Cadastro Cidade");
+        jLabel1.setText("Cidade");
         panelTop.add(jLabel1);
 
-        getContentPane().add(panelTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 60));
-
-        idTF.setActionCommand("");
-        idTF.setEnabled(false);
-        idTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idTFActionPerformed(evt);
-            }
-        });
-
-        ufTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ufTFActionPerformed(evt);
-            }
-        });
-
-        descricaoTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                descricaoTFActionPerformed(evt);
-            }
-        });
-
-        id.setText("ID");
-
-        UF.setText("UF");
-
-        descricao.setText("Descrição");
-
-        javax.swing.GroupLayout panelMidLayout = new javax.swing.GroupLayout(panelMid);
-        panelMid.setLayout(panelMidLayout);
-        panelMidLayout.setHorizontalGroup(
-            panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelMidLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(descricao)
-                    .addGroup(panelMidLayout.createSequentialGroup()
-                        .addGroup(panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(idTF, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(id))
-                        .addGap(60, 60, 60)
-                        .addGroup(panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(UF)
-                            .addComponent(ufTF, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(descricaoTF))
-                .addContainerGap(517, Short.MAX_VALUE))
-        );
-        panelMidLayout.setVerticalGroup(
-            panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelMidLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(id)
-                    .addComponent(UF))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(idTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ufTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addComponent(descricao)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(descricaoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(panelMid, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 800, 200));
+        getContentPane().add(panelTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 80));
 
         panelBottom.setBackground(new java.awt.Color(221, 221, 221));
 
@@ -300,7 +202,6 @@ public class CadastroCidade extends javax.swing.JFrame {
         buttonCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens_rob/Cancel.png"))); // NOI18N
         buttonCancel.setText(" Cancelar");
         buttonCancel.setActionCommand("1");
-        buttonCancel.setEnabled(false);
         buttonCancel.setPreferredSize(new java.awt.Dimension(120, 50));
         buttonCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -313,7 +214,6 @@ public class CadastroCidade extends javax.swing.JFrame {
         buttonGravar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens_rob/Next track.png"))); // NOI18N
         buttonGravar.setText(" Gravar");
         buttonGravar.setActionCommand("1");
-        buttonGravar.setEnabled(false);
         buttonGravar.setPreferredSize(new java.awt.Dimension(120, 50));
         buttonGravar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -327,11 +227,6 @@ public class CadastroCidade extends javax.swing.JFrame {
         buttonSearch.setText(" Buscar");
         buttonSearch.setActionCommand("0");
         buttonSearch.setPreferredSize(new java.awt.Dimension(120, 50));
-        buttonSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonSearchActionPerformed(evt);
-            }
-        });
         panelBottom.add(buttonSearch);
 
         buttonExit.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -339,34 +234,76 @@ public class CadastroCidade extends javax.swing.JFrame {
         buttonExit.setText(" Sair");
         buttonExit.setActionCommand("0");
         buttonExit.setPreferredSize(new java.awt.Dimension(120, 50));
-        buttonExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonExitActionPerformed(evt);
-            }
-        });
         panelBottom.add(buttonExit);
 
-        getContentPane().add(panelBottom, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 800, -1));
+        getContentPane().add(panelBottom, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 800, 60));
+
+        id.setText("ID");
+
+        ufTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ufTFActionPerformed(evt);
+            }
+        });
+
+        idTF.setEnabled(false);
+        idTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idTFActionPerformed(evt);
+            }
+        });
+
+        uf.setText("Uf");
+
+        descricao.setText("Descrição");
+
+        descricaoTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                descricaoTFActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelMidLayout = new javax.swing.GroupLayout(panelMid);
+        panelMid.setLayout(panelMidLayout);
+        panelMidLayout.setHorizontalGroup(
+            panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMidLayout.createSequentialGroup()
+                .addGap(91, 91, 91)
+                .addGroup(panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(descricao)
+                    .addGroup(panelMidLayout.createSequentialGroup()
+                        .addGroup(panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(idTF, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(id))
+                        .addGap(49, 49, 49)
+                        .addGroup(panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(uf)
+                            .addComponent(ufTF, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(descricaoTF))
+                .addContainerGap(460, Short.MAX_VALUE))
+        );
+        panelMidLayout.setVerticalGroup(
+            panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMidLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(id)
+                    .addComponent(uf))
+                .addGap(6, 6, 6)
+                .addGroup(panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(idTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ufTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(descricao)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(descricaoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(47, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(panelMid, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 800, 190));
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void idTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idTFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_idTFActionPerformed
-
-    private void descricaoTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descricaoTFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_descricaoTFActionPerformed
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
-    private void ufTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ufTFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ufTFActionPerformed
 
     private void buttonNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNewActionPerformed
         Utilities.Utilities.ativa(false, panelBottom);
@@ -383,13 +320,17 @@ public class CadastroCidade extends javax.swing.JFrame {
         Utilities.Utilities.limpaComponentes(false, panelMid);
     }//GEN-LAST:event_buttonGravarActionPerformed
 
-    private void buttonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSearchActionPerformed
-       
-    }//GEN-LAST:event_buttonSearchActionPerformed
+    private void ufTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ufTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ufTFActionPerformed
 
-    private void buttonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExitActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_buttonExitActionPerformed
+    private void idTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idTFActionPerformed
+
+    private void descricaoTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descricaoTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_descricaoTFActionPerformed
 
     /**
      * @param args the command line arguments
@@ -408,13 +349,13 @@ public class CadastroCidade extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TemplateCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroCidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TemplateCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroCidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TemplateCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroCidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TemplateCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroCidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -427,7 +368,6 @@ public class CadastroCidade extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel UF;
     private javax.swing.JButton buttonCancel;
     private javax.swing.JButton buttonExit;
     private javax.swing.JButton buttonGravar;
@@ -438,11 +378,10 @@ public class CadastroCidade extends javax.swing.JFrame {
     private javax.swing.JLabel id;
     private javax.swing.JTextField idTF;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JPanel panelBottom;
     private javax.swing.JPanel panelMid;
     private javax.swing.JPanel panelTop;
+    private javax.swing.JLabel uf;
     private javax.swing.JTextField ufTF;
     // End of variables declaration//GEN-END:variables
 }

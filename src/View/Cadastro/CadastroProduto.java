@@ -305,7 +305,7 @@ public class CadastroProduto extends javax.swing.JFrame {
         panelMidLayout.setHorizontalGroup(
             panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMidLayout.createSequentialGroup()
-                .addGap(218, 218, 218)
+                .addGap(94, 94, 94)
                 .addGroup(panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(descricao)
                     .addComponent(id)
@@ -317,12 +317,12 @@ public class CadastroProduto extends javax.swing.JFrame {
                     .addComponent(status)
                     .addComponent(statusCB, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(codigodeBarrasTF, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(225, Short.MAX_VALUE))
+                .addContainerGap(349, Short.MAX_VALUE))
         );
         panelMidLayout.setVerticalGroup(
             panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelMidLayout.createSequentialGroup()
-                .addGap(49, 49, 49)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMidLayout.createSequentialGroup()
+                .addContainerGap(56, Short.MAX_VALUE)
                 .addGroup(panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(id)
                     .addComponent(codigodeBarras))
@@ -338,7 +338,7 @@ public class CadastroProduto extends javax.swing.JFrame {
                 .addGroup(panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(descricaoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(statusCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addGap(43, 43, 43))
         );
 
         getContentPane().add(panelMid, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 800, 230));

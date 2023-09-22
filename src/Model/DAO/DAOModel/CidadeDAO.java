@@ -27,12 +27,13 @@ public class CidadeDAO implements InterfaceDAO<Cidade> {
     public void create(Cidade objeto) {
         
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "INSERT INTO Cidade (descricao) VALUES(?)";
+        String sqlExecutar = "INSERT INTO cidade (descricao, uf) VALUES(?, ?)";
         
         PreparedStatement pstm = null;
         try {
             pstm = conexao.prepareStatement(sqlExecutar);
             pstm.setString(1, objeto.getDescricao());
+            pstm.setString(2, objeto.getUf());
             pstm.execute();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -45,7 +46,7 @@ public class CidadeDAO implements InterfaceDAO<Cidade> {
     public List<Cidade> retrieve() {
         
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "SELECT Cidade.id, Cidade.descricao FROM Cidade";
+        String sqlExecutar = "SELECT Cidade.id, Cidade.descricao, cidade.uf FROM Cidade";
         PreparedStatement pstm = null;
         ResultSet rst = null;
         List<Cidade> CidadeList  = new ArrayList<>();
@@ -59,6 +60,7 @@ public class CidadeDAO implements InterfaceDAO<Cidade> {
                 Cidade Cidade = new Cidade();
                 Cidade.setId(rst.getInt("id"));
                 Cidade.setDescricao(rst.getString("descricao"));
+                Cidade.setUf(rst.getString("uf"));
                 
                 CidadeList.add(Cidade);
         }
@@ -103,6 +105,22 @@ public class CidadeDAO implements InterfaceDAO<Cidade> {
 
     @Override
     public void update(Cidade objeto) {
+        Connection conexao = ConnectionFactory.getConnection();
+        String sqlExecutar = "UPDATE cidade set cidade.descricao = ?, uf = ? where cidade.id = ?";
+        PreparedStatement pstm = null;
+        Cidade cidade = new Cidade();
+        
+        try {
+            pstm = conexao.prepareStatement(sqlExecutar);
+            pstm.setString(1, objeto.getDescricao());
+            pstm.setString(2, objeto.getUf());
+            pstm.setInt(3, objeto.getId());
+            pstm.execute();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            ConnectionFactory.closeConnection(conexao, pstm);
+        }
     }
 
     @Override

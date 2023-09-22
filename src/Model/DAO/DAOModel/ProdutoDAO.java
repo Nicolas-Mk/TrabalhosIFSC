@@ -27,7 +27,7 @@ public class ProdutoDAO implements InterfaceDAO<Produto> {
     public void create(Produto objeto) {
         
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "INSERT INTO Produto (descricao) VALUES(?)";
+        String sqlExecutar = "INSERT INTO produto (descricao) VALUES(?)";
         
         PreparedStatement pstm = null;
         try {

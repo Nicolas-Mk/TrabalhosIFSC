@@ -27,7 +27,7 @@ public class FornecedorDAO implements InterfaceDAO<Fornecedor> {
     public void create(Fornecedor objeto) {
         
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "INSERT INTO Fornecedor (nome) VALUES(?)";
+        String sqlExecutar = "INSERT INTO fornecedor (nome) VALUES(?)";
         
         PreparedStatement pstm = null;
         try {

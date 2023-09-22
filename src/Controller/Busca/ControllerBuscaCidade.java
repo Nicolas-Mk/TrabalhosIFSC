@@ -3,10 +3,13 @@ package Controller.Busca;
 
 import static Model.DAO.Persiste.cidadeList;
 import Model.Cidade;
+import Service.CidadeService;
 import View.Busca.BuscaCidade;
 import View.Cadastro.CadastroCidade;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -36,16 +39,18 @@ public class ControllerBuscaCidade implements ActionListener {
             buscaCidade.dispose();
         }
         if (e.getSource() == this.buscaCidade.getButtonFilter()) {
-            //Criando/Carregando uma instância da classe "singleton" de dados.
-            Model.DAO.Persiste.getInstance();
+            
             contador++;
-            if(contador == 1){
-            //Criando uma objeto do tipo TableModel
-            DefaultTableModel tabela = (DefaultTableModel) this.buscaCidade.getTable().getModel();
-            for (Cidade cidadeAtual : cidadeList) {
-                tabela.addRow(new Object[]{cidadeAtual.getId(), cidadeAtual.getDescricao(), cidadeAtual.getUf()});
+            if (contador == 1) {
+                List<Cidade> cidadeList = new ArrayList<Cidade>();
+                cidadeList = CidadeService.retrive();
+
+                DefaultTableModel tabelaDados = (DefaultTableModel) buscaCidade.getTable().getModel();
+                for (Cidade CidadeAtual : cidadeList) {
+                    tabelaDados.addRow(new Object[]{CidadeAtual.getId(), CidadeAtual.getDescricao(), CidadeAtual.getUf()});
                 }
             }
+            
     }
 
         if (e.getSource() == this.buscaCidade.getButtonLoad()) {

@@ -27,7 +27,7 @@ public class FuncionarioDAO implements InterfaceDAO<Funcionario> {
     public void create(Funcionario objeto) {
         
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "INSERT INTO Funcionario (descricao) VALUES(?)";
+        String sqlExecutar = "INSERT INTO funcionario (descricao) VALUES(?)";
         
         PreparedStatement pstm = null;
         try {

@@ -11,6 +11,7 @@ import static Controller.Cadastro.ControllerCadastroCarteirinha.codigo;
 import static Model.DAO.Persiste.carteirinhaList;
 import Model.Carteirinha;
 import Model.Cliente;
+import Service.CarteirinhaService;
 import View.Cadastro.CadastroCarteirinha;
 import View.Busca.BuscaCarteirinha;
 import View.Busca.BuscaCliente;
@@ -61,56 +62,27 @@ public class ControllerCadastroCarteirinha implements ActionListener {
         } else if (e.getSource() == this.cadastroCarteirinha.getButtonCancel()) {
             Utilities.Utilities.ativa(true, this.cadastroCarteirinha.getPanelBottom());
             Utilities.Utilities.limpaComponentes(false, this.cadastroCarteirinha.getPanelMid());
-        } else if (e.getSource() == this.cadastroCarteirinha.getButtonGravar()) {
+        } else if (e.getSource() == this.cadastroCarteirinha.getButtonGravar()) { //BD IMPLEMENTADO
             Utilities.Utilities.ativa(true, this.cadastroCarteirinha.getPanelBottom());
             
-            String id = this.cadastroCarteirinha.getIdTF().getText();
-            Carteirinha carteirinha = new Carteirinha();
             Cliente cliente = new Cliente();
+            Carteirinha carteirinha = new Carteirinha();
             carteirinha.setCliente(cliente);
-            
-            carteirinha.setId((carteirinhaList.size()+1));
             carteirinha.getCliente().setNome(this.cadastroCarteirinha.getNomeTF().getText());
             carteirinha.getCliente().setCpf(this.cadastroCarteirinha.getCpfTF().getText());
             carteirinha.getCliente().setDataNascimento(this.cadastroCarteirinha.getDatadeNascimentoTF().getText());
-            carteirinha.setDataGeracao(this.cadastroCarteirinha.getDataGeracaoTF().getText());
+            carteirinha.setDataGeracao(this.cadastroCarteirinha.getDatadeNascimentoTF().getText());
             carteirinha.setDataCancelamento(this.cadastroCarteirinha.getDataCancelamentoTF().getText());
             carteirinha.getCliente().setMatricula(this.cadastroCarteirinha.getMatriculaTF().getText());
             carteirinha.setCodigoBarra(this.cadastroCarteirinha.getCodigoBarrasTF().getText());
             
-            
-             if(this.cadastroCarteirinha.getIdTF().getText().equalsIgnoreCase("")){
-                    Model.DAO.Persiste.carteirinhaList.add(carteirinha);
-                    }else if (carteirinhaList.size() > 0) {
-                        
-                if (!carteirinhaList.get(Integer.parseInt(id) - 1).getCliente().getNome().equals(this.cadastroCarteirinha.getNomeTF())) {
-                    carteirinhaList.get(Integer.parseInt(id) - 1).getCliente().setNome(this.cadastroCarteirinha.getNomeTF().getText());
-                }
-                if (!carteirinhaList.get(Integer.parseInt(id) - 1).getCliente().getCpf().equals(this.cadastroCarteirinha.getCpfTF())) {
-                    carteirinhaList.get(Integer.parseInt(id) - 1).getCliente().setCpf(this.cadastroCarteirinha.getCpfTF().getText());
-                }
-                if (!carteirinhaList.get(Integer.parseInt(id) - 1).getCliente().getDataNascimento().equals(this.cadastroCarteirinha.getDatadeNascimentoTF())) {
-                    carteirinhaList.get(Integer.parseInt(id) - 1).getCliente().setDataNascimento(this.cadastroCarteirinha.getDatadeNascimentoTF().getText());
-                }
-                if (!carteirinhaList.get(Integer.parseInt(id) - 1).getDataGeracao().equals(this.cadastroCarteirinha.getDataGeracaoTF())) {
-                    carteirinhaList.get(Integer.parseInt(id) - 1).setDataGeracao(this.cadastroCarteirinha.getDataGeracaoTF().getText());
-                }
-                if (!carteirinhaList.get(Integer.parseInt(id) - 1).getDataCancelamento().equals(this.cadastroCarteirinha.getDataCancelamentoTF())) {
-                    carteirinhaList.get(Integer.parseInt(id) - 1).setDataCancelamento(this.cadastroCarteirinha.getDataCancelamentoTF().getText());
-                    
-                if (!carteirinhaList.get(Integer.parseInt(id) - 1).getCliente().getMatricula().equals(this.cadastroCarteirinha.getMatriculaTF())) {
-                    carteirinhaList.get(Integer.parseInt(id) - 1).getCliente().setMatricula(this.cadastroCarteirinha.getMatriculaTF().getText());
-                }
-                if (!carteirinhaList.get(Integer.parseInt(id) - 1).getCodigoBarra().equals(this.cadastroCarteirinha.getCodigoBarrasTF())) {
-                    carteirinhaList.get(Integer.parseInt(id) - 1).setCodigoBarra(this.cadastroCarteirinha.getCodigoBarrasTF().getText());
-                }
-                
-                }
-                
-                
-                        
-                    }
-            
+                    if(this.cadastroCarteirinha.getIdTF().getText().equalsIgnoreCase("")){
+                    CarteirinhaService.create(carteirinha);
+                    }else{
+                    carteirinha.setId(Integer.parseInt(this.cadastroCarteirinha.getIdTF().getText()));
+                    CarteirinhaService.update(carteirinha);
+                        }
+
             Utilities.Utilities.limpaComponentes(false, this.cadastroCarteirinha.getPanelMid());
         } else if (e.getSource() == this.cadastroCarteirinha.getButtonSearch()) {
             BuscaCarteirinha buscaCarteirinha = new BuscaCarteirinha();
