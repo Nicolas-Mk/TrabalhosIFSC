@@ -34,7 +34,6 @@ public class ControllerCadastroCidade implements ActionListener {
         this.cadastroCidade.getButtonCancel().addActionListener(this);
         this.cadastroCidade.getButtonGravar().addActionListener(this);
         this.cadastroCidade.getButtonSearch().addActionListener(this);
-       
 
         Utilities.Utilities.ativa(true, this.cadastroCidade.getPanelBottom());
         Utilities.Utilities.limpaComponentes(false, this.cadastroCidade.getPanelMid());
@@ -42,34 +41,18 @@ public class ControllerCadastroCidade implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        
-        
+
         if (e.getSource() == this.cadastroCidade.getButtonNew()) {
             Utilities.Utilities.ativa(false, this.cadastroCidade.getPanelBottom());
             Utilities.Utilities.limpaComponentes(true, this.cadastroCidade.getPanelMid());
-            
-            
-            
-        } 
-        
-        
-        
-        else if (e.getSource() == this.cadastroCidade.getButtonExit()) {
+
+        } else if (e.getSource() == this.cadastroCidade.getButtonExit()) {
             this.cadastroCidade.dispose();
-            
-        } 
-        
-        
-        
-        else if (e.getSource() == this.cadastroCidade.getButtonCancel()) {
+
+        } else if (e.getSource() == this.cadastroCidade.getButtonCancel()) {
             Utilities.Utilities.ativa(true, this.cadastroCidade.getPanelBottom());
             Utilities.Utilities.limpaComponentes(false, this.cadastroCidade.getPanelMid());
-        } 
-        
-        
-        
-        else if (e.getSource() == this.cadastroCidade.getButtonGravar()) {
-           
+        } else if (e.getSource() == this.cadastroCidade.getButtonGravar()) {
 
             Cidade cidade = new Cidade();
             cidade.setDescricao(this.cadastroCidade.getDescricaoTF().getText());
@@ -77,20 +60,16 @@ public class ControllerCadastroCidade implements ActionListener {
 
             if (this.cadastroCidade.getIdTF().getText().equalsIgnoreCase("")) {
                 CidadeService.create(cidade);
-                
+
             } else {
                 cidade.setId(Integer.parseInt(this.cadastroCidade.getIdTF().getText()));
                 CidadeService.update(cidade);
             }
-            
+
             Utilities.Utilities.ativa(true, this.cadastroCidade.getPanelBottom());
             Utilities.Utilities.limpaComponentes(false, this.cadastroCidade.getPanelMid());
-            
-        } 
-        
-        
-        
-        else if (e.getSource() == this.cadastroCidade.getButtonSearch()) {
+
+        } else if (e.getSource() == this.cadastroCidade.getButtonSearch()) {
             BuscaCidade buscaCidade = new BuscaCidade();
             ControllerBuscaCidade controllerBuscaCidade = new ControllerBuscaCidade(buscaCidade);
             buscaCidade.setVisible(true);
@@ -109,7 +88,7 @@ public class ControllerCadastroCidade implements ActionListener {
                 this.cadastroCidade.getIdTF().setEnabled(false);
             }
         }
-        
+
     }
-    
+
 }

@@ -5,8 +5,11 @@
         <group>
             <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Controller/Cadastro/ControllerCadastroCidade.java</file>
             <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Controller/Busca/ControllerBuscaBairro.java</file>
+            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Model/DAO/DAOModel/ClienteDAO.java</file>
+            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Service/CidadeService.java</file>
             <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Controller/Busca/ControllerBuscaCidade.java</file>
             <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Controller/Cadastro/ControllerCadastroBairro.java</file>
+            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Model/DAO/DAOModel/BairroDAO.java</file>
             <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Model/DAO/DAOModel/CidadeDAO.java</file>
             <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/View/Cadastro/CadastroCidade.java</file>
             <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/View/Cadastro/CadastroBairro.java</file>

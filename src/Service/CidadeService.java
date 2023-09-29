@@ -32,7 +32,7 @@ public class CidadeService {
         return cidadeDAO.retrieve(parPK);
     }
     
-    public static Cidade retrieve(String parString){
+    public static List<Cidade> retrieve(String parString){
         CidadeDAO cidadeDAO = new CidadeDAO();
         return cidadeDAO.retrieve(parString);   
     }

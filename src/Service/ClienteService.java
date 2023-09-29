@@ -31,7 +31,7 @@ public class ClienteService {
         return ClienteDAO.retrieve(parPK);
     }
     
-    public static Cliente retrieve(String parString){
+    public static List<Cliente> retrieve(String parString){
         ClienteDAO ClienteDAO = new ClienteDAO();
         return ClienteDAO.retrieve(parString);   
     }

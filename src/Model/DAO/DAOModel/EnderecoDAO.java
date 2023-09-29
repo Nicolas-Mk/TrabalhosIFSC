@@ -97,7 +97,7 @@ public class EnderecoDAO implements InterfaceDAO<Endereco> {
     }
 
     @Override
-    public Endereco retrieve(String parString) {
+    public List<Endereco> retrieve(String parString) {
         return null;
     }
 

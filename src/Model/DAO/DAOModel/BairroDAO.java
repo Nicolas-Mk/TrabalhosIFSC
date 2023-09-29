@@ -81,11 +81,13 @@ public class BairroDAO implements InterfaceDAO<Bairro> {
         
         try {
             pstm = conexao.prepareStatement(sqlExecutar);
+            pstm.setInt(1, parPK);
             rst = pstm.executeQuery();
             
+            while(rst.next()){
             bairro.setId(rst.getInt("id"));
             bairro.setDescricao(rst.getString("descricao"));
-        
+            }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }finally{
@@ -96,8 +98,33 @@ public class BairroDAO implements InterfaceDAO<Bairro> {
     }
 
     @Override
-    public Bairro retrieve(String parString) {
-        return null;
+    public List<Bairro> retrieve(String parString) {
+        Connection conexao = ConnectionFactory.getConnection();
+        String sqlExecutar = "SELECT bairro.id, bairro.descricao from bairro WHERE descricao like ?";
+        
+        PreparedStatement pstm = null;
+        ResultSet rst = null;
+        List<Bairro> listaBairro = new ArrayList<>();
+        
+        try {
+            pstm = conexao.prepareStatement(sqlExecutar);
+            pstm.setString(1, "%" +parString + "%");
+            rst = pstm.executeQuery();
+            while(rst.next()){
+            Bairro bairro = new Bairro();
+            bairro.setId(rst.getInt("id"));
+            bairro.setDescricao(rst.getString("descricao"));
+            listaBairro.add(bairro);
+            }
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }finally{
+            
+            ConnectionFactory.closeConnection(conexao, pstm, rst);
+            return listaBairro;
+        
+        }
     }
 
     @Override

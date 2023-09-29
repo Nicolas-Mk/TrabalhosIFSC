@@ -31,7 +31,7 @@ public class EnderecoService {
         return EnderecoDAO.retrieve(parPK);
     }
     
-    public static Endereco retrieve(String parString){
+    public static List<Endereco> retrieve(String parString){
         EnderecoDAO EnderecoDAO = new EnderecoDAO();
         return EnderecoDAO.retrieve(parString);   
     }

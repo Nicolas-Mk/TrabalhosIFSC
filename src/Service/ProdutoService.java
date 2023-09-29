@@ -31,7 +31,7 @@ public class ProdutoService {
         return ProdutoDAO.retrieve(parPK);
     }
     
-    public static Produto retrieve(String parString){
+    public static List<Produto> retrieve(String parString){
         ProdutoDAO ProdutoDAO = new ProdutoDAO();
         return ProdutoDAO.retrieve(parString);   
     }

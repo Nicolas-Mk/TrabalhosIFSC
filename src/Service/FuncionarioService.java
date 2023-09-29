@@ -31,7 +31,7 @@ public class FuncionarioService {
         return FuncionarioDAO.retrieve(parPK);
     }
     
-    public static Funcionario retrieve(String parString){
+    public static List<Funcionario> retrieve(String parString){
         FuncionarioDAO FuncionarioDAO = new FuncionarioDAO();
         return FuncionarioDAO.retrieve(parString);   
     }

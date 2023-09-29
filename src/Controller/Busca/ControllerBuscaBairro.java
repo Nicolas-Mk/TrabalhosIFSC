@@ -10,6 +10,7 @@ import javax.swing.table.DefaultTableModel;
 import View.Cadastro.CadastroBairro;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -38,16 +39,28 @@ public class ControllerBuscaBairro implements ActionListener {
             buscaBairro.dispose();
         }
         if (e.getSource() == this.buscaBairro.getButtonFilter()) {
-            contador++;
-            if (contador == 1) {
+            
+            if (this.buscaBairro.getSearchTF().getText().trim().equalsIgnoreCase("")){
+                JOptionPane.showMessageDialog(null, "Atenção!\n Filtro vazio!");
+                this.buscaBairro.getSearchTF().requestFocus();
+            }else{
                 List<Bairro> bairroList = new ArrayList<Bairro>();
-                bairroList = BairroService.retrive();
-
+                
+                if (this.buscaBairro.getEscolhaCB().getSelectedIndex() == 0){
+                    bairroList.add(BairroService.retrieve(Integer.parseInt(this.buscaBairro.getSearchTF().getText())));
+                }else if (this.buscaBairro.getEscolhaCB().getSelectedIndex() == 1){
+                    bairroList = (BairroService.retrieve(this.buscaBairro.getSearchTF().getText().trim()));
+                }
+                
                 DefaultTableModel tabelaDados = (DefaultTableModel) buscaBairro.getTable().getModel();
+                tabelaDados.setRowCount(0);
                 for (Bairro bairroAtual : bairroList) {
                     tabelaDados.addRow(new Object[]{bairroAtual.getId(), bairroAtual.getDescricao()});
                 }
-            }
+
+                
+                
+            
 
         }
         if (e.getSource() == this.buscaBairro.getButtonLoad()) {
@@ -68,4 +81,5 @@ public class ControllerBuscaBairro implements ActionListener {
         }
 
     }
-}
+    }
+}   

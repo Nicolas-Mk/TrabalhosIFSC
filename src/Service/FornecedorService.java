@@ -31,7 +31,7 @@ public class FornecedorService {
         return FornecedorDAO.retrieve(parPK);
     }
     
-    public static Fornecedor retrieve(String parString){
+    public static List<Fornecedor> retrieve(String parString){
         FornecedorDAO FornecedorDAO = new FornecedorDAO();
         return FornecedorDAO.retrieve(parString);   
     }

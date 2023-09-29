@@ -97,7 +97,7 @@ public class ClienteDAO implements InterfaceDAO<Cliente> {
     }
 
     @Override
-    public Cliente retrieve(String parString) {
+    public List<Cliente> retrieve(String parString) {
         return null;
     }
 

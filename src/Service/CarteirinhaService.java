@@ -32,7 +32,7 @@ public class CarteirinhaService {
         return carteirinhaDAO.retrieve(parPK);
     }
     
-    public static Carteirinha retrieve(String parString){
+    public static List<Carteirinha> retrieve(String parString){
         CarteirinhaDAO carteirinhaDAO = new CarteirinhaDAO();
         return carteirinhaDAO.retrieve(parString);   
     }

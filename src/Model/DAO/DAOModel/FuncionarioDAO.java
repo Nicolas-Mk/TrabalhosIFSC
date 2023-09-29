@@ -97,7 +97,7 @@ public class FuncionarioDAO implements InterfaceDAO<Funcionario> {
     }
 
     @Override
-    public Funcionario retrieve(String parString) {
+    public List<Funcionario> retrieve(String parString) {
         return null;
     }
 

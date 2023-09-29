@@ -307,7 +307,7 @@ public class CadastroEndereco extends javax.swing.JFrame {
         });
         panelBottom.add(buttonExit);
 
-        getContentPane().add(panelBottom, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 800, 60));
+        getContentPane().add(panelBottom, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 800, 60));
 
         id.setText("ID");
 
@@ -400,7 +400,7 @@ public class CadastroEndereco extends javax.swing.JFrame {
                 .addContainerGap(61, Short.MAX_VALUE))
         );
 
-        getContentPane().add(panelMid, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 800, 230));
+        getContentPane().add(panelMid, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 800, 230));
 
         pack();
         setLocationRelativeTo(null);

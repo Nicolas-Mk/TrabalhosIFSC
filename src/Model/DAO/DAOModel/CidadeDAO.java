@@ -99,14 +99,14 @@ public class CidadeDAO implements InterfaceDAO<Cidade> {
     }
 
     @Override
-    public Cidade retrieve(String parString) {
+    public List<Cidade> retrieve(String parString) {
         return null;
     }
 
     @Override
     public void update(Cidade objeto) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "UPDATE cidade set cidade.descricao = ?, uf = ? where cidade.id = ?";
+        String sqlExecutar = "UPDATE cidade set cidade.descricao = ?, cidade.uf = ? where cidade.id = ?";
         PreparedStatement pstm = null;
         Cidade cidade = new Cidade();
         
