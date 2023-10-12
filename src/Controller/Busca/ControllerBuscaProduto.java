@@ -54,6 +54,7 @@ public class ControllerBuscaProduto implements ActionListener {
                     produtoList = (ProdutoService.retrieve(this.buscaProduto.getSearchTF().getText().trim()));
                 }else if (this.buscaProduto.getEscolhaCB().getSelectedIndex() == 3){
                     produtoList = (ProdutoService.retrieve(this.buscaProduto.getSearchTF().getText().trim()));
+                }
 
                 DefaultTableModel tabelaDados = (DefaultTableModel) buscaProduto.getTable().getModel();
                 tabelaDados.setRowCount(0);
@@ -83,8 +84,7 @@ public class ControllerBuscaProduto implements ActionListener {
             }
     }
 
-    }
-    
-}
+ }
+
     
 

@@ -106,9 +106,7 @@ public class ControllerCadastroCarteirinha implements ActionListener {
                this.cadastroCarteirinha.getMatriculaTF().setText(carteirinha.getCliente().getMatricula());
                this.cadastroCarteirinha.getCodigoBarrasTF().setText(carteirinha.getCodigoBarra());
                this.cadastroCarteirinha.getIdTF().setEnabled(false);
-               
-               
-           
+
                 }
         }
          else if (e.getSource() == this.cadastroCarteirinha.getButtonCliente()) {

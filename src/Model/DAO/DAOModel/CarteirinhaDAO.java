@@ -98,7 +98,31 @@ public class CarteirinhaDAO implements InterfaceDAO<Carteirinha> {
 
     @Override
     public List<Carteirinha> retrieve(String parString) {
-        return null;
+        Connection conexao = ConnectionFactory.getConnection();
+        String sqlExecutar = "SELECT Carteirinha.id, Carteirinha.descricao from Carteirinha WHERE descricao like ?";
+        
+        PreparedStatement pstm = null;
+        ResultSet rst = null;
+        List<Carteirinha> listaCarteirinha = new ArrayList<>();
+        
+        try {
+            pstm = conexao.prepareStatement(sqlExecutar);
+            pstm.setString(1, "%" +parString + "%");
+            rst = pstm.executeQuery();
+            while(rst.next()){
+            Carteirinha carteirinha = new Carteirinha();
+            carteirinha.setId(rst.getInt("id"));
+            listaCarteirinha.add(carteirinha);
+            }
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }finally{
+            
+            ConnectionFactory.closeConnection(conexao, pstm, rst);
+            return listaCarteirinha;
+        
+        }
     }
 
     @Override

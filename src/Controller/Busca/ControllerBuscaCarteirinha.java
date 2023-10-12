@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -40,9 +41,19 @@ public class ControllerBuscaCarteirinha implements ActionListener {
             buscaCarteirinha.dispose();
         }
          if (e.getSource() == this.buscaCarteirinha.getButtonFilter()) {
-            if (contador == 1) {
-                List<Carteirinha> carteirinhaList = new ArrayList<Carteirinha>();
-                carteirinhaList = CarteirinhaService.retrive();
+             if (this.buscaCarteirinha.getSearchTF().getText().trim().equalsIgnoreCase("")){
+                JOptionPane.showMessageDialog(null, "Atenção!\n Filtro vazio!");
+                this.buscaCarteirinha.getSearchTF().requestFocus();
+            }else{
+                List<Carteirinha> CarteirinhaList = new ArrayList<Carteirinha>();
+                
+                if (this.buscaCarteirinha.getEscolhaCB().getSelectedIndex() == 0){
+                    CarteirinhaList.add(CarteirinhaService.retrieve(Integer.parseInt(this.buscaCarteirinha.getSearchTF().getText())));
+                }else if (this.buscaCarteirinha.getEscolhaCB().getSelectedIndex() == 1){
+                    CarteirinhaList = (CarteirinhaService.retrieve(this.buscaCarteirinha.getSearchTF().getText().trim()));
+                }else if (this.buscaCarteirinha.getEscolhaCB().getSelectedIndex() == 2){
+                    CarteirinhaList = (CarteirinhaService.retrieve(this.buscaCarteirinha.getSearchTF().getText().trim()));
+                }
 
                 DefaultTableModel tabelaDados = (DefaultTableModel) buscaCarteirinha.getTable().getModel();
                 for (Carteirinha carteirinhaAtual : carteirinhaList) {
@@ -75,12 +86,17 @@ public class ControllerBuscaCarteirinha implements ActionListener {
             cadastroCarteirinha.getCodigoBarrasTF().setText((String)(this.buscaCarteirinha.getTable().getValueAt(this.buscaCarteirinha.getTable().getSelectedRow(), 7)));
             this.buscaCarteirinha.dispose();
             }
+             }
+         }
+    }
+}
          
-    }
-
-}
-    }
+          
+            
     
-}
+
+
+    
+
     
 

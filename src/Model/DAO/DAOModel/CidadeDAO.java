@@ -77,30 +77,57 @@ public class CidadeDAO implements InterfaceDAO<Cidade> {
     @Override
     public Cidade retrieve(int parPK) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "SELECT Cidade.id, Cidade.descricao FROM Cidade where id = x";
+        String sqlExecutar = "SELECT Cidade.id, Cidade.uf, Cidade.descricao FROM Cidade where Cidade.id = ?";
         PreparedStatement pstm = null;
         ResultSet rst = null;
-        Cidade Cidade = new Cidade();
+        Cidade cidade = new Cidade();
         
         try {
             pstm = conexao.prepareStatement(sqlExecutar);
+            pstm.setInt(1, parPK);
             rst = pstm.executeQuery();
             
-            Cidade.setId(rst.getInt("id"));
-            Cidade.setDescricao(rst.getString("descricao"));
-        
+            while(rst.next()){
+            cidade.setId(rst.getInt("id"));
+            cidade.setUf(rst.getString("uf"));
+            cidade.setDescricao(rst.getString("descricao"));
+            }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }finally{
             
             ConnectionFactory.closeConnection(conexao, pstm, rst);
-            return Cidade;
+            return cidade;
         }
     }
 
     @Override
     public List<Cidade> retrieve(String parString) {
-        return null;
+        Connection conexao = ConnectionFactory.getConnection();
+        String sqlExecutar = "SELECT Cidade.id, Cidade.uf, Cidade.descricao from Cidade WHERE descricao like ?";
+        
+        PreparedStatement pstm = null;
+        ResultSet rst = null;
+        List<Cidade> listaCidade = new ArrayList<>();
+        
+        try {
+            pstm = conexao.prepareStatement(sqlExecutar);
+            pstm.setString(1, "%" +parString + "%");
+            rst = pstm.executeQuery();
+            while(rst.next()){
+            Cidade cidade = new Cidade();
+            cidade.setId(rst.getInt("id"));
+            cidade.setUf(rst.getString("uf"));
+            cidade.setDescricao(rst.getString("descricao"));
+            listaCidade.add(cidade);
+            }
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }finally{
+            ConnectionFactory.closeConnection(conexao, pstm, rst);
+            return listaCidade;
+        }
     }
 
     @Override

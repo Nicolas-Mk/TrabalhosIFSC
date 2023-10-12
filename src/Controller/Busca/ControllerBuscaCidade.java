@@ -1,15 +1,19 @@
 package Controller.Busca;
 
 
+import Controller.Cadastro.ControllerCadastroEndereco;
 import static Model.DAO.Persiste.cidadeList;
 import Model.Cidade;
 import Service.CidadeService;
+import View.Busca.BuscaBairro;
 import View.Busca.BuscaCidade;
 import View.Cadastro.CadastroCidade;
+import View.Cadastro.CadastroEndereco;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -40,24 +44,57 @@ public class ControllerBuscaCidade implements ActionListener {
         }
         if (e.getSource() == this.buscaCidade.getButtonFilter()) {
             
-            contador++;
-            if (contador == 1) {
-                List<Cidade> cidadeList = new ArrayList<Cidade>();
-                cidadeList = CidadeService.retrive();
-
-                DefaultTableModel tabelaDados = (DefaultTableModel) buscaCidade.getTable().getModel();
-                for (Cidade CidadeAtual : cidadeList) {
-                    tabelaDados.addRow(new Object[]{CidadeAtual.getId(), CidadeAtual.getDescricao(), CidadeAtual.getUf()});
+           if (this.buscaCidade.getSearchTF().getText().trim().equalsIgnoreCase("")){
+                JOptionPane.showMessageDialog(null, "Atenção!\n Filtro vazio!");
+                this.buscaCidade.getSearchTF().requestFocus();
+            }else{
+                List<Cidade> CidadeList = new ArrayList<Cidade>();
+                
+                if (this.buscaCidade.getEscolhaCB().getSelectedIndex() == 0){
+                    CidadeList.add(CidadeService.retrieve(Integer.parseInt(this.buscaCidade.getSearchTF().getText())));
+                }else if (this.buscaCidade.getEscolhaCB().getSelectedIndex() == 1){
+                    CidadeList = (CidadeService.retrieve(this.buscaCidade.getSearchTF().getText().trim()));
+                }else if (this.buscaCidade.getEscolhaCB().getSelectedIndex() == 2){
+                    CidadeList = (CidadeService.retrieve(this.buscaCidade.getSearchTF().getText().trim()));
                 }
-            }
+                
+                DefaultTableModel tabelaDados = (DefaultTableModel) buscaCidade.getTable().getModel();
+                tabelaDados.setRowCount(0);
+                for (Cidade CidadeAtual : CidadeList) {
+                    tabelaDados.addRow(new Object[]{CidadeAtual.getId(), CidadeAtual.getUf(), CidadeAtual.getDescricao()});
+                }
+           }
             
     }
 
         if (e.getSource() == this.buscaCidade.getButtonLoad()) {
             
+            CadastroEndereco cadastroEndereco = new CadastroEndereco();
+            ControllerCadastroEndereco controllerCadastroEndereco = new ControllerCadastroEndereco(cadastroEndereco);
+            
             CadastroCidade cadastroCidade = new CadastroCidade();
             Controller.Cadastro.ControllerCadastroCidade controllerCadastroCidade = new Controller.Cadastro.ControllerCadastroCidade(cadastroCidade);
+
+            if(ControllerCadastroEndereco.puxaCidadeEndereco == true){
+            Utilities.Utilities.ativa(false, cadastroEndereco.getPanelBottom());
             
+            
+            //DESABILITAR E HABILITAR BOTÕES MANUALMENTE
+            cadastroEndereco.getIdTF().setEnabled(false);
+            cadastroEndereco.getBairroTF().setEnabled(false);
+            cadastroEndereco.getCidadeTF().setEnabled(false);
+            cadastroEndereco.getCepTF().setEnabled(true);
+            cadastroEndereco.getStatusCB().setEnabled(true);
+            cadastroEndereco.getButtonBairro().setEnabled(true);
+            cadastroEndereco.getButtonCidade().setEnabled(true);
+            cadastroEndereco.getLogradouroTF().setEnabled(true);
+            //SETA O VALOR DA CIDADE PARA O ITEM SELECIONADO
+            cadastroEndereco.getCidadeTF().setText((String) this.buscaCidade.getTable().getValueAt(this.buscaCidade.getTable().getSelectedRow(),2));
+            this.buscaCidade.dispose();
+            
+            cadastroEndereco.setVisible(true);
+                ControllerCadastroEndereco.reset = false;
+            }else{
             Utilities.Utilities.ativa(false, cadastroCidade.getPanelBottom());
             Utilities.Utilities.limpaComponentes(true, cadastroCidade.getPanelMid());
             cadastroCidade.getIdTF().setEnabled(false);
@@ -72,6 +109,9 @@ public class ControllerBuscaCidade implements ActionListener {
             cadastroCidade.getUfTF().setText(this.buscaCidade.getTable().getValueAt(this.buscaCidade.getTable().getSelectedRow(), 2).toString());
             this.buscaCidade.dispose();
             }
-}
+        }
+        }
     
-}
+    }
+
+

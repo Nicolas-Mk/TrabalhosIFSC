@@ -1,6 +1,7 @@
 package Controller.Busca;
 
 import Controller.Cadastro.ControllerCadastroBairro;
+import Controller.Cadastro.ControllerCadastroEndereco;
 import Service.BairroService;
 import Model.Bairro;
 import View.Busca.BuscaBairro;
@@ -8,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.table.DefaultTableModel;
 import View.Cadastro.CadastroBairro;
+import View.Cadastro.CadastroEndereco;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -38,7 +40,7 @@ public class ControllerBuscaBairro implements ActionListener {
         if (e.getSource() == this.buscaBairro.getButtonCancel()) {
             buscaBairro.dispose();
         }
-        if (e.getSource() == this.buscaBairro.getButtonFilter()) {
+        else if (e.getSource() == this.buscaBairro.getButtonFilter()) {
             
             if (this.buscaBairro.getSearchTF().getText().trim().equalsIgnoreCase("")){
                 JOptionPane.showMessageDialog(null, "Atenção!\n Filtro vazio!");
@@ -57,16 +59,41 @@ public class ControllerBuscaBairro implements ActionListener {
                 for (Bairro bairroAtual : bairroList) {
                     tabelaDados.addRow(new Object[]{bairroAtual.getId(), bairroAtual.getDescricao()});
                 }
+            }
 
                 
                 
             
 
-        }
-        if (e.getSource() == this.buscaBairro.getButtonLoad()) {
+        }else if (e.getSource() == this.buscaBairro.getButtonLoad()) {
 
+            CadastroEndereco cadastroEndereco = new CadastroEndereco();
+            ControllerCadastroEndereco controllerCadastroEndereco = new ControllerCadastroEndereco(cadastroEndereco);
+            
             CadastroBairro cadastroBairro = new CadastroBairro();
             ControllerCadastroBairro controllerCadastroBairro = new ControllerCadastroBairro(cadastroBairro);
+            
+            if(ControllerCadastroEndereco.puxaBairroEndereco == true){
+            Utilities.Utilities.ativa(false, cadastroEndereco.getPanelBottom());
+           
+            
+            //DESABILITAR BOTÕES NOVAMENTE
+            cadastroEndereco.getIdTF().setEnabled(false);
+            cadastroEndereco.getBairroTF().setEnabled(false);
+            cadastroEndereco.getCidadeTF().setEnabled(false);
+            cadastroEndereco.getCepTF().setEnabled(true);
+            cadastroEndereco.getStatusCB().setEnabled(true);
+            cadastroEndereco.getButtonBairro().setEnabled(true);
+            cadastroEndereco.getButtonCidade().setEnabled(true);
+            cadastroEndereco.getLogradouroTF().setEnabled(true);
+            //SETA O VALOR DA Bairro PARA O ITEM SELECIONADO
+            cadastroEndereco.getBairroTF().setText((String) this.buscaBairro.getTable().getValueAt(this.buscaBairro.getTable().getSelectedRow(),1));
+            this.buscaBairro.dispose();
+            ControllerCadastroEndereco.reset = false;
+            
+            cadastroEndereco.setVisible(true);
+            }else{
+            
 
             Utilities.Utilities.ativa(false, cadastroBairro.getPanelBottom());
             Utilities.Utilities.limpaComponentes(true, cadastroBairro.getPanelMid());
@@ -78,8 +105,9 @@ public class ControllerBuscaBairro implements ActionListener {
             cadastroBairro.getIdTF().setText(this.buscaBairro.getTable().getValueAt(this.buscaBairro.getTable().getSelectedRow(), 0).toString());
             cadastroBairro.getDescricaoTF().setText(this.buscaBairro.getTable().getValueAt(this.buscaBairro.getTable().getSelectedRow(), 1).toString());
             this.buscaBairro.dispose();
+            }
         }
 
     }
     }
-}   
+

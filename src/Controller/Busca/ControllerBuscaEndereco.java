@@ -140,8 +140,8 @@ public class ControllerBuscaEndereco implements ActionListener {
                 cadastroEndereco.getIdTF().setText(this.buscaEndereco.getTable().getValueAt(this.buscaEndereco.getTable().getSelectedRow(), 0).toString());
                 cadastroEndereco.getCepTF().setText(this.buscaEndereco.getTable().getValueAt(this.buscaEndereco.getTable().getSelectedRow(), 1).toString());
                 cadastroEndereco.getLogradouroTF().setText(this.buscaEndereco.getTable().getValueAt(this.buscaEndereco.getTable().getSelectedRow(), 2).toString());
-                cadastroEndereco.getCidadeCB().setSelectedItem(this.buscaEndereco.getTable().getValueAt(this.buscaEndereco.getTable().getSelectedRow(), 3));
-                cadastroEndereco.getBairroCB().setSelectedItem(this.buscaEndereco.getTable().getValueAt(this.buscaEndereco.getTable().getSelectedRow(), 4));
+                cadastroEndereco.getCidadeTF().setText((String) this.buscaEndereco.getTable().getValueAt(this.buscaEndereco.getTable().getSelectedRow(), 3));
+                cadastroEndereco.getBairroTF().setText((String) this.buscaEndereco.getTable().getValueAt(this.buscaEndereco.getTable().getSelectedRow(), 4));
                 cadastroEndereco.getStatusCB().setSelectedItem(this.buscaEndereco.getTable().getValueAt(this.buscaEndereco.getTable().getSelectedRow(), 5));
                 this.buscaEndereco.dispose();
             }

@@ -6,6 +6,7 @@
 package View.Busca;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -28,6 +29,16 @@ public class BuscaEndereco extends javax.swing.JFrame {
     public JTable getTable() {
         return Table;
     }
+
+    public JComboBox<String> getEscolhaCB() {
+        return escolhaCB;
+    }
+
+    public void setEscolhaCB(JComboBox<String> escolhaCB) {
+        this.escolhaCB = escolhaCB;
+    }
+    
+    
 
 
     public JButton getButtonCancel() {
@@ -132,6 +143,7 @@ public class BuscaEndereco extends javax.swing.JFrame {
         buttonFilter = new javax.swing.JButton();
         findIcon = new javax.swing.JLabel();
         searchTF = new javax.swing.JTextField();
+        escolhaCB = new javax.swing.JComboBox<>();
         panelMid = new javax.swing.JScrollPane();
         Table = new javax.swing.JTable();
 
@@ -179,7 +191,10 @@ public class BuscaEndereco extends javax.swing.JFrame {
 
         findIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens_rob/Find.png"))); // NOI18N
         panelSearch.add(findIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 10, 30, 30));
-        panelSearch.add(searchTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 880, 30));
+        panelSearch.add(searchTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 700, 30));
+
+        escolhaCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Id", "Descricao" }));
+        panelSearch.add(escolhaCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, 30));
 
         Table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -277,6 +292,7 @@ public class BuscaEndereco extends javax.swing.JFrame {
     private javax.swing.JButton buttonCancel;
     private javax.swing.JButton buttonFilter;
     private javax.swing.JButton buttonLoad;
+    private javax.swing.JComboBox<String> escolhaCB;
     private javax.swing.JLabel findIcon;
     private javax.swing.JPanel panelBottom;
     private javax.swing.JScrollPane panelMid;

@@ -222,7 +222,7 @@
                                       <Component id="bairroTF" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="buttonCliente" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="buttonCliente" alignment="1" min="-2" pref="20" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>

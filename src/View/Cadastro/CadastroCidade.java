@@ -172,7 +172,8 @@ public class CadastroCidade extends javax.swing.JFrame {
         descricao = new javax.swing.JLabel();
         descricaoTF = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -303,6 +304,7 @@ public class CadastroCidade extends javax.swing.JFrame {
         getContentPane().add(panelMid, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 800, 190));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNewActionPerformed

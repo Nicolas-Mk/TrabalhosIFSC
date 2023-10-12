@@ -285,30 +285,28 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="cep" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="complementoEndereco" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="complementoEnderecoTF" alignment="0" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="bairroTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cidadeTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cepTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="buttonCliente" alignment="1" pref="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
+                      <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                          <Component id="cep" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                               <Component id="cidade" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="bairro" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="complementoEndereco" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="complementoEnderecoTF" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="buttonCliente" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="bairroTF" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cidadeTF" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cepTF" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="55" max="32767" attributes="0"/>
+                  <EmptySpace pref="60" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

@@ -5,11 +5,15 @@
  */
 package Controller.Cadastro;
 
+import Controller.Busca.ControllerBuscaBairro;
+import Controller.Busca.ControllerBuscaCidade;
 import Controller.Busca.ControllerBuscaEndereco;
 import static Model.DAO.Persiste.enderecoList;
 import Model.Bairro;
 import Model.Cidade;
 import Model.Endereco;
+import View.Busca.BuscaBairro;
+import View.Busca.BuscaCidade;
 import View.Busca.BuscaEndereco;
 import View.Cadastro.CadastroEndereco;
 import java.awt.event.ActionEvent;
@@ -24,6 +28,9 @@ public class ControllerCadastroEndereco implements ActionListener {
     // Criando um objeto global do tipo da tela que será controlada.
     CadastroEndereco cadastroEndereco;
     public static int codigo;
+    public static boolean puxaBairroEndereco;
+    public static boolean puxaCidadeEndereco;
+    public static boolean reset = true;
 
     //Passando a tela que será controlada como parametro de invocação.
     public ControllerCadastroEndereco(CadastroEndereco cadastroEndereco) {
@@ -35,10 +42,14 @@ public class ControllerCadastroEndereco implements ActionListener {
         this.cadastroEndereco.getButtonCancel().addActionListener(this);
         this.cadastroEndereco.getButtonGravar().addActionListener(this);
         this.cadastroEndereco.getButtonSearch().addActionListener(this);
+        this.cadastroEndereco.getButtonBairro().addActionListener(this);
+        this.cadastroEndereco.getButtonCidade().addActionListener(this);
+        
+        if (reset == true){
 
         Utilities.Utilities.ativa(true, this.cadastroEndereco.getPanelBottom());
         Utilities.Utilities.limpaComponentes(false, this.cadastroEndereco.getPanelMid());
-
+        }
     } 
     
     @Override
@@ -48,8 +59,12 @@ public class ControllerCadastroEndereco implements ActionListener {
             Utilities.Utilities.ativa(false, this.cadastroEndereco.getPanelBottom());
             Utilities.Utilities.limpaComponentes(true, this.cadastroEndereco.getPanelMid());
             this.cadastroEndereco.getIdTF().setEnabled(false);
+            this.cadastroEndereco.getCidadeTF().setEnabled(false);
+            this.cadastroEndereco.getBairroTF().setEnabled(false);
         } else if (e.getSource() == this.cadastroEndereco.getButtonExit()) {
             this.cadastroEndereco.dispose();
+            puxaBairroEndereco = false;
+            puxaCidadeEndereco = false;
         } else if (e.getSource() == this.cadastroEndereco.getButtonCancel()) {
             Utilities.Utilities.ativa(true, this.cadastroEndereco.getPanelBottom());
             Utilities.Utilities.limpaComponentes(false, this.cadastroEndereco.getPanelMid());
@@ -66,8 +81,8 @@ public class ControllerCadastroEndereco implements ActionListener {
             endereco.setId((enderecoList.size()+1));
             endereco.setCep(this.cadastroEndereco.getCepTF().getText());
             endereco.setLogradouro(this.cadastroEndereco.getLogradouroTF().getText());
-            endereco.getCidade().setDescricao(this.cadastroEndereco.getCidadeCB().getSelectedItem().toString());
-            endereco.getBairro().setDescricao(this.cadastroEndereco.getBairroCB().getSelectedItem().toString());         
+          //  endereco.getCidade().setDescricao(this.cadastroEndereco
+          //  endereco.getBairro().setDescricao(this.cadastroEndereco       
             endereco.setStatus(this.cadastroEndereco.getStatusCB().getSelectedItem().toString());
              
             if(this.cadastroEndereco.getIdTF().getText().equalsIgnoreCase("")){
@@ -80,11 +95,11 @@ public class ControllerCadastroEndereco implements ActionListener {
                 if (!enderecoList.get(Integer.parseInt(id) - 1).getLogradouro().equals(this.cadastroEndereco.getLogradouroTF())) {
                     enderecoList.get(Integer.parseInt(id) - 1).setLogradouro(this.cadastroEndereco.getCepTF().getText());
                 }
-                if (!enderecoList.get(Integer.parseInt(id) - 1).getCidade().getDescricao().equals(this.cadastroEndereco.getCidadeCB().getSelectedItem().toString())) {
-                    enderecoList.get(Integer.parseInt(id) - 1).getCidade().setDescricao(this.cadastroEndereco.getCidadeCB().getSelectedItem().toString());
+                if (!enderecoList.get(Integer.parseInt(id) - 1).getCidade().getDescricao().equals(this.cadastroEndereco.getCidadeTF())) {
+                    enderecoList.get(Integer.parseInt(id) - 1).getCidade().setDescricao(this.cadastroEndereco.getCidadeTF().getText());
                 }
-                if (!enderecoList.get(Integer.parseInt(id) - 1).getBairro().getDescricao().equals(this.cadastroEndereco.getBairroCB().getSelectedItem().toString())) {
-                    enderecoList.get(Integer.parseInt(id) - 1).getBairro().setDescricao(this.cadastroEndereco.getBairroCB().getSelectedItem().toString());
+                if (!enderecoList.get(Integer.parseInt(id) - 1).getBairro().getDescricao().equals(this.cadastroEndereco.getBairroTF())) {
+                    enderecoList.get(Integer.parseInt(id) - 1).getBairro().setDescricao(this.cadastroEndereco.getBairroTF().getText());
                 }
                 if (!enderecoList.get(Integer.parseInt(id) - 1).getStatus().equals(this.cadastroEndereco.getStatusCB().getSelectedItem().toString())) {
                     enderecoList.get(Integer.parseInt(id) - 1).setStatus(this.cadastroEndereco.getStatusCB().getSelectedItem().toString());
@@ -111,13 +126,27 @@ public class ControllerCadastroEndereco implements ActionListener {
                this.cadastroEndereco.getIdTF().setText(endereco.getId() +"");
                this.cadastroEndereco.getCepTF().setText(endereco.getCep());
                this.cadastroEndereco.getLogradouroTF().setText(endereco.getLogradouro());
-               this.cadastroEndereco.getCidadeCB().setSelectedItem(endereco.getCidade());
-               this.cadastroEndereco.getBairroCB().setSelectedItem(endereco.getBairro());
+               this.cadastroEndereco.getCidadeTF().setText(endereco.getCidade().getDescricao());
+               this.cadastroEndereco.getBairroTF().setText(endereco.getBairro().getDescricao());
                this.cadastroEndereco.getStatusCB().setSelectedItem(endereco.getStatus());        
                
                this.cadastroEndereco.getIdTF().setEnabled(false);
              }
+        }else if (e.getSource() == this.cadastroEndereco.getButtonCidade()) {
+            BuscaCidade buscaCidade = new BuscaCidade();
+            ControllerBuscaCidade controllerBuscaCidade = new ControllerBuscaCidade(buscaCidade);
+            this.cadastroEndereco.dispose();
+            buscaCidade.setVisible(true);
+            puxaCidadeEndereco = true;
+            
+        }else if (e.getSource() == this.cadastroEndereco.getButtonBairro()){
+            BuscaBairro buscaBairro = new BuscaBairro();
+            ControllerBuscaBairro controllerBuscaBairro = new ControllerBuscaBairro(buscaBairro);
+            this.cadastroEndereco.dispose();
+            buscaBairro.setVisible(true);
+            puxaBairroEndereco = true;
         }
+
     }
 
 }

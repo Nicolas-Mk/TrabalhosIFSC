@@ -39,6 +39,8 @@ public class BuscaProduto extends javax.swing.JFrame {
     }
     
     
+    
+    
 
     public JButton getButtonCancel() {
         return buttonCancel;

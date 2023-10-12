@@ -82,31 +82,31 @@ public class ProdutoDAO implements InterfaceDAO<Produto> {
         String sqlExecutar = "SELECT Produto.id, Produto.descricao, Produto.codigoBarra, Produto.Status FROM Produto where id = ?";
         PreparedStatement pstm = null;
         ResultSet rst = null;
-        Produto Produto = new Produto();
+        Produto produto = new Produto();
         
         try {
             pstm = conexao.prepareStatement(sqlExecutar);
             pstm.setInt(1, parPK);
             rst = pstm.executeQuery();
             while(rst.next()){
-            Produto.setId(rst.getInt("id"));
-            Produto.setDescricao(rst.getString("descricao"));
-            Produto.setCodigoBarra(rst.getString("codigoBarra"));
-            Produto.setStatus(rst.getString("status"));   
+            produto.setId(rst.getInt("id"));
+            produto.setDescricao(rst.getString("descricao"));
+            produto.setCodigoBarra(rst.getString("codigoBarra"));
+            produto.setStatus(rst.getString("status"));   
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }finally{
             
             ConnectionFactory.closeConnection(conexao, pstm, rst);
-            return Produto;
+            return produto;
         }
     }
 
     @Override
     public List<Produto> retrieve(String parString) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "SELECT Produto.id, Produto.descricao, Produto.codigoBarra, Produto.status from Produto WHERE descricao like ?";
+        String sqlExecutar = "SELECT produto.id, produto.descricao, produto.codigoBarra, produto.status from produto WHERE descricao like ?";
         
         PreparedStatement pstm = null;
         ResultSet rst = null;
@@ -137,7 +137,7 @@ public class ProdutoDAO implements InterfaceDAO<Produto> {
     @Override
     public void update(Produto objeto) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "UPDATE Produto set Produto.descricao = ?, produto.codigobarra = ?, produto.status = ? where Produto.id = ?";
+        String sqlExecutar = "UPDATE produto set produto.descricao = ?, produto.codigobarra = ?, produto.status = ? where Produto.id = ?";
         PreparedStatement pstm = null;
         Produto produto = new Produto();
         
