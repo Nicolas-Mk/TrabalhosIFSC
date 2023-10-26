@@ -12,6 +12,7 @@ import static Model.DAO.Persiste.enderecoList;
 import Model.Bairro;
 import Model.Cidade;
 import Model.Endereco;
+import Service.EnderecoService;
 import View.Busca.BuscaBairro;
 import View.Busca.BuscaCidade;
 import View.Busca.BuscaEndereco;
@@ -31,6 +32,8 @@ public class ControllerCadastroEndereco implements ActionListener {
     public static boolean puxaBairroEndereco;
     public static boolean puxaCidadeEndereco;
     public static boolean reset = true;
+    public static String guardaBairro;
+    public static String guardaCidade;
 
     //Passando a tela que será controlada como parametro de invocação.
     public ControllerCadastroEndereco(CadastroEndereco cadastroEndereco) {
@@ -45,10 +48,14 @@ public class ControllerCadastroEndereco implements ActionListener {
         this.cadastroEndereco.getButtonBairro().addActionListener(this);
         this.cadastroEndereco.getButtonCidade().addActionListener(this);
         
+        this.cadastroEndereco.getCidadeTF().setText(guardaCidade);
+        this.cadastroEndereco.getBairroTF().setText(guardaBairro);
+        
         if (reset == true){
 
         Utilities.Utilities.ativa(true, this.cadastroEndereco.getPanelBottom());
         Utilities.Utilities.limpaComponentes(false, this.cadastroEndereco.getPanelMid());
+        
         }
     } 
     
@@ -69,47 +76,29 @@ public class ControllerCadastroEndereco implements ActionListener {
             Utilities.Utilities.ativa(true, this.cadastroEndereco.getPanelBottom());
             Utilities.Utilities.limpaComponentes(false, this.cadastroEndereco.getPanelMid());
         } else if (e.getSource() == this.cadastroEndereco.getButtonGravar()) {
-            Utilities.Utilities.ativa(true, this.cadastroEndereco.getPanelBottom());
             
-            String id = this.cadastroEndereco.getIdTF().getText();
             Endereco endereco = new Endereco();
-            Cidade cidade = new Cidade();
             Bairro bairro = new Bairro();
+            Cidade cidade = new Cidade();
             endereco.setCidade(cidade);
             endereco.setBairro(bairro);
-
-            endereco.setId((enderecoList.size()+1));
+            
             endereco.setCep(this.cadastroEndereco.getCepTF().getText());
             endereco.setLogradouro(this.cadastroEndereco.getLogradouroTF().getText());
-          //  endereco.getCidade().setDescricao(this.cadastroEndereco
-          //  endereco.getBairro().setDescricao(this.cadastroEndereco       
+            endereco.getCidade().setDescricao(this.cadastroEndereco.getCidadeTF().getText());
+            endereco.getBairro().setDescricao(this.cadastroEndereco.getBairroTF().getText());
             endereco.setStatus(this.cadastroEndereco.getStatusCB().getSelectedItem().toString());
-             
-            if(this.cadastroEndereco.getIdTF().getText().equalsIgnoreCase("")){
-                      Model.DAO.Persiste.enderecoList.add(endereco);
-                    }else if (enderecoList.size() > 0) {
-                        
-                if (!enderecoList.get(Integer.parseInt(id) - 1).getCep().equals(this.cadastroEndereco.getCepTF())) {
-                    enderecoList.get(Integer.parseInt(id) - 1).setCep(this.cadastroEndereco.getCepTF().getText());
-                }
-                if (!enderecoList.get(Integer.parseInt(id) - 1).getLogradouro().equals(this.cadastroEndereco.getLogradouroTF())) {
-                    enderecoList.get(Integer.parseInt(id) - 1).setLogradouro(this.cadastroEndereco.getCepTF().getText());
-                }
-                if (!enderecoList.get(Integer.parseInt(id) - 1).getCidade().getDescricao().equals(this.cadastroEndereco.getCidadeTF())) {
-                    enderecoList.get(Integer.parseInt(id) - 1).getCidade().setDescricao(this.cadastroEndereco.getCidadeTF().getText());
-                }
-                if (!enderecoList.get(Integer.parseInt(id) - 1).getBairro().getDescricao().equals(this.cadastroEndereco.getBairroTF())) {
-                    enderecoList.get(Integer.parseInt(id) - 1).getBairro().setDescricao(this.cadastroEndereco.getBairroTF().getText());
-                }
-                if (!enderecoList.get(Integer.parseInt(id) - 1).getStatus().equals(this.cadastroEndereco.getStatusCB().getSelectedItem().toString())) {
-                    enderecoList.get(Integer.parseInt(id) - 1).setStatus(this.cadastroEndereco.getStatusCB().getSelectedItem().toString());
-                }
-                        
-                    }
-        
-           
             
+                    if(this.cadastroEndereco.getIdTF().getText().equalsIgnoreCase("")){
+                    EnderecoService.create(endereco);
+                    }else{
+                    endereco.setId(Integer.parseInt(this.cadastroEndereco.getIdTF().getText()));
+                    EnderecoService.update(endereco);
+                    }
+
+            Utilities.Utilities.ativa(true, this.cadastroEndereco.getPanelBottom());
             Utilities.Utilities.limpaComponentes(false, this.cadastroEndereco.getPanelMid());
+            
         } else if (e.getSource() == this.cadastroEndereco.getButtonSearch()) {
             BuscaEndereco buscaEndereco = new BuscaEndereco();
             ControllerBuscaEndereco controllerBuscaEndereco = new ControllerBuscaEndereco(buscaEndereco);

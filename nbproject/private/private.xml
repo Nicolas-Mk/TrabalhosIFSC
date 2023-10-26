@@ -3,40 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Controller/Busca/ControllerBuscaBairro.java</file>
-            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Controller/Busca/ControllerBuscaEndereco.java</file>
-            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Service/ClienteService.java</file>
-            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Model/DAO/DAOModel/CarteirinhaDAO.java</file>
-            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Controller/Cadastro/ControllerCadastroProduto.java</file>
-            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Model/DAO/DAOModel/ProdutoDAO.java</file>
-            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Controller/Cadastro/ControllerCadastroCidade.java</file>
-            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Controller/Busca/ControllerBuscaCliente.java</file>
-            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Service/FuncionarioService.java</file>
-            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Controller/Busca/ControllerBuscaCarteirinha.java</file>
-            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/View/Busca/BuscaBairro.java</file>
-            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/View/Busca/BuscaProduto.java</file>
-            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/View/Cadastro/CadastroBairro.java</file>
-            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Service/CarteirinhaService.java</file>
-            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Model/DAO/DAOModel/ClienteDAO.java</file>
-            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Service/BairroService.java</file>
             <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Model/DAO/DAOModel/EnderecoDAO.java</file>
-            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Controller/Busca/ControllerBuscaProduto.java</file>
-            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Controller/Busca/ControllerBuscaCidade.java</file>
-            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Model/DAO/DAOModel/CidadeDAO.java</file>
-            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Service/FornecedorService.java</file>
-            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Model/DAO/DAOModel/FuncionarioDAO.java</file>
-            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Service/EnderecoService.java</file>
-            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Utilities/Utilities.java</file>
-            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/View/Cadastro/CadastroEndereco.java</file>
-            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Model/DAO/DAOModel/FornecedorDAO.java</file>
-            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Service/CidadeService.java</file>
-            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Service/ProdutoService.java</file>
-            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Controller/Cadastro/ControllerCadastroBairro.java</file>
-            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Model/DAO/DAOModel/BairroDAO.java</file>
-            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Controller/Cadastro/ControllerCadastroEndereco.java</file>
-            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Model/DAO/InterfaceDAO.java</file>
-            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/View/Cadastro/CadastroCidade.java</file>
-            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Controller/Busca/ControllerBuscaFuncionario.java</file>
+            <file>file:/C:/Users/aluno/Downloads/ProjetoCantina/ProjetoCantina/src/Controller/Busca/ControllerBuscaEndereco.java</file>
         </group>
     </open-files>
 </project-private>

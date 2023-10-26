@@ -88,6 +88,7 @@ public class ControllerBuscaBairro implements ActionListener {
             cadastroEndereco.getLogradouroTF().setEnabled(true);
             //SETA O VALOR DA Bairro PARA O ITEM SELECIONADO
             cadastroEndereco.getBairroTF().setText((String) this.buscaBairro.getTable().getValueAt(this.buscaBairro.getTable().getSelectedRow(),1));
+            ControllerCadastroEndereco.guardaBairro = (String) this.buscaBairro.getTable().getValueAt(this.buscaBairro.getTable().getSelectedRow(),1);
             this.buscaBairro.dispose();
             ControllerCadastroEndereco.reset = false;
             

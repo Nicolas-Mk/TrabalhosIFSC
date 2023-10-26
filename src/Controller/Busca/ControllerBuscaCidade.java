@@ -90,6 +90,7 @@ public class ControllerBuscaCidade implements ActionListener {
             cadastroEndereco.getLogradouroTF().setEnabled(true);
             //SETA O VALOR DA CIDADE PARA O ITEM SELECIONADO
             cadastroEndereco.getCidadeTF().setText((String) this.buscaCidade.getTable().getValueAt(this.buscaCidade.getTable().getSelectedRow(),2));
+            ControllerCadastroEndereco.guardaCidade = (String) this.buscaCidade.getTable().getValueAt(this.buscaCidade.getTable().getSelectedRow(),2);
             this.buscaCidade.dispose();
             
             cadastroEndereco.setVisible(true);

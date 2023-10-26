@@ -8,6 +8,7 @@ import Controller.Cadastro.ControllerCadastroFuncionario;
 import Controller.Cadastro.ControllerCadastroFornecedor;
 import static Model.DAO.Persiste.enderecoList;
 import Model.Endereco;
+import Service.EnderecoService;
 import View.Busca.BuscaEndereco;
 import View.Cadastro.CadastroCliente;
 import View.Cadastro.CadastroEndereco;
@@ -15,6 +16,9 @@ import View.Cadastro.CadastroFornecedor;
 import View.Cadastro.CadastroFuncionario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -44,15 +48,38 @@ public class ControllerBuscaEndereco implements ActionListener {
             buscaEndereco.dispose();
         }
         if (e.getSource() == this.buscaEndereco.getButtonFilter()) {
-            //Criando/Carregando uma instância da classe "singleton" de dados.
-            Model.DAO.Persiste.getInstance();
-            contador++;
-            if (contador == 1) {
-                //Criando uma objeto do tipo TableModel
+            if (this.buscaEndereco.getSearchTF().getText().trim().equalsIgnoreCase("")){
+                JOptionPane.showMessageDialog(null, "Atenção!\n Filtro vazio!");
+                this.buscaEndereco.getSearchTF().requestFocus();
+            }else{
+                List<Endereco> enderecoList = new ArrayList<>();
+                
+                if (this.buscaEndereco.getEscolhaCB().getSelectedIndex() == 0){
+                    enderecoList.add(EnderecoService.retrieve(Integer.parseInt(this.buscaEndereco.getSearchTF().getText())));
+                }
+                
+                
+                else if (this.buscaEndereco.getEscolhaCB().getSelectedIndex() == 1){
+                    enderecoList = EnderecoService.retrieve(this.buscaEndereco.getSearchTF().getText().trim());
+                    
+                    
+                }
+                
+               
+                
+                
+                
+                
+                
                 DefaultTableModel tabela = (DefaultTableModel) this.buscaEndereco.getTable().getModel();
+                tabela.setRowCount(0);
                 for (Endereco enderecoAtual : enderecoList) {
-                    tabela.addRow(new Object[]{enderecoAtual.getId(), enderecoAtual.getCep(), enderecoAtual.getLogradouro(), enderecoAtual.getCidade().getDescricao(),
-                        enderecoAtual.getBairro().getDescricao(), enderecoAtual.getStatus()});
+                    tabela.addRow(new Object[]{enderecoAtual.getId(),
+                        enderecoAtual.getCep(),
+                        enderecoAtual.getLogradouro(),
+                        enderecoAtual.getCidade().getDescricao(),
+                        enderecoAtual.getBairro().getDescricao(),
+                        enderecoAtual.getStatus()});
                 }
             }
         }
@@ -137,6 +164,16 @@ public class ControllerBuscaEndereco implements ActionListener {
                 cadastroEndereco.setVisible(true);
                 Controller.Cadastro.ControllerCadastroEndereco.codigo = (int) this.buscaEndereco.getTable().getValueAt(this.buscaEndereco.getTable().getSelectedRow(), 0);
 
+                //DESABILITAR E HABILITAR BOTÕES MANUALMENTE
+                cadastroEndereco.getIdTF().setEnabled(false);
+                cadastroEndereco.getBairroTF().setEnabled(false);
+                cadastroEndereco.getCidadeTF().setEnabled(false);
+                cadastroEndereco.getCepTF().setEnabled(true);
+                cadastroEndereco.getStatusCB().setEnabled(true);
+                cadastroEndereco.getButtonBairro().setEnabled(true);
+                cadastroEndereco.getButtonCidade().setEnabled(true);
+                cadastroEndereco.getLogradouroTF().setEnabled(true);
+                
                 cadastroEndereco.getIdTF().setText(this.buscaEndereco.getTable().getValueAt(this.buscaEndereco.getTable().getSelectedRow(), 0).toString());
                 cadastroEndereco.getCepTF().setText(this.buscaEndereco.getTable().getValueAt(this.buscaEndereco.getTable().getSelectedRow(), 1).toString());
                 cadastroEndereco.getLogradouroTF().setText(this.buscaEndereco.getTable().getValueAt(this.buscaEndereco.getTable().getSelectedRow(), 2).toString());
