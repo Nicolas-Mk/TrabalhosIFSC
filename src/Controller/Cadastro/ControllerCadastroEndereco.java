@@ -29,9 +29,13 @@ public class ControllerCadastroEndereco implements ActionListener {
     // Criando um objeto global do tipo da tela que será controlada.
     CadastroEndereco cadastroEndereco;
     public static int codigo;
+    
+    //Variáveis boolean para confiar se ações nas telas adjacentes foram feitas
     public static boolean puxaBairroEndereco;
     public static boolean puxaCidadeEndereco;
     public static boolean reset = true;
+    
+    //Gambiarras pra deixar os dados de cidade/bairro guardados
     public static String guardaBairro;
     public static String guardaCidade;
 

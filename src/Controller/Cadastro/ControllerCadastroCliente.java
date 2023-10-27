@@ -11,6 +11,7 @@ import Controller.Busca.ControllerBuscaEndereco;
 import static Model.DAO.Persiste.clienteList;
 import Model.Cliente;
 import Model.Endereco;
+import Service.ClienteService;
 import View.Busca.BuscaCliente;
 import View.Busca.BuscaEndereco;
 import View.Cadastro.*;
@@ -80,40 +81,14 @@ public class ControllerCadastroCliente implements ActionListener {
             cliente.setComplementoEndereco(this.cadastroCliente.getComplementoEnderecoTF().getText());
             cliente.setDataNascimento(this.cadastroCliente.getDataNascimentoTF().getText());
             cliente.getEndereco().setCep(this.cadastroCliente.getCepTF().getText());
+            cliente.setStatus(this.cadastroCliente.getStatusCB().getSelectedItem().toString());
             
-             if(this.cadastroCliente.getIdTF().getText().equalsIgnoreCase("")){
-                      Model.DAO.Persiste.clienteList.add(cliente);
-                    }else if (clienteList.size() > 0) {
-                        
-                if (!clienteList.get(Integer.parseInt(id) - 1).getNome().equals(this.cadastroCliente.getNomeTF())) {
-                    clienteList.get(Integer.parseInt(id) - 1).setNome(this.cadastroCliente.getNomeTF().getText());
-                }
-                if (!clienteList.get(Integer.parseInt(id) - 1).getCpf().equals(this.cadastroCliente.getCpfTF())) {
-                    clienteList.get(Integer.parseInt(id) - 1).setCpf(this.cadastroCliente.getCpfTF().getText());
-                }
-                if (!clienteList.get(Integer.parseInt(id) - 1).getFone().equals(this.cadastroCliente.getFone1TF())) {
-                    clienteList.get(Integer.parseInt(id) - 1).setFone(this.cadastroCliente.getFone1TF().getText());
-                }
-                if (!clienteList.get(Integer.parseInt(id) - 1).getFone2().equals(this.cadastroCliente.getFone2TF())) {
-                    clienteList.get(Integer.parseInt(id) - 1).setFone2(this.cadastroCliente.getFone2TF().getText());
-                }
-                if (!clienteList.get(Integer.parseInt(id) - 1).getEmail().equals(this.cadastroCliente.getEmailTF())) {
-                    clienteList.get(Integer.parseInt(id) - 1).setEmail(this.cadastroCliente.getEmailTF().getText());
-                }
-                if (!clienteList.get(Integer.parseInt(id) - 1).getMatricula().equals(this.cadastroCliente.getMatriculaTF())) {
-                    clienteList.get(Integer.parseInt(id) - 1).setMatricula(this.cadastroCliente.getMatriculaTF().getText());
-                }
-                if (!clienteList.get(Integer.parseInt(id) - 1).getComplementoEndereco().equals(this.cadastroCliente.getComplementoEnderecoTF())) {
-                    clienteList.get(Integer.parseInt(id) - 1).setComplementoEndereco(this.cadastroCliente.getComplementoEnderecoTF().getText());
-                }
-                if (!clienteList.get(Integer.parseInt(id) - 1).getDataNascimento().equals(this.cadastroCliente.getDataNascimentoTF())) {
-                    clienteList.get(Integer.parseInt(id) - 1).setDataNascimento(this.cadastroCliente.getDataNascimentoTF().getText());
-                }
-                if (!clienteList.get(Integer.parseInt(id) - 1).getEndereco().getCep().equals(this.cadastroCliente.getCepTF())) {
-                    clienteList.get(Integer.parseInt(id) - 1).getEndereco().setCep(this.cadastroCliente.getCepTF().getText());
-                }
-   
-                    }
+            if(this.cadastroCliente.getIdTF().getText().equalsIgnoreCase("")){
+                    ClienteService.create(cliente);
+                    }else{
+                    cliente.setId(Integer.parseInt(this.cadastroCliente.getIdTF().getText()));
+                    ClienteService.update(cliente);
+                        }
 
             Utilities.Utilities.limpaComponentes(false, this.cadastroCliente.getPanelMid());
         } else if (e.getSource() == this.cadastroCliente.getButtonSearch()) {
@@ -139,6 +114,7 @@ public class ControllerCadastroCliente implements ActionListener {
                this.cadastroCliente.getComplementoEnderecoTF().setText(Cliente.getComplementoEndereco());
                this.cadastroCliente.getDataNascimentoTF().setText(Cliente.getDataNascimento());
                this.cadastroCliente.getCepTF().setText(Cliente.getEndereco().getCep());
+               this.cadastroCliente.getStatusCB().setSelectedItem(Cliente.getStatus());
                this.cadastroCliente.getIdTF().setEnabled(false);
              }
         }else if (e.getSource() == this.cadastroCliente.getButtonCliente()) {

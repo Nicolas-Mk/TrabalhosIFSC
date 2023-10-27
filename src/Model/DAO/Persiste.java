@@ -47,11 +47,11 @@ public class Persiste {
             
             Carteirinha carteirinha = new Carteirinha(1, "asd", "asdd", "asdasd");
            Cidade cidade = new Cidade(1, "Tubarão", "asd");
-           Cliente cliente = new Cliente("asd", "asd", "asd", "asd", 1, "asd", "asd", "asd", "asd", 'a', "asd");
+           Cliente cliente = new Cliente("asd", "asd", "asd", "asd", 1, "asd", "asd", "asd", "asd", "a", "asd");
             Bairro bairro = new Bairro(1, "Centro");
            Endereco endereco = new Endereco(1, "asd", "asd", "1", bairro, cidade);
-          Fornecedor fornecedor = new Fornecedor("asd", "asd", "asd", 1, "asd", "asd", "asd", "asd", 'a', "asd", endereco);
-           Funcionario funcionario = new Funcionario("asd","asd", "asd", "asd", 1, "asd", "asd", "asd", "asd", 'a', "asd", endereco);
+          Fornecedor fornecedor = new Fornecedor("asd", "asd", "asd", 1, "asd", "asd", "asd", "asd", "a", "asd", endereco);
+           Funcionario funcionario = new Funcionario("asd","asd", "asd", "asd", 1, "asd", "asd", "asd", "asd", "a", "asd", endereco);
             Produto produto = new Produto(1, "asd", "asd", "aa");
             Bairro bairro2 = new Bairro(2, "Oficinas");
             Bairro bairro3 = new Bairro(3, "Dehon");

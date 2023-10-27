@@ -46,7 +46,8 @@ public class ControllerBuscaFuncionario implements ActionListener {
             DefaultTableModel tabela = (DefaultTableModel) this.buscaFuncionario.getTable().getModel();
             for (Funcionario funcionarioAtual : funcionarioList) {
                 tabela.addRow(new Object[]{funcionarioAtual.getId(), funcionarioAtual.getNome(), funcionarioAtual.getFone(), funcionarioAtual.getFone2(),
-                   funcionarioAtual.getUsuario(), funcionarioAtual.getCpf(), funcionarioAtual.getEmail(), funcionarioAtual.getComplementoEndereco(), funcionarioAtual.getEndereco().getCep()
+                   funcionarioAtual.getUsuario(), funcionarioAtual.getCpf(),
+                   funcionarioAtual.getEmail(), funcionarioAtual.getComplementoEndereco(), funcionarioAtual.getEndereco().getCep(), funcionarioAtual.getStatus()
                 });
                 }
             }
@@ -59,6 +60,9 @@ public class ControllerBuscaFuncionario implements ActionListener {
             Utilities.Utilities.ativa(false, cadastroFuncionario.getPanelBottom());
             Utilities.Utilities.limpaComponentes(true, cadastroFuncionario.getPanelMid());
             cadastroFuncionario.getIdTF().setEnabled(false);
+            cadastroFuncionario.getCepTF().setEnabled(false);
+            cadastroFuncionario.getBairroTF().setEnabled(false);
+            cadastroFuncionario.getCidadeTF().setEnabled(false);
             
             cadastroFuncionario.setVisible(true);
             Controller.Cadastro.ControllerCadastroFuncionario.codigo = (int) this.buscaFuncionario.getTable().getValueAt
@@ -74,7 +78,7 @@ public class ControllerBuscaFuncionario implements ActionListener {
             cadastroFuncionario.getEmailTF().setText((String)(this.buscaFuncionario.getTable().getValueAt(this.buscaFuncionario.getTable().getSelectedRow(), 6)));
             cadastroFuncionario.getComplementoEnderecoTF().setText((String)(this.buscaFuncionario.getTable().getValueAt(this.buscaFuncionario.getTable().getSelectedRow(), 7)));
             cadastroFuncionario.getCepTF().setText((String)(this.buscaFuncionario.getTable().getValueAt(this.buscaFuncionario.getTable().getSelectedRow(), 8)));
-            
+            cadastroFuncionario.getStatusCB().setSelectedItem(this.buscaFuncionario.getTable().getValueAt(this.buscaFuncionario.getTable().getSelectedRow(), 9));
             
             this.buscaFuncionario.dispose();
             }

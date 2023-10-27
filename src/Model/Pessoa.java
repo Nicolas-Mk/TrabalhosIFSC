@@ -16,7 +16,7 @@ public abstract class Pessoa {
     private String fone;
     private String fone2;
     private String email;
-    private char status;
+    private String status;
     private String complementoEndereco;
 
     private Endereco endereco;
@@ -24,7 +24,7 @@ public abstract class Pessoa {
     public Pessoa() {
     }
 
-    public Pessoa(int id, String nome, String fone, String fone2, String email, char status, String complementoEndereco, Endereco endereco) {
+    public Pessoa(int id, String nome, String fone, String fone2, String email, String status, String complementoEndereco, Endereco endereco) {
         this.id = id;
         this.nome = nome;
         this.fone = fone;
@@ -35,7 +35,7 @@ public abstract class Pessoa {
         this.endereco = endereco;
     }
 
-    public Pessoa(int id, String nome, String fone, String fone2, String email, char status, String complementoEndereco) {
+    public Pessoa(int id, String nome, String fone, String fone2, String email, String status, String complementoEndereco) {
         this.id = id;
         this.nome = nome;
         this.fone = fone;
@@ -44,73 +44,73 @@ public abstract class Pessoa {
         this.status = status;
         this.complementoEndereco = complementoEndereco;
     }
-    
-    
 
     public int getId() {
         return id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public String getFone() {
-        return fone;
-    }
-
-    public String getFone2() {
-        return fone2;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public char getStatus() {
-        return status;
-    }
-
-    public String getComplementoEndereco() {
-        return complementoEndereco;
-    }
-
-    public Endereco getEndereco() {
-        return endereco;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getFone() {
+        return fone;
     }
 
     public void setFone(String fone) {
         this.fone = fone;
     }
 
+    public String getFone2() {
+        return fone2;
+    }
+
     public void setFone2(String fone2) {
         this.fone2 = fone2;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public void setStatus(char status) {
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getComplementoEndereco() {
+        return complementoEndereco;
     }
 
     public void setComplementoEndereco(String complementoEndereco) {
         this.complementoEndereco = complementoEndereco;
     }
 
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-
+    
+    
+    
     @Override
     public String toString() {
         return this.getId() +", "+

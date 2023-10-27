@@ -23,7 +23,7 @@ public class Cliente extends Pessoa {
         this.dataNascimento = dataNascimento;
     }
 
-    public Cliente(String cpf, String rg, String matricula, String dataNascimento, int id, String nome, String fone, String fone2, String email, char status, String complementoEndereco) {
+    public Cliente(String cpf, String rg, String matricula, String dataNascimento, int id, String nome, String fone, String fone2, String email, String status, String complementoEndereco) {
         super(id, nome, fone, fone2, email, status, complementoEndereco);
         this.cpf = cpf;
         this.rg = rg;
@@ -35,6 +35,8 @@ public class Cliente extends Pessoa {
 
     public Cliente() {
     }
+    
+    
 
     public String getCpf() {
         return cpf;

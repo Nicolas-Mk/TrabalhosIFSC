@@ -201,13 +201,13 @@ public class BuscaFuncionario extends javax.swing.JFrame {
 
             },
             new String [] {
-                "id", "nome", "fone1", "fone2", "usuario", "cpf", "email", "complemento endereco", "cep"
+                "id", "nome", "fone1", "fone2", "usuario", "cpf", "email", "complemento endereco", "cep", "status"
             }
         ));
         panelMid.setViewportView(Table);
         if (Table.getColumnModel().getColumnCount() > 0) {
-            Table.getColumnModel().getColumn(0).setMinWidth(50);
-            Table.getColumnModel().getColumn(0).setMaxWidth(50);
+            Table.getColumnModel().getColumn(0).setMinWidth(30);
+            Table.getColumnModel().getColumn(0).setMaxWidth(30);
             Table.getColumnModel().getColumn(1).setMinWidth(250);
             Table.getColumnModel().getColumn(1).setMaxWidth(250);
             Table.getColumnModel().getColumn(2).setMinWidth(125);
@@ -222,8 +222,8 @@ public class BuscaFuncionario extends javax.swing.JFrame {
             Table.getColumnModel().getColumn(6).setMaxWidth(200);
             Table.getColumnModel().getColumn(7).setMinWidth(150);
             Table.getColumnModel().getColumn(7).setMaxWidth(250);
-            Table.getColumnModel().getColumn(8).setMinWidth(150);
-            Table.getColumnModel().getColumn(8).setMaxWidth(150);
+            Table.getColumnModel().getColumn(9).setMinWidth(80);
+            Table.getColumnModel().getColumn(9).setMaxWidth(80);
         }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

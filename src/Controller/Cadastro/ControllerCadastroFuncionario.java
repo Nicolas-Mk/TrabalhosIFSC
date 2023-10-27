@@ -38,6 +38,7 @@ public class ControllerCadastroFuncionario implements ActionListener {
         this.cadastroFuncionario.getButtonGravar().addActionListener(this);
         this.cadastroFuncionario.getButtonSearch().addActionListener(this);
         this.cadastroFuncionario.getButtonCliente().addActionListener(this);
+        
 
         Utilities.Utilities.ativa(true, this.cadastroFuncionario.getPanelBottom());
         Utilities.Utilities.limpaComponentes(false, this.cadastroFuncionario.getPanelMid());
@@ -76,6 +77,7 @@ public class ControllerCadastroFuncionario implements ActionListener {
             funcionario.setEmail(this.cadastroFuncionario.getEmailTF().getText());
             funcionario.setComplementoEndereco(this.cadastroFuncionario.getComplementoEnderecoTF().getText());
             funcionario.getEndereco().setCep(this.cadastroFuncionario.getCepTF().getText());
+            funcionario.setStatus(this.cadastroFuncionario.getStatusCB().getSelectedItem().toString());
             
             if(this.cadastroFuncionario.getIdTF().getText().equalsIgnoreCase("")){
                       Model.DAO.Persiste.funcionarioList.add(funcionario);
@@ -130,6 +132,7 @@ public class ControllerCadastroFuncionario implements ActionListener {
                this.cadastroFuncionario.getEmailTF().setText(funcionario.getEmail());
                this.cadastroFuncionario.getComplementoEnderecoTF().setText(funcionario.getComplementoEndereco());
                this.cadastroFuncionario.getCepTF().setText(funcionario.getEndereco().getCep());
+               this.cadastroFuncionario.getStatusCB().setSelectedItem(funcionario.getStatus());
                this.cadastroFuncionario.getIdTF().setEnabled(false);
              }
         }else if (e.getSource() == this.cadastroFuncionario.getButtonCliente()) {

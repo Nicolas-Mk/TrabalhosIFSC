@@ -6,7 +6,6 @@ import static Controller.Cadastro.ControllerCadastroFuncionario.puxaEnderecoFunc
 import static Controller.Cadastro.ControllerCadastroFornecedor.puxaEndecoFornecedor;
 import Controller.Cadastro.ControllerCadastroFuncionario;
 import Controller.Cadastro.ControllerCadastroFornecedor;
-import static Model.DAO.Persiste.enderecoList;
 import Model.Endereco;
 import Service.EnderecoService;
 import View.Busca.BuscaEndereco;
@@ -65,12 +64,7 @@ public class ControllerBuscaEndereco implements ActionListener {
                     
                 }
                 
-               
-                
-                
-                
-                
-                
+
                 DefaultTableModel tabela = (DefaultTableModel) this.buscaEndereco.getTable().getModel();
                 tabela.setRowCount(0);
                 for (Endereco enderecoAtual : enderecoList) {
@@ -84,7 +78,6 @@ public class ControllerBuscaEndereco implements ActionListener {
             }
         }
         if (e.getSource() == this.buscaEndereco.getButtonLoad()) {
-
             //CRIA AS TELAS E CONTROLLERS QUE PODEM SER USADAS
             CadastroCliente cadastroCliente = new CadastroCliente();
             ControllerCadastroCliente controllerCadastroCliente = new ControllerCadastroCliente(cadastroCliente);
@@ -98,8 +91,8 @@ public class ControllerBuscaEndereco implements ActionListener {
             CadastroEndereco cadastroEndereco = new CadastroEndereco();
             Controller.Cadastro.ControllerCadastroEndereco controllerCadastroEndereco = new Controller.Cadastro.ControllerCadastroEndereco(cadastroEndereco);
             //ESCOLHE COM BASE NOS VALORES BOOLEAN EM QUAL TELA IRÁ RECEBER OS DADOS
+            
             if (puxaEndecoFornecedor == true) {
-
                 Utilities.Utilities.ativa(false, cadastroFornecedor.getPanelBottom());
                 Utilities.Utilities.limpaComponentes(true, cadastroFornecedor.getPanelMid());
 
@@ -108,6 +101,8 @@ public class ControllerBuscaEndereco implements ActionListener {
                 cadastroFornecedor.getCepTF().setEnabled(false);
                 cadastroFornecedor.getBairroTF().setEnabled(false);
                 cadastroFornecedor.getCidadeTF().setEnabled(false);
+                
+                JOptionPane.showConfirmDialog(cadastroCliente, "passou");
 
                 //PUXA DADOS PARA VOLTAR PARA A TELA FORNECEDOR
                 cadastroFornecedor.getCidadeTF().setText(this.buscaEndereco.getTable().getValueAt(this.buscaEndereco.getTable().getSelectedRow(), 3).toString());
@@ -118,6 +113,7 @@ public class ControllerBuscaEndereco implements ActionListener {
                 cadastroFornecedor.setVisible(true);
 
                 puxaEndecoFornecedor = false;
+                JOptionPane.showConfirmDialog(cadastroCliente, "passou2");
             } else if (puxaEnderecoFuncionario == true) {
                 Utilities.Utilities.ativa(false, cadastroFuncionario.getPanelBottom());
                 Utilities.Utilities.limpaComponentes(true, cadastroFuncionario.getPanelMid());
@@ -127,6 +123,8 @@ public class ControllerBuscaEndereco implements ActionListener {
                 cadastroFuncionario.getCepTF().setEnabled(false);
                 cadastroFuncionario.getBairroTF().setEnabled(false);
                 cadastroFuncionario.getCidadeTF().setEnabled(false);
+                
+                JOptionPane.showConfirmDialog(cadastroCliente, "passou");
 
                 //PUXA DADOS PARA VOLTAR PARA A TELA FUNCIONARIO
                 cadastroFuncionario.getCidadeTF().setText(this.buscaEndereco.getTable().getValueAt(this.buscaEndereco.getTable().getSelectedRow(), 3).toString());
@@ -137,6 +135,7 @@ public class ControllerBuscaEndereco implements ActionListener {
                 cadastroFuncionario.setVisible(true);
 
                 puxaEnderecoFuncionario = false;
+                JOptionPane.showConfirmDialog(cadastroCliente, "passou2");
             } else if (puxaEnderecoCliente == true) {
                 Utilities.Utilities.ativa(false, cadastroCliente.getPanelBottom());
                 Utilities.Utilities.limpaComponentes(true, cadastroCliente.getPanelMid());
@@ -146,6 +145,7 @@ public class ControllerBuscaEndereco implements ActionListener {
                 cadastroCliente.getCepTF().setEnabled(false);
                 cadastroCliente.getBairroTF().setEnabled(false);
                 cadastroCliente.getCidadeTF().setEnabled(false);
+                
 
                 //PUXA DADOS PARA VOLTAR PARA A TELA CLIENTE
                 cadastroCliente.getCidadeTF().setText(this.buscaEndereco.getTable().getValueAt(this.buscaEndereco.getTable().getSelectedRow(), 3).toString());
@@ -155,7 +155,7 @@ public class ControllerBuscaEndereco implements ActionListener {
                 this.buscaEndereco.dispose();
                 cadastroCliente.setVisible(true);
 
-                puxaEnderecoCliente = false;
+                puxaEnderecoCliente =  false;
             } else {
                 Utilities.Utilities.ativa(false, cadastroEndereco.getPanelBottom());
                 Utilities.Utilities.limpaComponentes(true, cadastroEndereco.getPanelMid());

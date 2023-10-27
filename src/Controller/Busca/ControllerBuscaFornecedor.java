@@ -28,6 +28,8 @@ public class ControllerBuscaFornecedor implements ActionListener {
         this.buscaFornecedor.getButtonCancel().addActionListener(this);
         this.buscaFornecedor.getButtonLoad().addActionListener(this);
         this.buscaFornecedor.getButtonFilter().addActionListener(this);
+        
+            
     }
 
     @Override
@@ -46,7 +48,8 @@ public class ControllerBuscaFornecedor implements ActionListener {
             for (Fornecedor fornecedorAtual : fornecedorList) {
                 tabela.addRow(new Object[]{fornecedorAtual.getId(), fornecedorAtual.getNome(), fornecedorAtual.getFone(), fornecedorAtual.getFone2(),
                    fornecedorAtual.getCnpj(), fornecedorAtual.getInscricaoEstadual(), fornecedorAtual.getRazaoSocial(),
-                   fornecedorAtual.getEmail(), fornecedorAtual.getComplementoEndereco(), fornecedorAtual.getEndereco().getCep()});
+                   fornecedorAtual.getEmail(), fornecedorAtual.getComplementoEndereco(),
+                   fornecedorAtual.getEndereco().getCep(), fornecedorAtual.getStatus()});
                 }
             }
         }
@@ -58,6 +61,10 @@ public class ControllerBuscaFornecedor implements ActionListener {
             Utilities.Utilities.ativa(false, cadastroFornecedor.getPanelBottom());
             Utilities.Utilities.limpaComponentes(true, cadastroFornecedor.getPanelMid());
             cadastroFornecedor.getIdTF().setEnabled(false);
+            cadastroFornecedor.getIdTF().setEnabled(false);
+            cadastroFornecedor.getCepTF().setEnabled(false);
+            cadastroFornecedor.getBairroTF().setEnabled(false);
+            cadastroFornecedor.getCidadeTF().setEnabled(false);
             
             cadastroFornecedor.setVisible(true);
             Controller.Cadastro.ControllerCadastroFornecedor.codigo = (int) this.buscaFornecedor.getTable().getValueAt
@@ -74,7 +81,7 @@ public class ControllerBuscaFornecedor implements ActionListener {
             cadastroFornecedor.getEmailTF().setText((String)(this.buscaFornecedor.getTable().getValueAt(this.buscaFornecedor.getTable().getSelectedRow(), 7)));
             cadastroFornecedor.getComplementoEnderecoTF().setText((String)(this.buscaFornecedor.getTable().getValueAt(this.buscaFornecedor.getTable().getSelectedRow(), 8)));
             cadastroFornecedor.getCepTF().setText((String)(this.buscaFornecedor.getTable().getValueAt(this.buscaFornecedor.getTable().getSelectedRow(), 9)));
-            
+            cadastroFornecedor.getStatusCB().setSelectedItem(this.buscaFornecedor.getTable().getValueAt(this.buscaFornecedor.getTable().getSelectedRow(), 9));
             
             this.buscaFornecedor.dispose();
             }

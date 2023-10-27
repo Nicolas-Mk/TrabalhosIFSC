@@ -6,11 +6,14 @@ import static Controller.Cadastro.ControllerCadastroCarteirinha.telaResultado;
 import Controller.Cadastro.ControllerCadastroCliente;
 import static Model.DAO.Persiste.clienteList;
 import Model.Cliente;
+import Service.ClienteService;
 import View.Busca.BuscaCliente;
 import View.Cadastro.CadastroCarteirinha;
 import View.Cadastro.CadastroCliente;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -41,15 +44,25 @@ public class ControllerBuscaCliente implements ActionListener {
             buscaCliente.dispose();
         }
         if (e.getSource() == this.buscaCliente.getButtonFilter()) {
-            //Criando/Carregando uma instância da classe "singleton" de dados.
-            Model.DAO.Persiste.getInstance();
-            contador++;
-            if(contador == 1){
-            //Criando uma objeto do tipo TableModel
+           if (this.buscaCliente.getSearchTF().getText().trim().equalsIgnoreCase("")){
+                JOptionPane.showMessageDialog(null, "Atenção!\n Filtro vazio!");
+                this.buscaCliente.getSearchTF().requestFocus();
+            }else{
+                List<Cliente> CarteirinhaList = new ArrayList<Cliente>();
+                
+                if (this.buscaCliente.getEscolhaCB().getSelectedIndex() == 0){
+                    CarteirinhaList.add(ClienteService.retrieve(Integer.parseInt(this.buscaCliente.getSearchTF().getText())));
+                }else if (this.buscaCliente.getEscolhaCB().getSelectedIndex() == 1){
+                    CarteirinhaList = (ClienteService.retrieve(this.buscaCliente.getSearchTF().getText().trim()));
+                }else if (this.buscaCliente.getEscolhaCB().getSelectedIndex() == 2){
+                    CarteirinhaList = (ClienteService.retrieve(this.buscaCliente.getSearchTF().getText().trim()));
+                }
             DefaultTableModel tabela = (DefaultTableModel) this.buscaCliente.getTable().getModel();
             for (Cliente clienteAtual : clienteList) {
-                tabela.addRow(new Object[]{clienteAtual.getId(), clienteAtual.getNome(), clienteAtual.getCpf(), clienteAtual.getFone(), clienteAtual.getFone2(), clienteAtual.getCpf(),
-                    clienteAtual.getEmail(), clienteAtual.getComplementoEndereco(), clienteAtual.getDataNascimento(), clienteAtual.getEndereco().getCep()});
+                tabela.addRow(new Object[]{clienteAtual.getId(), clienteAtual.getNome(), clienteAtual.getCpf(),
+                    clienteAtual.getFone(), clienteAtual.getFone2(), clienteAtual.getCpf(),
+                    clienteAtual.getEmail(), clienteAtual.getComplementoEndereco(),
+                    clienteAtual.getDataNascimento(), clienteAtual.getEndereco().getCep(), clienteAtual.getStatus()});
                 }
             }
         }
@@ -106,6 +119,7 @@ public class ControllerBuscaCliente implements ActionListener {
             cadastroCliente.getComplementoEnderecoTF().setText((String)(this.buscaCliente.getTable().getValueAt(this.buscaCliente.getTable().getSelectedRow(), 7)));
             cadastroCliente.getDataNascimentoTF().setText((String)(this.buscaCliente.getTable().getValueAt(this.buscaCliente.getTable().getSelectedRow(), 8)));
             cadastroCliente.getCepTF().setText((String)this.buscaCliente.getTable().getValueAt(this.buscaCliente.getTable().getSelectedRow(), 9));
+            cadastroCliente.getStatusCB().setSelectedItem(this.buscaCliente.getTable().getValueAt(this.buscaCliente.getTable().getSelectedRow(), 10));
             this.buscaCliente.dispose();
                 }   
             }

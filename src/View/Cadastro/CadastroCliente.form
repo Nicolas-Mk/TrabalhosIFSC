@@ -126,19 +126,21 @@
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="email" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="datanascimento" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="complementoEndereco" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="complementoEnderecoTF" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="buttonCliente" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                   <Component id="emailTF" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="datanascimento" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="dataNascimentoTF" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="complementoEndereco" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="complementoEnderecoTF" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="buttonCliente" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="dataNascimentoTF" alignment="0" pref="200" max="32767" attributes="0"/>
                               </Group>
+                              <Component id="status" min="-2" max="-2" attributes="0"/>
+                              <Component id="statusCB" min="-2" pref="200" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                       </Group>
@@ -152,6 +154,10 @@
                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
+                          <Component id="status" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="statusCB" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="datanascimento" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="dataNascimentoTF" min="-2" max="-2" attributes="0"/>
@@ -385,6 +391,24 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonClienteActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="statusCB">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="2">
+                <StringItem index="0" value="Ativo"/>
+                <StringItem index="1" value="Inativo"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="status">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Status"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

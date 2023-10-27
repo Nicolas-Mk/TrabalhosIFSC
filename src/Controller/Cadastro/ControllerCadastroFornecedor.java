@@ -44,6 +44,8 @@ public class ControllerCadastroFornecedor implements ActionListener {
 
         Utilities.Utilities.ativa(true, this.cadastroFornecedor.getPanelBottom());
         Utilities.Utilities.limpaComponentes(false, this.cadastroFornecedor.getPanelMid());
+        
+
 
     }
 
@@ -79,6 +81,7 @@ public class ControllerCadastroFornecedor implements ActionListener {
             fornecedor.setEmail(this.cadastroFornecedor.getEmailTF().getText());
             fornecedor.setComplementoEndereco(this.cadastroFornecedor.getComplementoEnderecoTF().getText());
             fornecedor.getEndereco().setCep(this.cadastroFornecedor.getCepTF().getText());
+            fornecedor.setStatus(this.cadastroFornecedor.getStatusCB().getSelectedItem().toString());
             
             if(this.cadastroFornecedor.getIdTF().getText().equalsIgnoreCase("")){
                       Model.DAO.Persiste.fornecedorList.add(fornecedor);
@@ -138,6 +141,7 @@ public class ControllerCadastroFornecedor implements ActionListener {
                this.cadastroFornecedor.getEmailTF().setText(fornecedor.getEmail());
                this.cadastroFornecedor.getComplementoEnderecoTF().setText(fornecedor.getComplementoEndereco());
                this.cadastroFornecedor.getCepTF().setText(fornecedor.getEndereco().getCep());
+               this.cadastroFornecedor.getStatusCB().setSelectedItem(fornecedor.getStatus());
                this.cadastroFornecedor.getIdTF().setEnabled(false);
              }
         

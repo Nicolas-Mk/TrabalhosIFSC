@@ -199,7 +199,7 @@ public class BuscaCliente extends javax.swing.JFrame {
 
             },
             new String [] {
-                "id", "nome", "cpf", "fone1", "fone2", "matricula", "email", "complemento endereco", "data nascimento", "cep"
+                "id", "nome", "cpf", "fone1", "fone2", "matricula", "email", "complemento endereco", "data nascimento", "cep", "status"
             }
         ));
         panelMid.setViewportView(Table);
@@ -225,6 +225,8 @@ public class BuscaCliente extends javax.swing.JFrame {
             Table.getColumnModel().getColumn(8).setMaxWidth(100);
             Table.getColumnModel().getColumn(9).setMinWidth(100);
             Table.getColumnModel().getColumn(9).setMaxWidth(100);
+            Table.getColumnModel().getColumn(10).setMinWidth(80);
+            Table.getColumnModel().getColumn(10).setMaxWidth(80);
         }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

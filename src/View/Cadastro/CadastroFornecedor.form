@@ -200,18 +200,6 @@
                               </Group>
                           </Group>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="fone1" min="-2" max="-2" attributes="0"/>
-                              <Component id="fone1TF" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="158" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="fone2" min="-2" max="-2" attributes="0"/>
-                              <Component id="fone2TF" min="-2" pref="150" max="-2" attributes="0"/>
-                              <Component id="razaoSocial" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
                       <Component id="nomeTF" alignment="0" min="-2" pref="297" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -223,17 +211,31 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="bairroTF" min="-2" pref="150" max="-2" attributes="0"/>
                               </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="fone1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="fone1TF" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="158" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="fone2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="fone2TF" min="-2" pref="150" max="-2" attributes="0"/>
+                                      <Component id="razaoSocial" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="complementoEndereco" min="-2" max="-2" attributes="0"/>
                               <Component id="email" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="emailTF" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
+                              <Component id="emailTF" alignment="0" pref="250" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="complementoEnderecoTF" min="-2" pref="150" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="buttonCliente" max="32767" attributes="0"/>
                               </Group>
+                              <Component id="statusCB" max="32767" attributes="0"/>
+                              <Component id="status" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -253,13 +255,19 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="nomeTF" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="fone1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="fone2" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="fone1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="fone2" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="status" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="fone2TF" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                          <Component id="fone2TF" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="statusCB" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <Component id="fone1TF" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -306,7 +314,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="60" max="32767" attributes="0"/>
+                  <EmptySpace pref="58" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -448,6 +456,24 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonClienteActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="statusCB">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="2">
+                <StringItem index="0" value="Ativo"/>
+                <StringItem index="1" value="Inativo"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="status">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Status"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

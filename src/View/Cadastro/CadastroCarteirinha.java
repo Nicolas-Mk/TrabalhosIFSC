@@ -281,39 +281,52 @@ public class CadastroCarteirinha extends javax.swing.JFrame {
 
         getContentPane().add(panelTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 60));
 
+        panelMid.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         id.setText("ID");
+        panelMid.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 56, -1, -1));
 
         codigoBarras.setText("Codigo de Barras");
+        panelMid.add(codigoBarras, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 104, -1, -1));
 
         dataGeracao.setText("Data de geração");
+        panelMid.add(dataGeracao, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 150, -1, -1));
 
         dataCancelamento.setText("Data de cancelamento");
+        panelMid.add(dataCancelamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 150, -1, -1));
 
         nome.setText("Cliente");
+        panelMid.add(nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(273, 56, -1, -1));
 
         matricula.setText("Matricula");
+        panelMid.add(matricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 104, -1, -1));
 
         dataDeNascimento.setText("Data de Nascimento");
+        panelMid.add(dataDeNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 150, -1, -1));
 
         cpf.setText("CPF");
+        panelMid.add(cpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 104, -1, -1));
 
         idTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 idTFActionPerformed(evt);
             }
         });
+        panelMid.add(idTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 76, 100, -1));
 
         codigoBarrasTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 codigoBarrasTFActionPerformed(evt);
             }
         });
+        panelMid.add(codigoBarrasTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 124, 150, -1));
 
         try {
             dataCancelamentoTF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        panelMid.add(dataCancelamentoTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 170, 149, -1));
 
         try {
             dataGeracaoTF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -325,18 +338,21 @@ public class CadastroCarteirinha extends javax.swing.JFrame {
                 dataGeracaoTFActionPerformed(evt);
             }
         });
+        panelMid.add(dataGeracaoTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 170, 150, -1));
 
         nomeTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nomeTFActionPerformed(evt);
             }
         });
+        panelMid.add(nomeTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(273, 76, 310, -1));
 
         matriculaTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 matriculaTFActionPerformed(evt);
             }
         });
+        panelMid.add(matriculaTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 124, 149, -1));
 
         try {
             datadeNascimentoTF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -348,12 +364,14 @@ public class CadastroCarteirinha extends javax.swing.JFrame {
                 datadeNascimentoTFActionPerformed(evt);
             }
         });
+        panelMid.add(datadeNascimentoTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 170, 150, -1));
 
         try {
             cpfTF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        panelMid.add(cpfTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 124, 150, -1));
 
         buttonCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens_rob/Down.png"))); // NOI18N
         buttonCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -361,83 +379,7 @@ public class CadastroCarteirinha extends javax.swing.JFrame {
                 buttonClienteActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout panelMidLayout = new javax.swing.GroupLayout(panelMid);
-        panelMid.setLayout(panelMidLayout);
-        panelMidLayout.setHorizontalGroup(
-            panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelMidLayout.createSequentialGroup()
-                .addGap(155, 155, 155)
-                .addGroup(panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(codigoBarras)
-                    .addComponent(codigoBarrasTF, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelMidLayout.createSequentialGroup()
-                        .addComponent(dataGeracao)
-                        .addGap(88, 88, 88)
-                        .addComponent(dataCancelamento))
-                    .addGroup(panelMidLayout.createSequentialGroup()
-                        .addGroup(panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(idTF, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(id))
-                        .addGap(18, 18, 18)
-                        .addGroup(panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nome)
-                            .addComponent(nomeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buttonCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelMidLayout.createSequentialGroup()
-                        .addComponent(dataGeracaoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(dataCancelamentoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(matricula)
-                    .addComponent(matriculaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(datadeNascimentoTF)
-                    .addComponent(dataDeNascimento)
-                    .addComponent(cpf)
-                    .addComponent(cpfTF, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(160, Short.MAX_VALUE))
-        );
-        panelMidLayout.setVerticalGroup(
-            panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMidLayout.createSequentialGroup()
-                .addContainerGap(56, Short.MAX_VALUE)
-                .addGroup(panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panelMidLayout.createSequentialGroup()
-                        .addComponent(cpf)
-                        .addGap(32, 32, 32)
-                        .addComponent(dataDeNascimento)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(datadeNascimentoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelMidLayout.createSequentialGroup()
-                        .addGroup(panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(id)
-                            .addComponent(nome)
-                            .addComponent(matricula))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(idTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(nomeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(matriculaTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(buttonCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(codigoBarras)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(codigoBarrasTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cpfTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dataCancelamento)
-                            .addComponent(dataGeracao))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(dataGeracaoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(dataCancelamentoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(40, 40, 40))
-        );
+        panelMid.add(buttonCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 74, 40, 22));
 
         getContentPane().add(panelMid, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 800, 230));
 

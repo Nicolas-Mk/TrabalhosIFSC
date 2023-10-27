@@ -200,7 +200,7 @@ public class BuscaFornecedor extends javax.swing.JFrame {
 
             },
             new String [] {
-                "id", "nome", "fone1", "fone2", "cnpj", "inscrição estadual", "razão social", "email", "complemento endereco", "cep"
+                "id", "nome", "fone1", "fone2", "cnpj", "inscrição estadual", "razão social", "email", "complemento endereco", "cep", "status"
             }
         ));
         panelMid.setViewportView(Table);
@@ -225,6 +225,8 @@ public class BuscaFornecedor extends javax.swing.JFrame {
             Table.getColumnModel().getColumn(8).setMaxWidth(200);
             Table.getColumnModel().getColumn(9).setMinWidth(120);
             Table.getColumnModel().getColumn(9).setMaxWidth(120);
+            Table.getColumnModel().getColumn(10).setMinWidth(80);
+            Table.getColumnModel().getColumn(10).setMaxWidth(80);
         }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

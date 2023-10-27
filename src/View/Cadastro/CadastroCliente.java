@@ -26,6 +26,22 @@ public class CadastroCliente extends javax.swing.JFrame {
         initComponents();
     }
 
+    public JLabel getStatus() {
+        return status;
+    }
+
+    public void setStatus(JLabel status) {
+        this.status = status;
+    }
+
+    public JComboBox<String> getStatusCB() {
+        return statusCB;
+    }
+
+    public void setStatusCB(JComboBox<String> statusCB) {
+        this.statusCB = statusCB;
+    }
+
     public JFormattedTextField getFone2TF() {
         return Fone2TF;
     }
@@ -360,6 +376,8 @@ public class CadastroCliente extends javax.swing.JFrame {
         complementoEndereco = new javax.swing.JLabel();
         cpfTF = new javax.swing.JFormattedTextField();
         buttonCliente = new javax.swing.JButton();
+        statusCB = new javax.swing.JComboBox<>();
+        status = new javax.swing.JLabel();
         panelBottom = new javax.swing.JPanel();
         buttonNew = new javax.swing.JButton();
         buttonCancel = new javax.swing.JButton();
@@ -500,6 +518,10 @@ public class CadastroCliente extends javax.swing.JFrame {
             }
         });
 
+        statusCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Inativo" }));
+
+        status.setText("Status");
+
         javax.swing.GroupLayout panelMidLayout = new javax.swing.GroupLayout(panelMid);
         panelMid.setLayout(panelMidLayout);
         panelMidLayout.setHorizontalGroup(
@@ -554,16 +576,18 @@ public class CadastroCliente extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(email)
+                            .addComponent(datanascimento)
+                            .addGroup(panelMidLayout.createSequentialGroup()
+                                .addGroup(panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(complementoEndereco)
+                                    .addComponent(complementoEnderecoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(buttonCliente))
                             .addGroup(panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(emailTF, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(datanascimento, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(dataNascimentoTF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelMidLayout.createSequentialGroup()
-                                    .addGroup(panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(complementoEndereco)
-                                        .addComponent(complementoEnderecoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(buttonCliente))))
+                                .addComponent(dataNascimentoTF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                            .addComponent(status)
+                            .addComponent(statusCB, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(41, 41, 41))))
         );
         panelMidLayout.setVerticalGroup(
@@ -572,6 +596,10 @@ public class CadastroCliente extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addGroup(panelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelMidLayout.createSequentialGroup()
+                        .addComponent(status)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(statusCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(datanascimento)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(dataNascimentoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -845,5 +873,7 @@ public class CadastroCliente extends javax.swing.JFrame {
     private javax.swing.JPanel panelTop;
     private javax.swing.JLabel rg;
     private javax.swing.JTextField rgTF;
+    private javax.swing.JLabel status;
+    private javax.swing.JComboBox<String> statusCB;
     // End of variables declaration//GEN-END:variables
 }

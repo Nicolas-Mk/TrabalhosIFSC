@@ -14,8 +14,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -27,12 +25,19 @@ public class CarteirinhaDAO implements InterfaceDAO<Carteirinha> {
     public void create(Carteirinha objeto) {
         
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "INSERT INTO carteirinha (descricao) VALUES(?)";
+        String sqlExecutar = "INSERT INTO endereco (codigoBarra, dataGeracao,"
+                + " dataCancelamento, cliente_id)"
+                + " VALUES(?, ?, ?, "
+                + "(select id from cliente, where nome like ?)";
+        
         
         PreparedStatement pstm = null;
         try {
             pstm = conexao.prepareStatement(sqlExecutar);
-            pstm.setString(1, objeto.getDataGeracao());
+            pstm.setString(1, objeto.getCodigoBarra());
+            pstm.setString(2, objeto.getDataGeracao());
+            pstm.setString(3, objeto.getDataCancelamento());
+            pstm.setString(4, objeto.getCliente().getNome());
             pstm.execute();
         } catch (SQLException ex) {
             ex.printStackTrace();
