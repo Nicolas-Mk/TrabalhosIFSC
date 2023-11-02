@@ -24,13 +24,24 @@ public class FornecedorDAO implements InterfaceDAO<Fornecedor> {
     @Override
     public void create(Fornecedor objeto) {
         
-        Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "INSERT INTO fornecedor (nome) VALUES(?)";
+         Connection conexao = ConnectionFactory.getConnection();
+        String sqlExecutar = "INSERT INTO fornecedor (nome, fone1, fone2," 
+                + " cnpj, inscricaoEstadual, razaoSocial, email, complementoEndereco, status, endereco_id) " 
+                + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, (select id from endereco where cep like ? limit 1))";
         
         PreparedStatement pstm = null;
         try {
             pstm = conexao.prepareStatement(sqlExecutar);
             pstm.setString(1, objeto.getNome());
+            pstm.setString(2, objeto.getFone());
+            pstm.setString(3, objeto.getFone2());
+            pstm.setString(4, objeto.getCnpj());
+            pstm.setString(5, objeto.getInscricaoEstadual());
+            pstm.setString(6, objeto.getRazaoSocial());
+            pstm.setString(7, objeto.getEmail());
+            pstm.setString(8, objeto.getComplementoEndereco());
+            pstm.setString(10, objeto.getEndereco().getCep());
+            pstm.setString(9, objeto.getStatus());
             pstm.execute();
         } catch (SQLException ex) {
             ex.printStackTrace();

@@ -10,6 +10,7 @@ import Controller.Busca.ControllerBuscaFornecedor;
 import static Model.DAO.Persiste.fornecedorList;
 import Model.Endereco;
 import Model.Fornecedor;
+import Service.FornecedorService;
 import View.Busca.BuscaEndereco;
 import View.Busca.BuscaFornecedor;
 import View.Cadastro.CadastroFornecedor;
@@ -84,38 +85,12 @@ public class ControllerCadastroFornecedor implements ActionListener {
             fornecedor.setStatus(this.cadastroFornecedor.getStatusCB().getSelectedItem().toString());
             
             if(this.cadastroFornecedor.getIdTF().getText().equalsIgnoreCase("")){
-                      Model.DAO.Persiste.fornecedorList.add(fornecedor);
-                    }else if (fornecedorList.size() > 0) {
-                        
-                if (!fornecedorList.get(Integer.parseInt(id) - 1).getNome().equals(this.cadastroFornecedor.getNomeTF())) {
-                    fornecedorList.get(Integer.parseInt(id) - 1).setNome(this.cadastroFornecedor.getNomeTF().getText());
-                }
-                if (!fornecedorList.get(Integer.parseInt(id) - 1).getFone().equals(this.cadastroFornecedor.getFone1TF())) {
-                    fornecedorList.get(Integer.parseInt(id) - 1).setFone(this.cadastroFornecedor.getFone1TF().getText());
-                }
-                if (!fornecedorList.get(Integer.parseInt(id) - 1).getFone2().equals(this.cadastroFornecedor.getFone2TF())) {
-                    fornecedorList.get(Integer.parseInt(id) - 1).setFone2(this.cadastroFornecedor.getFone2TF().getText());
-                }
-                if (!fornecedorList.get(Integer.parseInt(id) - 1).getCnpj().equals(this.cadastroFornecedor.getCnpjTF())) {
-                    fornecedorList.get(Integer.parseInt(id) - 1).setCnpj(this.cadastroFornecedor.getCnpjTF().getText());
-                }
-                if (!fornecedorList.get(Integer.parseInt(id) - 1).getInscricaoEstadual().equals(this.cadastroFornecedor.getInscricaoEstadualTF())) {
-                    fornecedorList.get(Integer.parseInt(id) - 1).setInscricaoEstadual(this.cadastroFornecedor.getInscricaoEstadualTF().getText());
-                }
-                if (!fornecedorList.get(Integer.parseInt(id) - 1).getRazaoSocial().equals(this.cadastroFornecedor.getRazaoSocialTF())) {
-                    fornecedorList.get(Integer.parseInt(id) - 1).setRazaoSocial(this.cadastroFornecedor.getRazaoSocialTF().getText());
-                }
-                if (!fornecedorList.get(Integer.parseInt(id) - 1).getEmail().equals(this.cadastroFornecedor.getEmailTF())) {
-                    fornecedorList.get(Integer.parseInt(id) - 1).setEmail(this.cadastroFornecedor.getEmailTF().getText());
-                }
-                if (!fornecedorList.get(Integer.parseInt(id) - 1).getComplementoEndereco().equals(this.cadastroFornecedor.getComplementoEnderecoTF())) {
-                    fornecedorList.get(Integer.parseInt(id) - 1).setComplementoEndereco(this.cadastroFornecedor.getComplementoEnderecoTF().getText());
-                }
-                if (!fornecedorList.get(Integer.parseInt(id) - 1).getEndereco().getCep().equals(this.cadastroFornecedor.getCepTF())) {
-                    fornecedorList.get(Integer.parseInt(id) - 1).getEndereco().setCep(this.cadastroFornecedor.getCepTF().getText());
-                        
-                    }
-            }
+                    FornecedorService.create(fornecedor);
+                    }else{
+                    fornecedor.setId(Integer.parseInt(this.cadastroFornecedor.getIdTF().getText()));
+                    FornecedorService.update(fornecedor);
+                        }
+            
             
             Utilities.Utilities.limpaComponentes(false, this.cadastroFornecedor.getPanelMid());
         } else if (e.getSource() == this.cadastroFornecedor.getButtonSearch()) {

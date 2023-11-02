@@ -13,7 +13,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -42,7 +44,8 @@ public class ClienteDAO implements InterfaceDAO<Cliente> {
             pstm.setString(6, objeto.getEmail());
             pstm.setString(7, objeto.getStatus());
             pstm.setString(8, objeto.getComplementoEndereco());
-            pstm.setString(9, objeto.getDataNascimento().replace("/", ""));
+            // ARRUMAR, O FORMATO QUE O MARIADB PEDE É "yyyy-MM-dd", o sistema atualmente aceita "dd-MM-yyyy", não temos conversão no momento.
+            pstm.setString(9, objeto.getDataNascimento().replace("/", "")); 
             pstm.setString(10, objeto.getCpf());
             pstm.setString(11, objeto.getEndereco().getCep());
             pstm.execute();
@@ -88,9 +91,9 @@ public class ClienteDAO implements InterfaceDAO<Cliente> {
     public Cliente retrieve(int parPK) {
         Connection conexao = ConnectionFactory.getConnection();
         String sqlExecutar = " select c.id, c.nome, c.cpf, c.fone1, c.fone2, c.matricula,"
-                + " c.email, c.complementoEndereco, c.dataNascimento, e.status as cliente,"
-                + " e.cep as endereco from cliente c "
-                + " join endereco e  on c.endereco_id = e.id where e.id = ?";
+                + " c.email, c.complementoEndereco, c.dataNascimento, e.cep, c.status"
+                + " from cliente c "
+                + " join endereco e on c.endereco_id = e.id where c.id = ?";
                
         PreparedStatement pstm = null;
         ResultSet rst = null;
@@ -104,8 +107,7 @@ public class ClienteDAO implements InterfaceDAO<Cliente> {
             
             while(rst.next()){
             
-                
-                endereco.setCep(rst.getString("cep"));
+                cliente.setEndereco(endereco);
                 
                 cliente.setId(rst.getInt("id"));
                 cliente.setNome(rst.getString("nome"));
@@ -116,6 +118,7 @@ public class ClienteDAO implements InterfaceDAO<Cliente> {
                 cliente.setEmail(rst.getString("email"));
                 cliente.setComplementoEndereco(rst.getString("complementoEndereco"));
                 cliente.setDataNascimento(rst.getString("dataNascimento"));
+                endereco.setCep(rst.getString("cep"));
                 cliente.setStatus(rst.getString("status"));
 
             }
@@ -133,7 +136,48 @@ public class ClienteDAO implements InterfaceDAO<Cliente> {
 
     @Override
     public List<Cliente> retrieve(String parString) {
-        return null;
+        Connection conexao = ConnectionFactory.getConnection();
+        String sqlExecutar = " select c.id, c.nome, c.cpf, c.fone1, c.fone2, c.matricula, "
+                + " c.email, c.complementoEndereco, c.dataNascimento, e.cep, c.status "
+                + " from cliente c "
+                + " join endereco e on c.endereco_id = e.id where c.nome like ?";
+               
+        PreparedStatement pstm = null;
+        ResultSet rst = null;
+        Cliente cliente = new Cliente();
+        Endereco endereco = new Endereco();
+        List<Cliente> clienteList = new ArrayList<>();
+        
+        try {
+            pstm = conexao.prepareStatement(sqlExecutar);
+            pstm.setString(1, "%" + parString + "%");
+            rst = pstm.executeQuery();
+            
+            while(rst.next()){
+            
+                cliente.setEndereco(endereco);
+                
+                cliente.setId(rst.getInt("id"));
+                cliente.setNome(rst.getString("nome"));
+                cliente.setCpf(rst.getString("cpf"));
+                cliente.setFone(rst.getString("fone1"));
+                cliente.setFone2(rst.getString("fone2"));
+                cliente.setMatricula(rst.getString("matricula"));
+                cliente.setEmail(rst.getString("email"));
+                cliente.setComplementoEndereco(rst.getString("complementoEndereco"));
+                cliente.setDataNascimento(rst.getString("dataNascimento"));
+                endereco.setCep(rst.getString("cep"));
+                cliente.setStatus(rst.getString("status"));
+
+            }
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }finally{
+            
+            ConnectionFactory.closeConnection(conexao, pstm, rst);
+            return clienteList;
+        }
     }
 
     @Override

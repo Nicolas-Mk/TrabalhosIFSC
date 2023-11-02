@@ -48,15 +48,13 @@ public class ControllerBuscaCliente implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Atenção!\n Filtro vazio!");
                 this.buscaCliente.getSearchTF().requestFocus();
             }else{
-                List<Cliente> CarteirinhaList = new ArrayList<Cliente>();
+                List<Cliente> ClienteList = new ArrayList<Cliente>();
                 
                 if (this.buscaCliente.getEscolhaCB().getSelectedIndex() == 0){
-                    CarteirinhaList.add(ClienteService.retrieve(Integer.parseInt(this.buscaCliente.getSearchTF().getText())));
+                     ClienteList.add(ClienteService.retrieve(Integer.parseInt(this.buscaCliente.getSearchTF().getText())));
                 }else if (this.buscaCliente.getEscolhaCB().getSelectedIndex() == 1){
-                    CarteirinhaList = (ClienteService.retrieve(this.buscaCliente.getSearchTF().getText().trim()));
-                }else if (this.buscaCliente.getEscolhaCB().getSelectedIndex() == 2){
-                    CarteirinhaList = (ClienteService.retrieve(this.buscaCliente.getSearchTF().getText().trim()));
-                }
+                     ClienteList = (ClienteService.retrieve(this.buscaCliente.getSearchTF().getText().trim()));
+
             DefaultTableModel tabela = (DefaultTableModel) this.buscaCliente.getTable().getModel();
             for (Cliente clienteAtual : clienteList) {
                 tabela.addRow(new Object[]{clienteAtual.getId(), clienteAtual.getNome(), clienteAtual.getCpf(),
@@ -124,6 +122,7 @@ public class ControllerBuscaCliente implements ActionListener {
                 }   
             }
 
+         }
     }
 }
 

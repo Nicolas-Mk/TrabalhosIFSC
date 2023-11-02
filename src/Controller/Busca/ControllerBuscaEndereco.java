@@ -55,16 +55,9 @@ public class ControllerBuscaEndereco implements ActionListener {
                 
                 if (this.buscaEndereco.getEscolhaCB().getSelectedIndex() == 0){
                     enderecoList.add(EnderecoService.retrieve(Integer.parseInt(this.buscaEndereco.getSearchTF().getText())));
-                }
-                
-                
-                else if (this.buscaEndereco.getEscolhaCB().getSelectedIndex() == 1){
+                }else if (this.buscaEndereco.getEscolhaCB().getSelectedIndex() == 1){
                     enderecoList = EnderecoService.retrieve(this.buscaEndereco.getSearchTF().getText().trim());
-                    
-                    
                 }
-                
-
                 DefaultTableModel tabela = (DefaultTableModel) this.buscaEndereco.getTable().getModel();
                 tabela.setRowCount(0);
                 for (Endereco enderecoAtual : enderecoList) {
