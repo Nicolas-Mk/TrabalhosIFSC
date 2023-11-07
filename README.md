@@ -1,1 +1,1 @@
-# TrabalhosIFSC
+# ProjetoCantina
