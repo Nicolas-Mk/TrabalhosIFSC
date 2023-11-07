@@ -193,7 +193,7 @@ public class BuscaProduto extends javax.swing.JFrame {
         panelSearch.add(findIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 10, 30, 30));
         panelSearch.add(searchTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 680, 30));
 
-        escolhaCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Id", "Descricao", "CodigoBarras", "Status" }));
+        escolhaCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Id", "Descricao", "codigoBarra", "Status" }));
         panelSearch.add(escolhaCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, 30));
 
         Table.setModel(new javax.swing.table.DefaultTableModel(

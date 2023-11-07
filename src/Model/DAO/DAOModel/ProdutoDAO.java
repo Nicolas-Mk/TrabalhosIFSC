@@ -104,7 +104,7 @@ public class ProdutoDAO implements InterfaceDAO<Produto> {
     @Override
     public List<Produto> retrieve(String parString) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "SELECT produto.id, produto.descricao, produto.codigoBarra, produto.status from produto WHERE descricao like ?";
+        String sqlExecutar = "SELECT produto.id, produto.descricao, produto.codigoBarra, produto.status from produto WHERE "+Controller.Busca.ControllerBuscaBairro.filtroGlobal+" like ?";
         
         PreparedStatement pstm = null;
         ResultSet rst = null;

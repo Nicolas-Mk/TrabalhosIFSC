@@ -22,6 +22,7 @@ public class ControllerBuscaBairro implements ActionListener {
 
     // Criando um objeto global do tipo da tela que será controlada. 
     BuscaBairro buscaBairro;
+    public static String filtroGlobal;
     int contador;
 
     //Passando a tela que será controlada como parametro de invocação.
@@ -50,8 +51,10 @@ public class ControllerBuscaBairro implements ActionListener {
                 
                 if (this.buscaBairro.getEscolhaCB().getSelectedIndex() == 0){
                     bairroList.add(BairroService.retrieve(Integer.parseInt(this.buscaBairro.getSearchTF().getText())));
-                }else if (this.buscaBairro.getEscolhaCB().getSelectedIndex() == 1){
+                }else {
                     bairroList = (BairroService.retrieve(this.buscaBairro.getSearchTF().getText().trim()));
+                    filtroGlobal = (this.buscaBairro.getEscolhaCB().getSelectedItem().toString());
+                    
                 }
                 
                 DefaultTableModel tabelaDados = (DefaultTableModel) buscaBairro.getTable().getModel();

@@ -73,13 +73,14 @@ public class ControllerCadastroCliente implements ActionListener {
             cliente.setId((clienteList.size()+1));
             cliente.setNome((this.cadastroCliente.getNomeTF().getText()));
             cliente.setCpf(this.cadastroCliente.getCpfTF().getText());
+            cliente.setRg(this.cadastroCliente.getRgTF().getText());
             cliente.setFone(this.cadastroCliente.getFone1TF().getText());
             cliente.setFone2(this.cadastroCliente.getFone2TF().getText());
             cliente.setEmail(this.cadastroCliente.getEmailTF().getText());
             cliente.setMatricula(this.cadastroCliente.getMatriculaTF().getText());
             cliente.getEndereco().setCep(this.cadastroCliente.getCepTF().getText());
             cliente.setComplementoEndereco(this.cadastroCliente.getComplementoEnderecoTF().getText());
-            cliente.setDataNascimento(this.cadastroCliente.getDataNascimentoTF().getText());
+            cliente.setDataNascimento(this.cadastroCliente.getDataNascimentoTF().getText().replace("-", ""));
             cliente.getEndereco().setCep(this.cadastroCliente.getCepTF().getText());
             cliente.setStatus(this.cadastroCliente.getStatusCB().getSelectedItem().toString());
             
@@ -100,23 +101,25 @@ public class ControllerCadastroCliente implements ActionListener {
            codigo = 0;
             
              if (codigo != 0){
-               Cliente Cliente = new Cliente();
-               Cliente = Model.DAO.Persiste.clienteList.get(codigo -1);
+               Cliente cliente = new Cliente();
+               cliente = ClienteService.retrieve(codigo);
                Utilities.Utilities.ativa(false, this.cadastroCliente.getPanelBottom());
                Utilities.Utilities.limpaComponentes(true, this.cadastroCliente.getPanelMid());
-               this.cadastroCliente.getIdTF().setText(Cliente.getId() +"");
-               this.cadastroCliente.getNomeTF().setText(Cliente.getNome());
-               this.cadastroCliente.getCpfTF().setText(Cliente.getCpf());
-               this.cadastroCliente.getFone1TF().setText(Cliente.getFone());
-               this.cadastroCliente.getFone2TF().setText(Cliente.getFone2());
-               this.cadastroCliente.getMatriculaTF().setText(Cliente.getMatricula());
-               this.cadastroCliente.getEmailTF().setText(Cliente.getEmail());
-               this.cadastroCliente.getComplementoEnderecoTF().setText(Cliente.getComplementoEndereco());
-               this.cadastroCliente.getDataNascimentoTF().setText(Cliente.getDataNascimento());
-               this.cadastroCliente.getCepTF().setText(Cliente.getEndereco().getCep());
-               this.cadastroCliente.getStatusCB().setSelectedItem(Cliente.getStatus());
+               this.cadastroCliente.getIdTF().setText(cliente.getId() +"");
+               this.cadastroCliente.getNomeTF().setText(cliente.getNome());
+               this.cadastroCliente.getCpfTF().setText(cliente.getCpf());
+               this.cadastroCliente.getFone1TF().setText(cliente.getFone());
+               this.cadastroCliente.getFone2TF().setText(cliente.getFone2());
+               this.cadastroCliente.getMatriculaTF().setText(cliente.getMatricula());
+               this.cadastroCliente.getEmailTF().setText(cliente.getEmail());
+               this.cadastroCliente.getComplementoEnderecoTF().setText(cliente.getComplementoEndereco());
+               this.cadastroCliente.getDataNascimentoTF().setText(cliente.getDataNascimento().replace("/", ""));
+               this.cadastroCliente.getCepTF().setText(cliente.getEndereco().getCep());
+               this.cadastroCliente.getStatusCB().setSelectedItem(cliente.getStatus());
                this.cadastroCliente.getIdTF().setEnabled(false);
+               
              }
+             
         }else if (e.getSource() == this.cadastroCliente.getButtonCliente()) {
              BuscaEndereco buscaEndereco = new BuscaEndereco();
              ControllerBuscaEndereco controllerBuscaCliente = new ControllerBuscaEndereco(buscaEndereco);

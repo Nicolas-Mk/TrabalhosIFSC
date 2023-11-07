@@ -113,7 +113,7 @@ public class ControllerCadastroEndereco implements ActionListener {
             
              if (codigo != 0){
                Endereco endereco = new Endereco();
-               endereco = Model.DAO.Persiste.enderecoList.get(codigo -1);
+               endereco = EnderecoService.retrieve(codigo);
                Utilities.Utilities.ativa(false, this.cadastroEndereco.getPanelBottom());
                Utilities.Utilities.limpaComponentes(true, this.cadastroEndereco.getPanelMid());
                this.cadastroEndereco.getIdTF().setText(endereco.getId() +"");

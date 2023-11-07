@@ -103,7 +103,7 @@ public class ControllerCadastroFornecedor implements ActionListener {
             
              if (codigo != 0){
                Fornecedor fornecedor = new Fornecedor();
-               fornecedor = Model.DAO.Persiste.fornecedorList.get(codigo -1);
+               fornecedor = FornecedorService.retrieve(codigo);
                Utilities.Utilities.ativa(false, this.cadastroFornecedor.getPanelBottom());
                Utilities.Utilities.limpaComponentes(true, this.cadastroFornecedor.getPanelMid());
                this.cadastroFornecedor.getIdTF().setText(fornecedor.getId() +"");

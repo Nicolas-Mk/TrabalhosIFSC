@@ -322,14 +322,14 @@ public class CadastroCarteirinha extends javax.swing.JFrame {
         panelMid.add(codigoBarrasTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 124, 150, -1));
 
         try {
-            dataCancelamentoTF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            dataCancelamentoTF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
         panelMid.add(dataCancelamentoTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 170, 149, -1));
 
         try {
-            dataGeracaoTF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            dataGeracaoTF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -354,11 +354,8 @@ public class CadastroCarteirinha extends javax.swing.JFrame {
         });
         panelMid.add(matriculaTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 124, 149, -1));
 
-        try {
-            datadeNascimentoTF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        datadeNascimentoTF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("####-##-##"))));
+        datadeNascimentoTF.setText("    -  -");
         datadeNascimentoTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 datadeNascimentoTFActionPerformed(evt);

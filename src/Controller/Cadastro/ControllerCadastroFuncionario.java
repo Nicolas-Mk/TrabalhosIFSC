@@ -16,6 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import Controller.Cadastro.ControllerCadastroFuncionario;
 import Model.Endereco;
+import Service.FuncionarioService;
 /**
  *
  * @author aluno
@@ -72,6 +73,7 @@ public class ControllerCadastroFuncionario implements ActionListener {
             funcionario.setFone(this.cadastroFuncionario.getFone1TF().getText());
             funcionario.setFone2(this.cadastroFuncionario.getFone2TF().getText());
             funcionario.setUsuario(this.cadastroFuncionario.getUsuarioTF().getText());
+            funcionario.setSenha(this.cadastroFuncionario.getSenhaTF().getText());
             funcionario.setCpf(this.cadastroFuncionario.getCpfTF().getText());
             funcionario.setRg(this.cadastroFuncionario.getRgTF().getText());
             funcionario.setEmail(this.cadastroFuncionario.getEmailTF().getText());
@@ -79,35 +81,12 @@ public class ControllerCadastroFuncionario implements ActionListener {
             funcionario.getEndereco().setCep(this.cadastroFuncionario.getCepTF().getText());
             funcionario.setStatus(this.cadastroFuncionario.getStatusCB().getSelectedItem().toString());
             
-            if(this.cadastroFuncionario.getIdTF().getText().equalsIgnoreCase("")){
-                      Model.DAO.Persiste.funcionarioList.add(funcionario);
-                    }else if (funcionarioList.size() > 0) {
-                        
-                if (!funcionarioList.get(Integer.parseInt(id) - 1).getNome().equals(this.cadastroFuncionario.getNomeTF())) {
-                    funcionarioList.get(Integer.parseInt(id) - 1).setNome(this.cadastroFuncionario.getNomeTF().getText());
-                }
-                if (!funcionarioList.get(Integer.parseInt(id) - 1).getFone().equals(this.cadastroFuncionario.getFone1TF())) {
-                    funcionarioList.get(Integer.parseInt(id) - 1).setFone(this.cadastroFuncionario.getFone1TF().getText());
-                }
-                if (!funcionarioList.get(Integer.parseInt(id) - 1).getFone2().equals(this.cadastroFuncionario.getFone2TF())) {
-                    funcionarioList.get(Integer.parseInt(id) - 1).setFone2(this.cadastroFuncionario.getFone2TF().getText());
-                }
-                if (!funcionarioList.get(Integer.parseInt(id) - 1).getUsuario().equals(this.cadastroFuncionario.getUsuarioTF())) {
-                    funcionarioList.get(Integer.parseInt(id) - 1).setUsuario(this.cadastroFuncionario.getUsuarioTF().getText());
-                }
-                if (!funcionarioList.get(Integer.parseInt(id) - 1).getCpf().equals(this.cadastroFuncionario.getCpfTF())) {
-                    funcionarioList.get(Integer.parseInt(id) - 1).setCpf(this.cadastroFuncionario.getCpfTF().getText());
-                }
-                if (!funcionarioList.get(Integer.parseInt(id) - 1).getEmail().equals(this.cadastroFuncionario.getEmailTF())) {
-                    funcionarioList.get(Integer.parseInt(id) - 1).setEmail(this.cadastroFuncionario.getEmailTF().getText());
-                }
-                if (!funcionarioList.get(Integer.parseInt(id) - 1).getComplementoEndereco().equals(this.cadastroFuncionario.getComplementoEnderecoTF())) {
-                    funcionarioList.get(Integer.parseInt(id) - 1).setComplementoEndereco(this.cadastroFuncionario.getComplementoEnderecoTF().getText());
-                }
-                if (!funcionarioList.get(Integer.parseInt(id) - 1).getEndereco().getCep().equals(this.cadastroFuncionario.getCepTF())) {
-                    funcionarioList.get(Integer.parseInt(id) - 1).getEndereco().setCep(this.cadastroFuncionario.getCepTF().getText());
-                }
-                    }
+             if(this.cadastroFuncionario.getIdTF().getText().equalsIgnoreCase("")){
+                    FuncionarioService.create(funcionario);
+                    }else{
+                    funcionario.setId(Integer.parseInt(this.cadastroFuncionario.getIdTF().getText()));
+                    FuncionarioService.update(funcionario);
+                        }
             
             Utilities.Utilities.limpaComponentes(false, this.cadastroFuncionario.getPanelMid());
         } else if (e.getSource() == this.cadastroFuncionario.getButtonSearch()) {
@@ -120,7 +99,7 @@ public class ControllerCadastroFuncionario implements ActionListener {
             
              if (codigo != 0){
                Funcionario funcionario = new Funcionario();
-               funcionario = Model.DAO.Persiste.funcionarioList.get(codigo -1);
+               funcionario = FuncionarioService.retrieve(codigo);
                Utilities.Utilities.ativa(false, this.cadastroFuncionario.getPanelBottom());
                Utilities.Utilities.limpaComponentes(true, this.cadastroFuncionario.getPanelMid());
                this.cadastroFuncionario.getIdTF().setText(funcionario.getId() +"");
@@ -128,6 +107,7 @@ public class ControllerCadastroFuncionario implements ActionListener {
                this.cadastroFuncionario.getFone1TF().setText(funcionario.getFone());
                this.cadastroFuncionario.getFone2TF().setText(funcionario.getFone2());
                this.cadastroFuncionario.getUsuarioTF().setText(funcionario.getUsuario());
+               this.cadastroFuncionario.getSenhaTF().setText(funcionario.getSenha());
                this.cadastroFuncionario.getCpfTF().setText(funcionario.getCpf());
                this.cadastroFuncionario.getEmailTF().setText(funcionario.getEmail());
                this.cadastroFuncionario.getComplementoEnderecoTF().setText(funcionario.getComplementoEndereco());

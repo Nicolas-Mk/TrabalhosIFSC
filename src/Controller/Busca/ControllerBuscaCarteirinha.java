@@ -1,6 +1,7 @@
 package Controller.Busca;
 
 
+import static Controller.Busca.ControllerBuscaBairro.filtroGlobal;
 import Controller.Cadastro.ControllerCadastroCarteirinha;
 import static Model.DAO.Persiste.carteirinhaList;
 import Model.Carteirinha;
@@ -45,24 +46,31 @@ public class ControllerBuscaCarteirinha implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Atenção!\n Filtro vazio!");
                 this.buscaCarteirinha.getSearchTF().requestFocus();
             }else{
-                List<Carteirinha> CarteirinhaList = new ArrayList<Carteirinha>();
+                List<Carteirinha> carteirinhaList = new ArrayList<>();
                 
                 if (this.buscaCarteirinha.getEscolhaCB().getSelectedIndex() == 0){
-                    CarteirinhaList.add(CarteirinhaService.retrieve(Integer.parseInt(this.buscaCarteirinha.getSearchTF().getText())));
-                }else if (this.buscaCarteirinha.getEscolhaCB().getSelectedIndex() == 1){
-                    CarteirinhaList = (CarteirinhaService.retrieve(this.buscaCarteirinha.getSearchTF().getText().trim()));
-                }else if (this.buscaCarteirinha.getEscolhaCB().getSelectedIndex() == 2){
-                    CarteirinhaList = (CarteirinhaService.retrieve(this.buscaCarteirinha.getSearchTF().getText().trim()));
+                    carteirinhaList.add(CarteirinhaService.retrieve(Integer.parseInt(this.buscaCarteirinha.getSearchTF().getText())));
+                }else {
+                    carteirinhaList = (CarteirinhaService.retrieve(this.buscaCarteirinha.getSearchTF().getText().trim()));
+                    filtroGlobal = (this.buscaCarteirinha.getEscolhaCB().getSelectedItem().toString());
                 }
 
                 DefaultTableModel tabelaDados = (DefaultTableModel) buscaCarteirinha.getTable().getModel();
+                tabelaDados.setRowCount(0);
                 for (Carteirinha carteirinhaAtual : carteirinhaList) {
-                    tabelaDados.addRow(new Object[]{carteirinhaAtual.getId(), carteirinhaAtual.getCliente().getNome(),
-                        carteirinhaAtual.getCliente().getCpf(), carteirinhaAtual.getCliente().getDataNascimento(), carteirinhaAtual.getDataGeracao(),
-                        carteirinhaAtual.getDataCancelamento(), carteirinhaAtual.getCodigoBarra()
+                    tabelaDados.addRow(new Object[]{carteirinhaAtual.getId(),
+                        carteirinhaAtual.getCliente().getNome(),
+                        carteirinhaAtual.getCliente().getMatricula(),
+                        carteirinhaAtual.getCliente().getCpf(),
+                        carteirinhaAtual.getCliente().getDataNascimento(),
+                        carteirinhaAtual.getDataGeracao(),
+                        carteirinhaAtual.getDataCancelamento(),
+                        carteirinhaAtual.getCodigoBarra()
                             });
-        }
-         if (e.getSource() == this.buscaCarteirinha.getButtonLoad()) {
+                }
+             }
+             
+        }if (e.getSource() == this.buscaCarteirinha.getButtonLoad()) {
             
             CadastroCarteirinha cadastroCarteirinha = new CadastroCarteirinha();
             ControllerCadastroCarteirinha controllerCadastroCarteirinha = new ControllerCadastroCarteirinha(cadastroCarteirinha);
@@ -70,6 +78,10 @@ public class ControllerBuscaCarteirinha implements ActionListener {
             Utilities.Utilities.ativa(false, cadastroCarteirinha.getPanelBottom());
             Utilities.Utilities.limpaComponentes(true, cadastroCarteirinha.getPanelMid());
             cadastroCarteirinha.getIdTF().setEnabled(false);
+            cadastroCarteirinha.getNomeTF().setEnabled(false);
+            cadastroCarteirinha.getDatadeNascimentoTF().setEnabled(false);
+            cadastroCarteirinha.getCpfTF().setEnabled(false);
+            cadastroCarteirinha.getMatriculaTF().setEnabled(false);
             
             cadastroCarteirinha.setVisible(true);
             Controller.Cadastro.ControllerCadastroCarteirinha.codigo = (int) this.buscaCarteirinha.getTable().getValueAt
@@ -88,8 +100,8 @@ public class ControllerBuscaCarteirinha implements ActionListener {
             }
              }
          }
-    }
-}
+    
+
          
           
             

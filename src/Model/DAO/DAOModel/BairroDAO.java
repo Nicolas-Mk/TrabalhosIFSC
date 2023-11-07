@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  *
  * @author aluno
@@ -98,7 +99,7 @@ public class BairroDAO implements InterfaceDAO<Bairro> {
     @Override
     public List<Bairro> retrieve(String parString) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "SELECT bairro.id, bairro.descricao from bairro WHERE descricao like ?";
+        String sqlExecutar = "SELECT bairro.id, bairro.descricao from bairro WHERE "+Controller.Busca.ControllerBuscaBairro.filtroGlobal+" like ?";
         
         PreparedStatement pstm = null;
         ResultSet rst = null;
