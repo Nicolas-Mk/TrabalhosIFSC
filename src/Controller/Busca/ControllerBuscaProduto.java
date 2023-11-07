@@ -1,6 +1,7 @@
 package Controller.Busca;
 
 
+import static Controller.Busca.ControllerBuscaBairro.filtroGlobal;
 import static Model.DAO.Persiste.produtoList;
 import Model.Produto;
 import Service.ProdutoService;
@@ -48,12 +49,11 @@ public class ControllerBuscaProduto implements ActionListener {
                 
                 if (this.buscaProduto.getEscolhaCB().getSelectedIndex() == 0){
                     produtoList.add(ProdutoService.retrieve(Integer.parseInt(this.buscaProduto.getSearchTF().getText())));
-                }else if (this.buscaProduto.getEscolhaCB().getSelectedIndex() == 1){
+                }else{
                     produtoList = (ProdutoService.retrieve(this.buscaProduto.getSearchTF().getText().trim()));
-                }else if (this.buscaProduto.getEscolhaCB().getSelectedIndex() == 2){
-                    produtoList = (ProdutoService.retrieve(this.buscaProduto.getSearchTF().getText().trim()));
-                }else if (this.buscaProduto.getEscolhaCB().getSelectedIndex() == 3){
-                    produtoList = (ProdutoService.retrieve(this.buscaProduto.getSearchTF().getText().trim()));
+                    filtroGlobal = (this.buscaProduto.getEscolhaCB().getSelectedItem().toString());
+
+                
                 }
 
                 DefaultTableModel tabelaDados = (DefaultTableModel) buscaProduto.getTable().getModel();

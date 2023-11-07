@@ -1,6 +1,7 @@
 package Controller.Busca;
 
 
+import static Controller.Busca.ControllerBuscaBairro.filtroGlobal;
 import Controller.Cadastro.ControllerCadastroEndereco;
 import static Model.DAO.Persiste.cidadeList;
 import Model.Cidade;
@@ -52,11 +53,12 @@ public class ControllerBuscaCidade implements ActionListener {
                 
                 if (this.buscaCidade.getEscolhaCB().getSelectedIndex() == 0){
                     CidadeList.add(CidadeService.retrieve(Integer.parseInt(this.buscaCidade.getSearchTF().getText())));
-                }else if (this.buscaCidade.getEscolhaCB().getSelectedIndex() == 1){
+                }else{
                     CidadeList = (CidadeService.retrieve(this.buscaCidade.getSearchTF().getText().trim()));
-                }else if (this.buscaCidade.getEscolhaCB().getSelectedIndex() == 2){
-                    CidadeList = (CidadeService.retrieve(this.buscaCidade.getSearchTF().getText().trim()));
+                    filtroGlobal = (this.buscaCidade.getEscolhaCB().getSelectedItem().toString());
+
                 }
+                
                 
                 DefaultTableModel tabelaDados = (DefaultTableModel) buscaCidade.getTable().getModel();
                 tabelaDados.setRowCount(0);
@@ -106,8 +108,8 @@ public class ControllerBuscaCidade implements ActionListener {
            
             
             cadastroCidade.getIdTF().setText(this.buscaCidade.getTable().getValueAt(this.buscaCidade.getTable().getSelectedRow(), 0).toString());
-            cadastroCidade.getDescricaoTF().setText(this.buscaCidade.getTable().getValueAt(this.buscaCidade.getTable().getSelectedRow(), 1).toString());
-            cadastroCidade.getUfTF().setText(this.buscaCidade.getTable().getValueAt(this.buscaCidade.getTable().getSelectedRow(), 2).toString());
+            cadastroCidade.getDescricaoTF().setText(this.buscaCidade.getTable().getValueAt(this.buscaCidade.getTable().getSelectedRow(), 2).toString());
+            cadastroCidade.getUfTF().setText(this.buscaCidade.getTable().getValueAt(this.buscaCidade.getTable().getSelectedRow(), 1).toString());
             this.buscaCidade.dispose();
             }
         }

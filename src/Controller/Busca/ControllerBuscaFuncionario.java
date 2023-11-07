@@ -1,13 +1,18 @@
 package Controller.Busca;
 
 
+import static Controller.Busca.ControllerBuscaBairro.filtroGlobal;
 import Controller.Cadastro.ControllerCadastroFuncionario;
 import static Model.DAO.Persiste.funcionarioList;
 import Model.Funcionario;
+import Service.FuncionarioService;
 import View.Busca.BuscaFuncionario;
 import View.Cadastro.CadastroFuncionario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -38,12 +43,23 @@ public class ControllerBuscaFuncionario implements ActionListener {
         }
         
         if (e.getSource() == this.buscaFuncionario.getButtonFilter()) {
-            //Criando/Carregando uma instância da classe "singleton" de dados.
-            Model.DAO.Persiste.getInstance();
-            contador++;
-            if(contador == 1){
-            //Criando uma objeto do tipo TableModel
+            
+            if (this.buscaFuncionario.getSearchTF().getText().trim().equalsIgnoreCase("")) {
+                JOptionPane.showMessageDialog(null, "Atenção!\n Filtro vazio!");
+                this.buscaFuncionario.getSearchTF().requestFocus();
+            } else {
+                List<Funcionario> funcionarioList = new ArrayList<>();
+
+                if (this.buscaFuncionario.getEscolhaCB().getSelectedIndex() == 0) {
+                    funcionarioList.add(FuncionarioService.retrieve(Integer.parseInt(this.buscaFuncionario.getSearchTF().getText())));
+                } else{
+                    funcionarioList = (FuncionarioService.retrieve(this.buscaFuncionario.getSearchTF().getText().trim()));
+                    filtroGlobal = (this.buscaFuncionario.getEscolhaCB().getSelectedItem().toString());
+
+                }
+            
             DefaultTableModel tabela = (DefaultTableModel) this.buscaFuncionario.getTable().getModel();
+            tabela.setRowCount(0);
             for (Funcionario funcionarioAtual : funcionarioList) {
                 tabela.addRow(new Object[]{funcionarioAtual.getId(), funcionarioAtual.getNome(), funcionarioAtual.getFone(), funcionarioAtual.getFone2(),
                    funcionarioAtual.getUsuario(), funcionarioAtual.getCpf(),
@@ -51,8 +67,8 @@ public class ControllerBuscaFuncionario implements ActionListener {
                 });
                 }
             }
-        }
-        if (e.getSource() == this.buscaFuncionario.getButtonLoad()) {
+            
+        }if (e.getSource() == this.buscaFuncionario.getButtonLoad()) {
             
             CadastroFuncionario cadastroFuncionario = new CadastroFuncionario();
             ControllerCadastroFuncionario controllerCadastroFuncionario = new ControllerCadastroFuncionario(cadastroFuncionario);

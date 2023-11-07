@@ -47,7 +47,7 @@ public class CidadeDAO implements InterfaceDAO<Cidade> {
         String sqlExecutar = "SELECT Cidade.id, Cidade.descricao, cidade.uf FROM Cidade";
         PreparedStatement pstm = null;
         ResultSet rst = null;
-        List<Cidade> CidadeList  = new ArrayList<>();
+        List<Cidade> cidadeList  = new ArrayList<>();
         
         try {
             pstm = conexao.prepareStatement(sqlExecutar);
@@ -60,14 +60,14 @@ public class CidadeDAO implements InterfaceDAO<Cidade> {
                 Cidade.setDescricao(rst.getString("descricao"));
                 Cidade.setUf(rst.getString("uf"));
                 
-                CidadeList.add(Cidade);
+                cidadeList.add(Cidade);
         }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }finally{
             
             ConnectionFactory.closeConnection(conexao, pstm, rst);
-            return CidadeList;
+            return cidadeList;
         }
         
     }
@@ -102,7 +102,7 @@ public class CidadeDAO implements InterfaceDAO<Cidade> {
     @Override
     public List<Cidade> retrieve(String parString) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "SELECT Cidade.id, Cidade.uf, Cidade.descricao from Cidade WHERE descricao like ?";
+        String sqlExecutar = "SELECT Cidade.id, Cidade.uf, Cidade.descricao from Cidade WHERE "+Controller.Busca.ControllerBuscaBairro.filtroGlobal+" like ?";
         
         PreparedStatement pstm = null;
         ResultSet rst = null;

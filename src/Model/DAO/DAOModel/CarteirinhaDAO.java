@@ -6,6 +6,7 @@
 package Model.DAO.DAOModel;
 
 import Model.Carteirinha;
+import Model.Cliente;
 import Model.DAO.ConnectionFactory;
 import Model.DAO.InterfaceDAO;
 import java.sql.Connection;
@@ -25,18 +26,18 @@ public class CarteirinhaDAO implements InterfaceDAO<Carteirinha> {
     public void create(Carteirinha objeto) {
         
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "INSERT INTO endereco (codigoBarra, dataGeracao,"
+        String sqlExecutar = "INSERT INTO carteirinha (codigoBarra, dataGeracao,"
                 + " dataCancelamento, cliente_id)"
                 + " VALUES(?, ?, ?, "
-                + "(select id from cliente, where nome like ?)";
+                + "(select id from cliente where cliente.nome like ?))";
         
         
         PreparedStatement pstm = null;
         try {
             pstm = conexao.prepareStatement(sqlExecutar);
-            pstm.setString(1, objeto.getCodigoBarra());
-            pstm.setString(2, objeto.getDataGeracao());
-            pstm.setString(3, objeto.getDataCancelamento());
+            pstm.setString(1, objeto.getCodigoBarra().replace("-", ""));
+            pstm.setString(2, objeto.getDataGeracao().replace("-", ""));
+            pstm.setString(3, objeto.getDataCancelamento().replace("-", ""));
             pstm.setString(4, objeto.getCliente().getNome());
             pstm.execute();
         } catch (SQLException ex) {
@@ -80,45 +81,76 @@ public class CarteirinhaDAO implements InterfaceDAO<Carteirinha> {
     @Override
     public Carteirinha retrieve(int parPK) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "SELECT Carteirinha.id, Carteirinha.dataGeracao FROM Carteirinha where id = x";
+        String sqlExecutar = "SELECT C.id, Cl.nome, Cl.matricula, Cl.Cpf, Cl.dataNascimento, C.dataCancelamento, C.dataGeracao,"
+                + " C.codigoBarra FROM Carteirinha C"
+                + " join Cliente Cl on C.cliente_id = Cl.id"
+                + " where C.id = ?"; 
+        
         PreparedStatement pstm = null;
         ResultSet rst = null;
-        Carteirinha Carteirinha = new Carteirinha();
-        
+        Carteirinha carteirinha = new Carteirinha();
+        Cliente cliente = new Cliente();
+
         try {
             pstm = conexao.prepareStatement(sqlExecutar);
+            pstm.setInt(1, parPK);
             rst = pstm.executeQuery();
             
-            Carteirinha.setId(rst.getInt("id"));
-            Carteirinha.setDataGeracao(rst.getString("dataGeracao"));
-        
+            while(rst.next()){
+            
+                carteirinha.setId(rst.getInt("id"));
+                cliente.setNome(rst.getString("nome"));
+                cliente.setMatricula(rst.getString("matricula"));
+                cliente.setCpf(rst.getString("cpf"));
+                cliente.setDataNascimento(rst.getString("dataNascimento"));
+                
+                carteirinha.setCodigoBarra(rst.getString("codigoBarra"));
+                carteirinha.setDataCancelamento(rst.getString("dataCancelamento"));
+                carteirinha.setDataGeracao(rst.getString("dataGeracao"));
+                carteirinha.setCliente(cliente);
+                  
+            }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }finally{
             
             ConnectionFactory.closeConnection(conexao, pstm, rst);
-            return Carteirinha;
+            return carteirinha;
         }
     }
 
     @Override
     public List<Carteirinha> retrieve(String parString) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "SELECT Carteirinha.id, Carteirinha.descricao from Carteirinha WHERE descricao like ?";
+        String sqlExecutar = "SELECT C.id, Cl.nome, Cl.matricula, Cl.Cpf, Cl.dataNascimento, C.dataCancelamento, C.dataGeracao,"
+                + " C.codigoBarra FROM Carteirinha C"
+                + " join Cliente Cl on C.cliente_id = Cl.id where "+Controller.Busca.ControllerBuscaBairro.filtroGlobal+" like ?";
         
         PreparedStatement pstm = null;
         ResultSet rst = null;
+        Carteirinha carteirinha = new Carteirinha();
+        Cliente cliente = new Cliente();
         List<Carteirinha> listaCarteirinha = new ArrayList<>();
         
         try {
             pstm = conexao.prepareStatement(sqlExecutar);
-            pstm.setString(1, "%" +parString + "%");
+            pstm.setString(1, parString + "%");
             rst = pstm.executeQuery();
             while(rst.next()){
-            Carteirinha carteirinha = new Carteirinha();
-            carteirinha.setId(rst.getInt("id"));
-            listaCarteirinha.add(carteirinha);
-            }
+                
+                cliente.setNome(rst.getString("nome"));
+                cliente.setMatricula(rst.getString("matricula"));
+                cliente.setCpf(rst.getString("cpf"));
+                cliente.setDataNascimento(rst.getString("dataNascimento"));
+                
+                carteirinha.setId(rst.getInt("id"));
+                carteirinha.setCodigoBarra(rst.getString("codigoBarra"));
+                carteirinha.setDataCancelamento(rst.getString("dataCancelamento"));
+                carteirinha.setDataGeracao(rst.getString("dataGeracao"));
+                carteirinha.setCliente(cliente);
+                listaCarteirinha.add(carteirinha);
+                }
+            
             
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -132,6 +164,27 @@ public class CarteirinhaDAO implements InterfaceDAO<Carteirinha> {
 
     @Override
     public void update(Carteirinha objeto) {
+        
+        Connection conexao = ConnectionFactory.getConnection();
+        String sqlExecutar = "update carteirinha set codigobarra = ?, dataGeracao = ?,"
+                + " dataCancelamento = ? where id = ?";
+        PreparedStatement pstm = null;
+        Carteirinha carteirinha = new Carteirinha();
+        
+        try {
+            pstm = conexao.prepareStatement(sqlExecutar);
+            pstm.setString(1, objeto.getCodigoBarra());
+            pstm.setString(2, objeto.getDataGeracao());
+            pstm.setString(3, objeto.getDataCancelamento());
+            pstm.setInt(4, objeto.getId());
+
+            pstm.execute();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            ConnectionFactory.closeConnection(conexao, pstm);
+        }
+        
     }
 
     @Override

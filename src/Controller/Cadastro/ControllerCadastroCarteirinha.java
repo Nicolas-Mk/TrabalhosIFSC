@@ -56,7 +56,7 @@ public class ControllerCadastroCarteirinha implements ActionListener {
             this.cadastroCarteirinha.getNomeTF().setEnabled(false);
             this.cadastroCarteirinha.getDatadeNascimentoTF().setEnabled(false);
             this.cadastroCarteirinha.getCpfTF().setEnabled(false);
-            cadastroCarteirinha.getMatriculaTF().setEnabled(false);
+            this.cadastroCarteirinha.getMatriculaTF().setEnabled(false);
         } else if (e.getSource() == this.cadastroCarteirinha.getButtonExit()) {
             this.cadastroCarteirinha.dispose();
         } else if (e.getSource() == this.cadastroCarteirinha.getButtonCancel()) {
@@ -71,7 +71,7 @@ public class ControllerCadastroCarteirinha implements ActionListener {
             carteirinha.getCliente().setNome(this.cadastroCarteirinha.getNomeTF().getText());
             carteirinha.getCliente().setCpf(this.cadastroCarteirinha.getCpfTF().getText());
             carteirinha.getCliente().setDataNascimento(this.cadastroCarteirinha.getDatadeNascimentoTF().getText());
-            carteirinha.setDataGeracao(this.cadastroCarteirinha.getDatadeNascimentoTF().getText());
+            carteirinha.setDataGeracao(this.cadastroCarteirinha.getDataGeracaoTF().getText());
             carteirinha.setDataCancelamento(this.cadastroCarteirinha.getDataCancelamentoTF().getText());
             carteirinha.getCliente().setMatricula(this.cadastroCarteirinha.getMatriculaTF().getText());
             carteirinha.setCodigoBarra(this.cadastroCarteirinha.getCodigoBarrasTF().getText());

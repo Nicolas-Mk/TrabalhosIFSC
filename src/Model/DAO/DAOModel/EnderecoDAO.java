@@ -127,11 +127,18 @@ public class EnderecoDAO implements InterfaceDAO<Endereco> {
     @Override
     public List<Endereco> retrieve(String parString) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = "SELECT id,cep,logradouro,status from endereco where logradouro like ?";
-               
+        String sqlExecutar = "select E.id, E.cep, E.logradouro, E.status, C.descricao as cidadeDesc, B.descricao  bairroDesc from endereco E "
+                + " join bairro B on E.bairro_id = B.id"
+                + " join cidade C on E.cidade_id = C.id"
+                + " where "+Controller.Busca.ControllerBuscaBairro.filtroGlobal+" like ?";
+        
         PreparedStatement pstm = null;
         ResultSet rst = null;
         Endereco endereco = new Endereco();
+        Cidade cidade = new Cidade();
+        Bairro bairro = new Bairro();
+        endereco.setCidade(cidade);
+        endereco.setBairro(bairro);
         List<Endereco> enderecoList = new ArrayList<>();
         
         try {
@@ -141,10 +148,16 @@ public class EnderecoDAO implements InterfaceDAO<Endereco> {
             
             while(rst.next()){
 
+                bairro.setDescricao(rst.getString("bairroDesc"));
+                cidade.setDescricao(rst.getString("cidadeDesc"));
+                
                 endereco.setId(rst.getInt("id"));
                 endereco.setCep(rst.getString("cep"));
                 endereco.setLogradouro(rst.getString("logradouro"));
                 endereco.setStatus(rst.getString("status"));
+                endereco.setBairro(bairro);
+                endereco.setCidade(cidade);
+                
                 enderecoList.add(endereco);
                 
             }
@@ -180,7 +193,6 @@ public class EnderecoDAO implements InterfaceDAO<Endereco> {
         } finally {
             ConnectionFactory.closeConnection(conexao, pstm);
         }
- 
         
     }
 

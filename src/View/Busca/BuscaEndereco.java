@@ -193,7 +193,7 @@ public class BuscaEndereco extends javax.swing.JFrame {
         panelSearch.add(findIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 10, 30, 30));
         panelSearch.add(searchTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 700, 30));
 
-        escolhaCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Id", "Logradouro" }));
+        escolhaCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Id", "Logradouro", "Cep" }));
         panelSearch.add(escolhaCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, 30));
 
         Table.setModel(new javax.swing.table.DefaultTableModel(

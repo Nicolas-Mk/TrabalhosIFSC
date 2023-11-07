@@ -79,7 +79,7 @@ public class ControllerCadastroProduto implements ActionListener {
             
              if (codigo != 0){
                Produto produto = new Produto();
-               produto = Model.DAO.Persiste.produtoList.get(codigo -1);
+               produto = ProdutoService.retrieve(codigo);
                Utilities.Utilities.ativa(false, this.cadastroProduto.getPanelBottom());
                Utilities.Utilities.limpaComponentes(true, this.cadastroProduto.getPanelMid());
                this.cadastroProduto.getIdTF().setText(produto.getId() +"");

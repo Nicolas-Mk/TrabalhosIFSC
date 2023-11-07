@@ -25,7 +25,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="panelTop" max="32767" attributes="0"/>
-          <Component id="panelSearch" alignment="1" max="32767" attributes="0"/>
+          <Component id="panelSearch" alignment="1" pref="1046" max="32767" attributes="0"/>
           <Component id="panelMid" max="32767" attributes="0"/>
           <Component id="panelBottom" alignment="1" max="32767" attributes="0"/>
       </Group>
@@ -198,7 +198,7 @@
                 <Column editable="true" title="data de nascimento" type="java.lang.Object"/>
                 <Column editable="true" title="data geracao" type="java.lang.Object"/>
                 <Column editable="true" title="data cancelamento" type="java.lang.Object"/>
-                <Column editable="true" title="codigo de barras" type="java.lang.Object"/>
+                <Column editable="true" title="codigoBarra" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -238,7 +238,7 @@
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="90" minWidth="90" prefWidth="75" resizable="true">
+                <Column maxWidth="125" minWidth="125" prefWidth="75" resizable="true">
                   <Title/>
                   <Editor/>
                   <Renderer/>

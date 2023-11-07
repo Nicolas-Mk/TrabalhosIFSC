@@ -199,7 +199,7 @@ public class BuscaCarteirinha extends javax.swing.JFrame {
 
             },
             new String [] {
-                "id", "nome", "matricula", "cpf", "data de nascimento", "data geracao", "data cancelamento", "codigo de barras"
+                "id", "nome", "matricula", "cpf", "data de nascimento", "data geracao", "data cancelamento", "codigoBarra"
             }
         ));
         panelMid.setViewportView(Table);
@@ -219,9 +219,9 @@ public class BuscaCarteirinha extends javax.swing.JFrame {
             Table.getColumnModel().getColumn(5).setMaxWidth(125);
             Table.getColumnModel().getColumn(6).setMinWidth(125);
             Table.getColumnModel().getColumn(6).setMaxWidth(125);
-            Table.getColumnModel().getColumn(7).setMinWidth(90);
+            Table.getColumnModel().getColumn(7).setMinWidth(125);
             Table.getColumnModel().getColumn(7).setPreferredWidth(75);
-            Table.getColumnModel().getColumn(7).setMaxWidth(90);
+            Table.getColumnModel().getColumn(7).setMaxWidth(125);
         }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -229,7 +229,7 @@ public class BuscaCarteirinha extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(panelSearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelSearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
             .addComponent(panelMid)
             .addComponent(panelBottom, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );

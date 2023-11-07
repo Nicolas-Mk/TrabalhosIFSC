@@ -90,10 +90,10 @@ public class ClienteDAO implements InterfaceDAO<Cliente> {
     @Override
     public Cliente retrieve(int parPK) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sqlExecutar = " select c.id, c.nome, c.cpf, c.fone1, c.fone2, c.matricula,"
-                + " c.email, c.complementoEndereco, c.dataNascimento, e.cep, c.status"
-                + " from cliente c "
-                + " join endereco e on c.endereco_id = e.id where c.id = ?";
+        String sqlExecutar = " select C.id, C.nome, C.cpf, C.fone1, C.fone2, C.matricula,"
+                + " C.email, C.complementoEndereco, C.dataNascimento, E.cep, C.status"
+                + " from cliente C "
+                + " join endereco E on C.endereco_id = E.id where C.id = ?";
                
         PreparedStatement pstm = null;
         ResultSet rst = null;
@@ -122,9 +122,7 @@ public class ClienteDAO implements InterfaceDAO<Cliente> {
                 cliente.setStatus(rst.getString("status"));
 
             }
-            
-            
-        
+
         } catch (SQLException ex) {
             ex.printStackTrace();
         }finally{
@@ -140,7 +138,7 @@ public class ClienteDAO implements InterfaceDAO<Cliente> {
         String sqlExecutar = " select c.id, c.nome, c.cpf, c.fone1, c.fone2, c.matricula, "
                 + " c.email, c.complementoEndereco, c.dataNascimento, e.cep, c.status "
                 + " from cliente c "
-                + " join endereco e on c.endereco_id = e.id where c.nome like ?";
+                + " join endereco e on c.endereco_id = e.id where "+Controller.Busca.ControllerBuscaBairro.filtroGlobal+" like ?";
                
         PreparedStatement pstm = null;
         ResultSet rst = null;
@@ -182,6 +180,35 @@ public class ClienteDAO implements InterfaceDAO<Cliente> {
 
     @Override
     public void update(Cliente objeto) {
+        
+        Connection conexao = ConnectionFactory.getConnection();
+        String sqlExecutar = "update cliente set nome = ?, fone1 = ?, fone2 = ?, email = ?, status = ?,"
+                + " complementoEndereco = ?, rg = ?, matricula = ?, dataNascimento = ?, cpf = ? where id = ?" +
+"";
+        PreparedStatement pstm = null;
+        Cliente cliente = new Cliente();
+        
+        try {
+            pstm = conexao.prepareStatement(sqlExecutar);
+            pstm.setString(1, objeto.getNome());
+            pstm.setString(2, objeto.getFone());
+            pstm.setString(3, objeto.getFone2());
+            pstm.setString(4, objeto.getEmail());
+            pstm.setString(5, objeto.getStatus());
+            pstm.setString(6, objeto.getComplementoEndereco());
+            pstm.setString(7, objeto.getRg());
+            pstm.setString(8, objeto.getMatricula());
+            pstm.setString(9, objeto.getDataNascimento());
+            pstm.setString(10, objeto.getCpf());
+            pstm.setInt(11, objeto.getId());
+
+            pstm.execute();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            ConnectionFactory.closeConnection(conexao, pstm);
+        }
+        
     }
 
     @Override
