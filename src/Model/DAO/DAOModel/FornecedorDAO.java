@@ -115,6 +115,8 @@ public class FornecedorDAO implements InterfaceDAO<Fornecedor> {
                 fornecedor.setRazaoSocial(rst.getString("razaoSocial"));
                 endereco.setCep(rst.getString("cep"));
                 fornecedor.setStatus(rst.getString("status"));
+                
+                
 
             }
 

@@ -166,6 +166,7 @@ public class ClienteDAO implements InterfaceDAO<Cliente> {
                 cliente.setDataNascimento(rst.getString("dataNascimento"));
                 endereco.setCep(rst.getString("cep"));
                 cliente.setStatus(rst.getString("status"));
+                clienteList.add(cliente);
 
             }
             
@@ -198,7 +199,7 @@ public class ClienteDAO implements InterfaceDAO<Cliente> {
             pstm.setString(6, objeto.getComplementoEndereco());
             pstm.setString(7, objeto.getRg());
             pstm.setString(8, objeto.getMatricula());
-            pstm.setString(9, objeto.getDataNascimento());
+            pstm.setString(9, objeto.getDataNascimento().replace("/",""));
             pstm.setString(10, objeto.getCpf());
             pstm.setInt(11, objeto.getId());
 

@@ -61,9 +61,16 @@ public class ControllerBuscaFuncionario implements ActionListener {
             DefaultTableModel tabela = (DefaultTableModel) this.buscaFuncionario.getTable().getModel();
             tabela.setRowCount(0);
             for (Funcionario funcionarioAtual : funcionarioList) {
-                tabela.addRow(new Object[]{funcionarioAtual.getId(), funcionarioAtual.getNome(), funcionarioAtual.getFone(), funcionarioAtual.getFone2(),
-                   funcionarioAtual.getUsuario(), funcionarioAtual.getCpf(),
-                   funcionarioAtual.getEmail(), funcionarioAtual.getComplementoEndereco(), funcionarioAtual.getEndereco().getCep(), funcionarioAtual.getStatus()
+                tabela.addRow(new Object[]{funcionarioAtual.getId(),
+                    funcionarioAtual.getNome(),
+                    funcionarioAtual.getFone(),
+                    funcionarioAtual.getFone2(),
+                    funcionarioAtual.getUsuario(),
+                    funcionarioAtual.getCpf(),
+                    funcionarioAtual.getEmail(),
+                    funcionarioAtual.getComplementoEndereco(),
+                    funcionarioAtual.getEndereco().getCep(),
+                    funcionarioAtual.getStatus()
                 });
                 }
             }

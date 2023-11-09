@@ -54,15 +54,17 @@ public class ControllerBuscaCliente implements ActionListener {
                     clienteList.add(ClienteService.retrieve(Integer.parseInt(this.buscaCliente.getSearchTF().getText())));
                 }else{
                     clienteList = (ClienteService.retrieve(this.buscaCliente.getSearchTF().getText().trim()));
-                    filtroGlobal = (this.buscaCliente.getEscolhaCB().getSelectedItem().toString());
+                    filtroGlobal = this.buscaCliente.getEscolhaCB().getSelectedItem().toString().trim();
                     
-                }DefaultTableModel tabela = (DefaultTableModel) this.buscaCliente.getTable().getModel();
+                }
+                
+                DefaultTableModel tabela = (DefaultTableModel) this.buscaCliente.getTable().getModel();
                 tabela.setRowCount(0);
                 for (Cliente clienteAtual : clienteList) {
                     tabela.addRow(new Object[]{clienteAtual.getId(), clienteAtual.getNome(), clienteAtual.getCpf(),
                         clienteAtual.getFone(), clienteAtual.getFone2(), clienteAtual.getMatricula(),
                         clienteAtual.getEmail(), clienteAtual.getComplementoEndereco(),
-                        clienteAtual.getDataNascimento().trim(), clienteAtual.getEndereco().getCep(), clienteAtual.getStatus()});
+                        clienteAtual.getDataNascimento(), clienteAtual.getEndereco().getCep(), clienteAtual.getStatus()});
                 }
             }
         }
